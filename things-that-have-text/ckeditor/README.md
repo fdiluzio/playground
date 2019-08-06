@@ -1,3 +1,9 @@
+###My Plug-in to remove div containers
+/ckeditor/samples/
+
+In the toolbox for source code is new button.
+Select the text area you want to remove the divs from and push it.
+
 CKEditor 4
 ==========
 
