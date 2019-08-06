@@ -1,0 +1,16 @@
+
+.teaser-subline {
+    display: inline;
+    color: black;
+    box-shadow: -5px 0 0 2px white, 5px 0 0 2px white;
+    background-color: white;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    line-height: 1;
+    font-size: 2rem;
+    margin: 0;
+    /*font-family: "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+}
+
+
+
