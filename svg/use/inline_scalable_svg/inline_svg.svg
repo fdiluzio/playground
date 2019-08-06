@@ -1,0 +1,52 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 720 458" xml:space="preserve">
+
+    <style type="text/css">
+        .text {
+            font-size: 30px;
+            fill: #FFF;
+            text-anchor: middle;
+        }
+
+        use {
+            cursor:pointer;
+        }
+
+    </style>
+
+    <defs>
+        <symbol id="marker_1">
+            <circle cx="25" cy="25" r="25"/>
+            <text transform="translate(25,35)" y="0" x="0" class="text">1</text>
+        </symbol>
+        <symbol id="marker_2">
+            <circle cx="25" cy="25" r="25"/>
+            <text transform="translate(25,35)" y="0" x="0" class="text">2</text>
+        </symbol>
+    </defs>
+
+    <image width="720" height="458" xlink:href="background.jpg"/>
+    <image x="50" y="100" width="250" height="140.5" xlink:href="mickey_skiing.gif"/>
+    <image x="500" y="300" width="175" height="175" xlink:href="3d_skier.gif"/>
+    <use xlink:href="#marker_1" x="60" y="60"/>
+    <use xlink:href="#marker_2" x="550" y="310"/>
+
+
+    <script>
+        <![CDATA[
+        var coll = document.getElementsByTagName('use');
+        var index,
+            collLength;
+        collLength = coll.length;
+
+        function doSomething(e) {
+            console.log(this);
+        }
+
+        for (index = 0; index < collLength; index++) {
+            coll[index].addEventListener('click', doSomething, false);
+        }
+
+        ]]>
+    </script>
+
+</svg>

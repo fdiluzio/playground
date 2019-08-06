@@ -1,0 +1,223 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <style media="screen">
+      .frontpage {
+        width: 100%;
+        height: 100vh;
+        background-image: url(img/GROHAG-Hauptsujet_preview.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+
+      button {
+        border: 0;
+        background-color: SlateGray;
+        color: white;
+        padding: 1em;
+        margin: 3em;
+        border-radius: 5px;
+      }
+
+      .contour-wrp {
+        bottom: 0;
+        left: 0;
+        padding: 0 10%;
+        position: absolute;
+        width: 80%;
+      }
+      /* responsive circle sizing */
+
+      .contour-wrp svg {
+        font-size: 0.5em;
+      }
+
+      .contour {
+        fill: none;
+        stroke: #2c2c2c;
+        stroke-width: 2;
+        stroke-opacity: 0.6;
+      }
+
+      .numlabel {
+        fill: #fff;
+        font-size: 1em;
+        text-align: center;
+      }
+
+      @media screen and (max-width:1024px) {
+        .contour-wrp svg {
+          font-size: 0.7em;
+        }
+        .contour-wrp {
+          padding: 0;
+          width: 100%;
+        }
+        .contour {
+          stroke-width: 3;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="frontpage">
+
+      <button onclick="ContourAnimation.moveToSection(Math.floor(Math.random()*7+1))">Animate Path</button>
+
+      <div class="contour-wrp">
+
+        <svg version="1.1" width="100%" height="440" viewBox="0 0 748.5 320.7" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
+
+          <g id="path-1">
+            <path class="contour" d="M214.6,5.3C212.2,8,210.2,7,207.9,8s-2,7.7-4.3,9.7c-2.3,2-6.7,2.3-6.7,5.7c0,3.3-1,3-2.7,4.3
+        		c-1.7,1.3-4.3,2-1.7,4.7c2.7,2.7,4,4.7,6.7,5.3c2.7,0.7,19.3,6.3,20.7,7.3s-6.3,2-8.7,2c-2.3,0-13.7-3.7-11,0c2.7,3.7,9,5,10.7,4.3
+        		c1.7-0.7,10.7-5,13.7-3.7s17.3,2,17.7,3.8c0.3,1.8,1.7,3.5-4,3.5c-5.7,0-17-2-12,1.7s4,4,2,6s-13,7.7-13.7,9
+        		c-0.7,1.3-4.3,4.3-6.3,5s-12,1-13.7,2c-1.7,1-10.7,5.3-12,5.7c-1.3,0.3-1.3,5.7-6,7c-4.7,1.3-11.3,1.3-15,5.3
+        		c-3.7,4-16.3,8.3-16.3,8.3s-10.7,5.7-13,6.3c-2.3,0.7-6.3,1-6,3.3c0.3,2.3-0.3,4-5.3,4.7c-5,0.7-15,6-17.3,6c-2.3,0-9,0.3-12.7,3
+        		c-3.7,2.7-4,6.3,0,7.7c4,1.3,16.7,1,19,5s1.3,7.3-2.3,9c-3.7,1.7-4.7,8.3,0.7,8.7c5.3,0.3,34.7,2.3,34.7,2.3s13-3.3,20,0
+        		c7,3.3,13,5,4.7,6.3c-8.3,1.3-19.3,7.7-21.3,10.3s-7,4-5.7,6.7c1.3,2.7,1,4,4.7,2.3c3.7-1.7,7.7-6.3,11-6.7c3.3-0.3,11-2.7,6.7,1
+        		c-4.3,3.7-9.7,6-10,8s-0.3,3.3,4,3.3s4.5-3.3,8.4-4.7c3.9-1.3,7.3-4.7,8.9-5c1.7-0.3,7.3-0.3,4.3,2.7s-7,4.3-9.7,7
+        		c-2.7,2.7-2.3,4.7,2.3,5c4.7,0.3,12.7-4,13,0c0.3,4-1,7.3,0.3,8.7c1.3,1.3,5,4.3,6,5.7s3.3,2.7,7.3,2.3c4-0.3,16-0.7,17.7-2.3
+        		c1.7-1.7,1.3-4-1.7-5.3c-3-1.3-11.3-3.3-10.7-7.3c0.7-4,6-1.7,7.7-2.7s5.7-1,9.3,0c3.7,1,6.3,4,9,4c2.7,0,5.3,3.3,5.3-1
+        		c0-4.3-1-5,3.7-3.7c4.7,1.3,4.8,3,4.4-1.7c-0.4-4.7,2.3-3.7,6.6-2.3c4.3,1.3,10.3,3.3,14.7,5c4.3,1.7,11.7,6,11.7,1
+        		s-6.3-5.7-6.7-8.3c-0.3-2.7-4.3-3-9.3-3.7s-5-3-1.3-5c3.7-2,8,1.7,9.7,2c1.7,0.3,5.7,3,9.3,3c3.7,0,4.7-1,8,0.3
+        		c3.3,1.3,2.3,1.3,7.7,0c5.3-1.3,26.7-11.7,30.3-12.3c3.7-0.7,4-4.7,7.7-4.7c3.7,0,6.7,1,4.7,3.3c-2,2.3,2,4,4.7,2.7
+        		c2.7-1.3,3.7-3.3,7.7-3.7c4-0.3,7.3-0.7,9.3-2.3c2-1.7,4.7-2.3,7-6c2.3-3.7,4-5.3,10-5c6,0.3,8.7,1.3,11.7,3.3s7.7,3.7,12.7,4
+        		c5,0.3,21.3,3.7,24.3,3.3s4,0,10.7,1.3c6.7,1.3,7.3,3.3,12.3,3.3s6-0.7,10.3,1.7c4.3,2.3,10.3,3,13,3c2.7,0,6,1,7-1.7
+        		c1-2.7-1.7-4.7-3-6.3c-1.3-1.7-2.9-6.3,3.2-5c6.1,1.3,11.8,1.7,16.4,1.7c4.7,0,2.3,1.7,7.3,4.3c5,2.7,8.7,3,5.7-3.3
+        		s-5.7-8.7-3.3-14.7s3.7-7.7-1-17.7s-6.7-17.3-0.3-17.7c6.3-0.3,12.3-4.7,15-1.7c2.7,3,3.3,2,1.7,11c-1.7,9-5,18.3-1,21.3
+        		s11,9.3,17.7,11c6.7,1.7,12,7.3,15,3.7c3-3.7,4.3-3,0-6.3s-17.7-8.3-9.7-10s11.3-2,15.7,1.3c4.3,3.3,11.7,6.7,7.3,1.3
+        		c-4.3-5.3-15-7.7-8.7-7.7c6.3,0,6.6,2.7,10,2.7c3.3,0,7.7,2,5-1c-2.7-3-6-2-2.7-3s0,0.7,3.5,0.7c3.5,0,7.5-2,3.8-3.3
+        		c-3.7-1.3-8.3-3.3-5.3-4s5-1.7,11-0.7s22,8,19.8,4.3c-3.8-6.4-17.1-3.6-9.5-7.7c4.3-2.3,16.7,3.9,13-1.2
+        		c-5.4-7.7-28.3-3.8-29.7-9.1c-1.3-5.3-2.3-8,2.7-5s13.8,7.7,13.2,4.3s-11.2-7.3-5.2-9c6-1.7,8.9,4.7,12.5,6.4
+        		c3.7,1.7,3.5,7.1,9.1,7.1c5.7,0,3-1.5,10.3,3.8c7.3,5.3,8.3,13.3,12.3,10.3s1-2.7-1.7-6.3c-2.7-3.7,4-5.7,5.3-3.3
+        		c1.3,2.3-1,4.3,6.7,8s14.7,8.3,16.7,12s1.3,2,0,6.3c-1.3,4.3-3.1,8.3,1.3,8.7c4.4,0.3-0.6,2.3,8.1,3.3s9.7-2,12,3.7s-0.7,9,4,9.7
+        		c4.7,0.7,12.7,5.7,16.7,6.3s8,5.3,8.3,2s-9.7-5-14-9s-6.3-4.7-3.3-7.3c3-2.7,4.3,4,8,5.3c3.7,1.3,10,0.7,7-2.3s-6.7-13-1.3-8
+        		c5.3,5,3.3,7.7,10.3,9.3s8,2.3,6,5.7c-2,3.3,0.7,6.7,5.3,4.3s-1-7.3,9.7-4.7c10.7,2.7,15,3.3,15,3.3" />
+            <g id="path-12">
+              <path class="contour" d="M142.9,161c2,1.7,6.3,8.7-1.3,10c-7.7,1.3-8.7,1.7-11.3,7c-2.7,5.3-7.7,15.7-11.3,18
+        			c-3.7,2.3-9.3-0.7-3.7,7.7s15.7,7.1,10.3,10.4c-5.3,3.3-11.5,5.3-12.7,5.9c-1.3,0.7-6.6,1-10.3,7c-3.7,6-5.3,6-9.7,9
+        			c-4.3,3-2,4.3-1.3,7.3c0.7,3-2.1,3.7-1.2,6c0.9,2.3,4.2,2,2.9,5c-1.3,3-1.4,7.7-5.2,10.7c-3.8,3-5.1,7.3-6.5,8
+        			c-1.3,0.7-6.3,4.3-11,5.3c-4.7,1-10,6.3-11.3,10.7c-1.3,4.3-6,11-10,8s3.3-9-3.3-7s-7,9-10.3,11s-9.7,3-14.3,8.3
+        			c-4.7,5.3-17.3,12.3-19,9c-1.7-3.3-0.3-6.3,2.3-12c2.7-5.7,5.3-3.3,7.3-9.3s-3.7-11.3,0-14.3s4-10.3,8-11.3s10-5.3,10.3-7.3
+        			c0.3-2-2.3-5-7-4.7" />
+            </g>
+            <g id="path-4">
+              <path class="contour" d="M516.9,148.3c0,0-2,9.7,1.3,11.8c3.3,2.2,7,3.8,9.7,7.8c2.7,4,2.7,9.3,11.7,8c9-1.3,8.7-3.3,13.7-2.8
+        			c5,0.5,10.7-0.8,7.5-2.2c-3.2-1.3-2.8-3.7,0-3c2.8,0.7,8.5,3.7,7.5,0s-3.8-7.3,0.1-7c3.9,0.3,3.9,2.9,6.5,2.6
+        			c2.7-0.3,4,1.1,4.7-0.8s-4.7-4.8-1.7-6.2s6.7-4.3,8.3-3" stroke-dasharray="4 1" stroke-dashoffset="0" />
+            </g>
+          </g>
+
+          <g transform="matrix(1 0 0 1 128 202)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">12</text>
+          </g>
+          <g transform="matrix(1 0 0 1 221 15)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">11</text>
+          </g>
+          <g transform="matrix(1 0 0 1 118 135)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">10</text>
+          </g>
+          <g transform="matrix(1 0 0 1 302 172)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">9</text>
+          </g>
+          <g transform="matrix(1 0 0 1 431 159)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">8</text>
+          </g>
+          <g transform="matrix(1 0 0 1 456 164)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">7</text>
+          </g>
+          <g transform="matrix(1 0 0 1 506 182)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">6</text>
+          </g>
+          <g transform="matrix(1 0 0 1 501 108)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">5</text>
+          </g>
+          <g transform="matrix(1 0 0 1 564 108)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">3</text>
+          </g>
+          <g transform="matrix(1 0 0 1 596 158)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">4</text>
+          </g>
+          <g transform="matrix(1 0 0 1 618 116)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">2</text>
+          </g>
+          <g transform="matrix(1 0 0 1 650 171)">
+            <circle r="1em" />
+            <text x="0" y="0.35em" text-anchor="middle" class="numlabel">1</text>
+          </g>
+
+          <script>
+            // <![CDATA[
+
+
+
+
+            // ]]>
+          </script>
+
+        </svg>
+
+      </div>
+    </div>
+
+    </div>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+      window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+    </script>
+    <script src="js/vendor/velocity.min.js"></script>
+
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+          function() {
+            (b[l].q = b[l].q || []).push(arguments)
+          });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = '//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+      }(window, document, 'script', 'ga'));
+      ga('create', 'UA-XXXXX-X', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+
+</html>
