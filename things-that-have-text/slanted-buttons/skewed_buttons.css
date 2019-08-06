@@ -1,0 +1,62 @@
+.btn-parallelogram, .btn-slant {
+  position: relative;
+  text-align: center;
+  display: inline-block; }
+
+.btn-parallelogram:before, .btn-slant:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0.6em;
+  bottom: 0;
+  right: 0.6em;
+  z-index: 0;
+  -webkit-transform: skew(-21deg);
+          transform: skew(-21deg);
+  background: linear-gradient(to right, #0167b5 0%, #013a7c 100%); }
+
+.btn-slant:before {
+  background: linear-gradient(to right, #0167b5 10%, #013a7c 90%); }
+
+.btn-parallelogram span, .btn-slant span {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: #FFF;
+  padding: 1.5em;
+  line-height: 2em;
+  z-index: 1; }
+
+.btn-parallelogram-fit, .btn-slant-fit {
+  margin: 0 -1.5em 0 0; }
+
+.btn-slant-touch {
+  margin: 0 -0.3em 0 0; }
+
+.btn-slant-left:after {
+  content: "";
+  background-color: #013a7c;
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  width: 1.2em;
+  z-index: 0; }
+
+.btn-slant-right:after {
+  content: "";
+  background-color: #0167b5;
+  display: block;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 1.2em;
+  z-index: 0; }
+
+.btn-slant-right span {
+  padding: 0 1.0em 0 0.5em; }
+
+.btn-slant-left span {
+  padding: 0 0.6em 0 1.0em; }
