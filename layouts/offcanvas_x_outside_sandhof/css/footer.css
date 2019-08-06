@@ -1,0 +1,46 @@
+.footer {
+  margin-bottom: 2em;
+}
+
+.footer .contact {
+  margin-bottom: 1em;
+  display: flex;
+}
+
+.footer .social-links {
+  margin: auto 0 0 auto;
+  display: flex;
+}
+
+.footer .link-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #C8CACC;
+  padding: 2em 1em;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+}
+
+.footer .link-btns .icon-link {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5em;
+}
+
+.footer .link-btns .icon-link figcaption {
+  width: 120px;
+}
+
+@media only screen and (min-width: 48em) {
+  .footer .link-btns .icon-link {
+    width: auto;
+  }
+}
+
+.footer .link-list {
+  display: flex;
+}
+
+/*# sourceMappingURL=footer.css.map */

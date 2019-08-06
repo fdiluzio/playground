@@ -1,0 +1,138 @@
+// ######################
+@import "../imports/config";
+@import "../imports/molecules";
+// ######################
+
+.layout-hero-pattern {
+
+  position: relative;
+  padding-bottom: 2em;
+
+  @include bp-medium {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .hero-image {
+    height: 40vh;
+    @include bp-medium {
+      height: 100%;
+      width: 70%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+  }
+
+  .content {
+    @include interpolate(font-size, pixelToEm($medium), pixelToEm($xxlarge), 0.6em, 1em);
+    @include bp-medium {
+      @include interpolate(padding margin, pixelToEm($medium), pixelToEm($xxxlarge), 1em, 7.7em);
+    }
+    padding: 2em;
+    margin: 0 auto;
+    @extend %text-component;
+    background-color: $white;
+    max-width: 723px;
+    @include max-width($medium - 1) {
+      margin-top: -10vh !important;
+      width: 90%;
+    }
+    @include bp-medium {
+      width: 45%;
+      max-width: 600px;
+    }
+  }
+
+}
+
+.layout-hero {
+
+  display: flex;
+  flex-direction: column-reverse;
+
+  .content {
+    @include interpolate(font-size, pixelToEm($medium), pixelToEm($xxlarge), 0.6em, 1em);
+    @extend %text-component;
+    max-width: 723px;
+    @include max-width($medium - 1) {
+      margin-top: -10vh !important;
+      width: 90%;
+    }
+    padding: 2em;
+    margin: 0 auto;
+
+    @include bp-medium {
+      @include interpolate(padding-right padding-left margin-right margin-right, pixelToEm($medium), pixelToEm($xxxlarge), 1em, 7.7em);
+      background-color: transparent;
+      color: $white;
+      width: 45%;
+    }
+  }
+
+  .hero-image {
+
+    flex: 1 0 40%;
+    height: 40vh;
+
+
+    @include bp-medium {
+      width: 70%;
+      @include interpolate(height, pixelToEm($medium), pixelToEm($xxxlarge), 25em, 35em);
+      @include interpolate(margin-right, pixelToEm($medium), pixelToEm($xxxlarge), 1em, 7.7em);
+
+    }
+
+  }
+
+  @include bp-medium {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &--background{
+    @include bp-medium {
+      @include interpolate(padding-top padding-bottom, pixelToEm($medium), pixelToEm($xxxlarge), 1em, 8.5em);
+      background-image: linear-gradient(to right, $grey-light, $grey-light 80%, transparent 80%);
+    }
+  }
+
+}
+
+.layout-hero-reverse {
+  flex-direction: row-reverse;
+
+  .hero-image {
+    height: 40vh;
+
+    @include bp-medium {
+      height: 100%;
+      width: 70%;
+      position: absolute;
+      top: 0;
+      left: auto;
+      right: 0;
+      overflow: hidden;
+    }
+
+  }
+
+  .hero-pattern {
+
+    @include bp-medium {
+      height: 100%;
+      width: 30%;
+      left: 0;
+      top: 0;
+      right: auto;
+    }
+  }
+
+}
+

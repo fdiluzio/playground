@@ -1,0 +1,32 @@
+// ######################
+@import "../imports/config";
+// ######################
+
+.newsletter {
+  &--footer {
+    color: #FFF;
+    padding: 1em;
+
+    @include max-width($xlarge - 1) {
+      background-color: $primary;
+      width: 100%;
+    }
+
+    .input-input {
+      max-width: 300px;
+    }
+
+    ::placeholder {
+      text-transform: uppercase;
+    }
+
+    h5 {
+      font-size: pixelToEm(18);
+      font-weight: 400;
+    }
+
+    .wysiwyg {
+      margin: 0.8em 0;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import "config";
+
+
+$canvasWidth: 250px;
+$canvasItemHeight: 40px;
+
+
+//  ################################################
+//  Off Canvas Banner
+//  ################################################
+
+
+.offcanvas-banner {
+  position: absolute;
+  z-index: 1;
+  left: -$canvasWidth;
+  top: 0;
+  width: $canvasWidth;
+  background: $white;
+  height: 100%;
+  padding-top: 1em;
+  transition: left 1s ease;
+
+  &.show {
+    left: 0;
+  }
+
+}

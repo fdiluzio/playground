@@ -1,0 +1,57 @@
+@import "config";
+
+%text-component {
+
+  position: relative;
+  z-index: 1;
+
+  .headline {
+    font-size: pixelToEm(40);
+    text-transform: uppercase;
+    margin-left: -0.06em;
+    font-weight: 700;
+  }
+
+  h2.headline {
+    font-size: pixelToEm(35);
+  }
+
+  .subline {
+    font-size: pixelToEm(18);
+    margin-bottom: pixelToEm(5);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .wysiwyg {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+
+    @include bp-xlarge {
+      margin-top: pixelToEm(14);
+      font-size: pixelToRem(18);
+    }
+  }
+
+}
+
+%icondecorator {
+  figure {
+    display: flex;
+    align-items: center;
+    transition: all 100ms ease;
+    position: relative;
+    left: 0;
+
+    img {
+      width: 1em;
+    }
+
+    figcaption {
+      white-space: nowrap;
+      margin: -0.1em 0 0 0.3em;
+    }
+  }
+}

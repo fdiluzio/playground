@@ -1,0 +1,51 @@
+.page .content {
+  position: relative;
+  z-index: 1;
+  background-color: #FFF;
+}
+
+.page .content .headline {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  margin-left: -0.06em;
+  font-weight: 700;
+}
+
+.page .content .subline {
+  font-size: 1.125em;
+  margin-bottom: 0.3125em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.page .content .wysiwyg {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+@media only screen and (min-width: 64em) {
+  .page .content .wysiwyg {
+    margin-top: 0.875em;
+    font-size: 1.125rem;
+  }
+}
+
+.page .content {
+  font-size: 0.6em;
+}
+
+@media screen and (min-width: 40em) {
+  .page .content {
+    font-size: calc(1vw + 0.2em);
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .page .content {
+    font-size: 1em;
+  }
+}
+
+/*# sourceMappingURL=page.css.map */

@@ -1,0 +1,115 @@
+main {
+  margin-top: 58px;
+}
+
+@media only screen and (min-width: 40em) {
+  main {
+    margin-top: 85px;
+  }
+}
+
+.page-header {
+  width: 100%;
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.page-header .top-bar {
+  position: relative;
+  padding: 0 0 0.5em;
+  height: auto;
+  z-index: 1;
+  background-color: #FFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-header .top-bar .link-btns {
+  display: none;
+}
+
+@media only screen and (min-width: 40em) {
+  .page-header .top-bar .link-btns {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 40em) and (min-width: 40em) {
+  .page-header .top-bar .link-btns {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media only screen and (min-width: 40em) {
+  .page-header .top-bar {
+    padding: 0 5%;
+    height: 85px;
+  }
+}
+
+.page-header.sticky-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateY(-85px);
+  transition: transform 500ms ease-in-out;
+}
+
+.page-header.sticky-top .navigation-offcanvas {
+  height: calc(100vh);
+}
+
+.page-header.sticky-top.show {
+  transform: translateY(0);
+}
+
+@media (max-width: 40em) {
+  .page-header.sticky-top.show ~ .sticky-bottom {
+    transform: translateY(0);
+  }
+}
+
+@media only screen and (min-width: 40em) {
+  .page-header.sticky-top ~ main {
+    margin-top: 85px;
+  }
+}
+
+.page-header.sticky-top ~ .sticky-bottom {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: #FFF;
+  transition: transform 500ms ease-in-out;
+  transform: translateY(60px);
+  display: flex;
+  justify-content: center;
+}
+
+.page-header .header-logo {
+  display: flex;
+  justify-content: center;
+  padding: 0.5em 0 0.3em;
+}
+
+.page-header .header-logo img {
+  width: 180px;
+}
+
+@media only screen and (min-width: 40em) {
+  .page-header .header-logo {
+    padding: 0;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+/*# sourceMappingURL=header.css.map */

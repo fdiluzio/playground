@@ -1,0 +1,113 @@
+//  ################################
+//  Inline Type
+//  ################################
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+//  ################################
+//  Block Type
+//  ################################
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:after,
+.clearfix:before {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.fixed {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.centered {
+  width: 100%;
+  max-width: pixelToEm($xx-large);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.justify-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hide {
+  display: none;
+}
+//  ################################
+//  List
+//  ################################
+
+ul.no-bullet {
+  margin-left: 0;
+}
+
+ul.no-bullet li ol,
+ul.no-bullet li ul {
+  margin-left: 1.25rem;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+ul.circle li ul,
+ul.disc li ul,
+ul.square li ul {
+  list-style: inherit;
+}
+
+ul.square {
+  list-style-type: square;
+  margin-left: 1.1rem;
+}
+
+ul.circle {
+  list-style-type: circle;
+  margin-left: 1.1rem;
+}
+
+ul.disc {
+  list-style-type: disc;
+  margin-left: 1.1rem;
+}
+
+ul.no-bullet {
+  list-style: none;
+}
+//  ################################
+//  Typography
+//  ################################
+
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,42 @@
+// ######################
+@import "../imports/config";
+@import "../imports/molecules";
+// ######################
+
+.blockquote {
+  color: $white;
+  padding: 5em 12%;
+
+  .content {
+    @include interpolate(font-size, pixelToEm($medium), pixelToEm($xxlarge), pixelToEm(22), pixelToEm(40));
+    text-align: center;
+    margin: 0 auto;
+    max-width: 750px;
+  }
+
+  .author {
+    @include interpolate(font-size, pixelToEm($medium), pixelToEm($xxlarge), pixelToEm(12), pixelToEm(20));
+    font-style: italic;
+    margin-top: 1rem;
+    font-weight: 300;
+  }
+
+  .quotemark {
+
+    @include interpolate(width, pixelToRem($medium), pixelToRem($xxlarge), pixelToRem(15), pixelToRem(30));
+    height: auto;
+
+    vertical-align: top;
+
+    &:first-of-type {
+      margin-right: 0.2em;
+    }
+
+    &:last-of-type {
+      transform: rotate(180deg);
+      margin-left: 0.2em;
+    }
+  }
+
+
+}

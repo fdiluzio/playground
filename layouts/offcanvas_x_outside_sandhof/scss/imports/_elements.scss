@@ -1,0 +1,110 @@
+// ######################
+@import "config";
+@import "molecules";
+// ######################
+
+// ##################################
+// buttons
+// ##################################
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 0.7em 0.5em;
+  margin: 0;
+  overflow: hidden;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+  background-color: $white;
+  text-decoration: none;
+  color: $black;
+  vertical-align: top;
+  box-shadow: $shadow-btn;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.9em;
+
+  @include bp-medium {
+    &:hover {
+      box-shadow: $shadow-btn-hover;
+      transform: scale(1.02) translateY(-1px);
+    }
+  }
+  
+  &:focus {
+    outline: none;
+  }
+
+  @include bp-medium {
+    padding: 0.7em 1.5em;
+  }
+}
+
+.hover {
+  &:hover {
+    .btn {
+      @extend .btn:hover;
+    }
+  }
+}
+
+.btn-wrp {
+  display: inline-block;
+
+  > :first-child {
+    @extend .btn;
+  }
+}
+
+.arrow-button {
+  > :first-child {
+    background-color: $white;
+    border: 1px solid $black;
+    padding: 0.3em 0;
+    width: 80px;
+
+    //@include bp-medium {
+    //  min-width: 80px;
+    //}
+
+    &:before {
+      content: '';
+      display: block;
+      background: center no-repeat url($image-path + "icons/pfeil.svg");
+      width: 100%;
+      height: 12px;
+    }
+  }
+
+}
+
+.offer-button {
+
+  > :first-child {
+    border: 2px solid $black;
+  }
+
+}
+
+.submit-button {
+  @extend .offer-button;
+}
+
+
+// ---------------------------------
+
+
+.icon-button {
+  @extend .btn;
+  box-shadow: none;
+  @extend %icondecorator;
+}
+
+.icon-link {
+  @extend %icondecorator;
+  text-decoration: none;
+  //&:not(:last-child){
+  //  margin-right: 0.5em;
+  //}
+}

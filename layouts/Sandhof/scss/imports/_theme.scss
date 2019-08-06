@@ -1,0 +1,56 @@
+@import "config";
+
+.pattern {
+
+  &--mint {
+    background-image: url(#{$image-path}/berg.svg);
+  }
+
+  &--pink {
+    background-image: url(#{$image-path}/pattern-pink.jpg);
+  }
+
+
+  &--grey {
+    background-image: url(#{$image-path}/pattern-grey.jpg);
+  }
+
+}
+
+.background {
+
+  &--padded {
+    padding: 3em 0;
+  }
+
+  &--grey {
+    background-color: $grey-light;
+  }
+
+  &--grey-dark {
+    background-color: $grey;
+  }
+
+  &--primary {
+    background-color: $primary;
+  }
+
+  &--mint {
+    background-color: $mint;
+  }
+
+  &--pink {
+    background-color: $pink;
+  }
+
+
+  &--white {
+    background-color: $white;
+  }
+
+  &-split {
+    &--primary {
+      background: linear-gradient(to right, $white 50%, $primary 50%);
+    }
+  }
+}

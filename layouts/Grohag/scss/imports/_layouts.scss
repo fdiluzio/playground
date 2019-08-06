@@ -1,0 +1,280 @@
+@import "config";
+
+
+//  ################################
+//  layouts
+//  ################################
+
+
+.layout-float {
+  display: flex;
+  justify-content: flex-start;
+
+  > * {
+    margin: $gutter-small/2;
+  }
+
+}
+
+.layout-float-wrap {
+  @extend .layout-float;
+  flex-wrap: wrap;
+
+  > * {
+
+    @include bp-large {
+      max-width: calc(50% - #{$gutter-small});
+    }
+
+  }
+}
+
+.layout-float-justify-right {
+  justify-content: flex-end;
+}
+
+.layout-float-justify-center {
+  justify-content: center;
+}
+
+.layout-columns {
+  display: flex;
+
+  > * {
+    flex: 1 1 auto;
+  }
+}
+
+.layout-columns-3 {
+
+  @include bp-medium{
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+
+  @include bp-xlarge {
+    justify-content: flex-start;
+  }
+
+  > * {
+
+    margin: 1em $gutter-small / 2;
+    display: inline-block;
+
+
+    @include bp-medium {
+      width: calc(50% - #{$gutter-small});
+    }
+
+    @include bp-xlarge {
+      width: calc(33.333333% - #{$gutter-small});
+    }
+
+  }
+
+}
+
+.layout-columns-3-1 {
+
+  @include bp-medium{
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+
+  @include bp-xlarge {
+    justify-content: flex-start;
+  }
+
+  > * {
+
+    margin: 1em auto;
+    width: calc(100% - #{$gutter-small});
+    max-width: 550px;
+
+    @include bp-xlarge {
+      margin: 1em $gutter-small / 2;
+      width: calc(33.333333% - #{$gutter-small});
+    }
+
+  }
+
+}
+
+
+.layout-columns-3--flush {
+
+
+  @include bp-medium{
+    display: flex;
+    flex-wrap: wrap;
+
+  }
+
+  @include bp-xlarge {
+    justify-content: flex-start;
+  }
+
+  > * {
+
+    display: inline-block;
+
+
+    @include bp-medium {
+      width: 50%;
+    }
+
+    @include bp-xlarge {
+      width: 33.333333%;
+    }
+
+  }
+}
+
+
+
+@include bp-medium{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+@include bp-xlarge {
+  justify-content: flex-start;
+}
+
+> * {
+
+  display: inline-block;
+
+
+  @include bp-medium {
+    width: 50%;
+  }
+
+  @include bp-xlarge {
+    width: 33.333333%;
+  }
+
+}
+
+.layout-columns-2 {
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    //flex: 1 1 calc(50% - #{2 * $gutter-small});
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc(50% - #{2 * $gutter-small});
+    min-width: calc(300px - #{2 * $gutter-small});
+    margin: 0 $gutter-small/2;
+  }
+
+  .layout-columns-2 {
+    flex-wrap: wrap;
+
+    > * {
+      min-width: auto;
+      margin: 0;
+    }
+  }
+}
+
+.layout-columns-2-multiple {
+  @extend .layout-columns-2;
+
+  display: inline-block;
+
+  > * {
+    display: inline-block;
+
+    @include after-first(2) {
+      margin-top: $gutter-small;
+    }
+
+  }
+
+  @include bp-large {
+    display: flex;
+    > * {
+      max-width: none;
+      max-width: calc(50% - #{$gutter-small});
+    }
+  }
+}
+
+
+//  ################################
+//  PAGE CONTENT
+//  ################################
+
+
+@include bp-medium{
+
+  .layout-page-column {
+    &--headlines {
+      width: 60%;
+    }
+
+    &--body {
+      width: 80%;
+      margin-left: auto;
+    }
+  }
+
+};
+
+
+
+//  ################################
+//  boundries
+//  ################################
+
+.constrainer {
+
+  &--maxwidth {
+    width: 100%;
+    max-width: $maxwidth;
+    margin: 0 auto;
+    //background-color: rgba(255, 255, 9, 0.2);
+    position: relative;
+  }
+
+  &--inner {
+    max-width: #{$xlarge}px;
+    margin: 0 auto;
+  }
+
+  @include bp-xxxlarge {
+    &-maxwidth {
+      max-width: #{$xxxlarge}px;
+    }
+  }
+
+  &-maxwidth--slider {
+    padding: 0 1em;
+  }
+
+}
+
+//  ################################
+//  spacing
+//  ################################
+
+.layout-padding-sides {
+  padding: 0 $gutter-small / 2;
+}
+
+.layout-padding-sides--full {
+  padding: 0 $gutter-small;
+}
+
+.abstand-top {
+  padding-top: $blockseperation;
+}
+
+.abstand-bottom {
+  padding-bottom: $blockseperation;
+}

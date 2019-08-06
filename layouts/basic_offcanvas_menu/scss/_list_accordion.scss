@@ -1,0 +1,42 @@
+@import "config";
+
+ul[data-list-type="accordion"] {
+    list-style: none;
+
+    li {
+        display: block;
+        margin-bottom: 1em;
+        position: relative;
+
+        ul {
+            display: none;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        &.show {
+            > ul {
+                display: block;
+                margin: 1em 0 0 1em;
+            }
+
+            &.has-children {
+                background-image: url(../svg/arrow_down.svg);
+            }
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    .has-children {
+
+        background-image: url(../svg/arrow_right.svg);
+        background-repeat: no-repeat;
+        background-size: 20px auto;
+        background-position: 95% top;
+
+    }
+}

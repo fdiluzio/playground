@@ -1,0 +1,161 @@
+.responsive-table .row-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em 0 0;
+}
+
+.responsive-table .row-item:nth-child(2n-1):not(:first-child) {
+  background-color: #F7F7F7;
+}
+
+.responsive-table .row-item .row-item--head {
+  width: 100%;
+}
+
+@media (min-width: 40em) {
+  .responsive-table .row-item .row-item--head {
+    width: 200px;
+  }
+}
+
+.responsive-table .row-item .row-item--head .image {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  height: 50px;
+}
+
+.responsive-table .row-item .row-item--head .label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@media (min-width: 40em) {
+  .responsive-table .row-item .row-item--head .label {
+    text-align: left;
+  }
+}
+
+.responsive-table .row-item .row-item--head .desc {
+  display: none;
+}
+
+@media (min-width: 56.25em) {
+  .responsive-table .row-item .row-item--head .desc {
+    display: block;
+  }
+}
+
+.responsive-table .row-item .row-item--columns {
+  width: 100%;
+}
+
+@media (min-width: 40em) {
+  .responsive-table .row-item .row-item--columns {
+    width: calc(100% - 200px);
+  }
+}
+
+.responsive-table .row-item .row-item--columns .column-header {
+  margin: 0.5em 0;
+}
+
+.responsive-table .row-item .row-item--columns .column-item {
+  padding: 0 0.5em;
+  margin: 0.5em 0;
+  line-height: 1.5;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.responsive-table .row-item .row-item--columns .column-item h6 {
+  display: none;
+}
+
+.responsive-table .row-item .row-item--columns .column-item--price {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.responsive-table .row-item .row-item--columns .column-item--price br {
+  display: none;
+}
+
+@media (min-width: 40em) {
+  .responsive-table .row-item .row-item--columns .column-item--price br {
+    display: block;
+  }
+}
+
+.responsive-table .row-item .row-item--columns .row-item-column-wrp {
+  position: relative;
+}
+
+.responsive-table .row-item .glide_table_item {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+@media (min-width: 40em) {
+  .responsive-table .row-item .glide_table_item {
+    max-width: none;
+  }
+}
+
+.responsive-table .row-item .glide__slides--head {
+  background-color: #560E30;
+  color: #FFF;
+}
+
+.responsive-table .row-item .glide__slide {
+  text-align: center;
+  padding: 0.2em 0 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.responsive-table .row-item .glide__slide h6 {
+  text-transform: uppercase;
+  border-bottom: 1px solid #FFF;
+  padding-bottom: 0.7em;
+}
+
+.responsive-table .row-item .glide__arrow_wrp--left, .responsive-table .row-item .glide__arrow_wrp--right {
+  background-color: transparent;
+}
+
+.responsive-table .row-item [data-table-control] {
+  border: none;
+}
+
+.responsive-table .row-item [data-table-control]:disabled {
+  opacity: 0.1;
+}
+
+.responsive-table .row-item .table-controls {
+  height: 0;
+}
+
+@media (min-width: 68.8125em) {
+  .responsive-table .row-item .table-controls {
+    display: none;
+  }
+}
+
+.bellows-content .responsive-table .row-item .table-controls {
+  display: block;
+}

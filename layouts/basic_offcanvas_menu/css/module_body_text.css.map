@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "module_body_text.css",
+	"sources": [
+		"../scss/module_body_text.scss"
+	],
+	"mappings": "",
+	"names": []
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <title>Off Canvas Menu</title>
+
+    <link rel="stylesheet" href="css/app.css"/>
+
+</head>
+
+<body>
+
+
+<nav class="navigation-offcanvas navigation-main-offcanvas">
+
+    <div class="hamburger-wrp hamburger-slim" data-menu-action="open">
+        <div class="hamburger-icon"></div>
+    </div>
+
+    <h4 class="navigation-main-title">Erlebniskategorien</h4>
+
+    <ul data-list-type="accordion">
+        <li><a href="#">Level 1</a>
+            <ul>
+                <li><a href="#">1-1</a></li>
+                <li><a href="#">1-2</a></li>
+                <li><a href="#">Level 1-2</a>
+                    <ul>
+                        <li><a href="#">1-2-1</a></li>
+                        <li><a href="#">1-2-2</a></li>
+                        <li><a href="#">1-2-3</a></li>
+                    </ul>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Level 3</a>
+            <ul>
+                <li><a href="#">3-1</a></li>
+                <li><a href="#">3-2</a></li>
+                <li><a href="#">3-3</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="js/jquery.sidr.js"></script>
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>

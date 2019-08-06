@@ -1,0 +1,25 @@
+// ######################
+@import "../imports/config";
+@import "../imports/molecules";
+// ######################
+
+.blockquote {
+  color: $white;
+  padding: 12%;
+
+  .content {
+    @include interpolate(font-size, pixelToEm($medium), pixelToEm($xxxlarge), pixelToEm(24), pixelToEm(48));
+    text-align: center;
+    margin: 0;
+  }
+
+  .author{
+    @include interpolate(font-size, pixelToEm($medium), pixelToEm($xxxlarge), pixelToEm(16), pixelToEm(24));
+    font-style: italic;
+    margin-top: 1rem;
+    font-weight: 300;
+  }
+
+
+
+}

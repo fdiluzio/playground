@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="10" height="12" viewBox="0 0 10 12">
+  <defs>
+    <style>
+
+      .cls-3 {
+        fill: #ffffff;
+      }
+    </style>
+  </defs>
+  <g id="icn_arrowsvg">
+    <path d="M5.111,11.995 C5.111,11.995 3.720,10.362 3.720,10.362 C3.720,10.362 7.436,5.998 7.436,5.998 C7.436,5.998 3.720,1.634 3.720,1.634 C3.720,1.634 5.111,-0.000 5.111,-0.000 C5.111,-0.000 10.218,5.998 10.218,5.998 C10.218,5.998 5.111,11.995 5.111,11.995 Z" id="path-1" class="cls-3" fill-rule="evenodd"/>
+  </g>
+</svg>

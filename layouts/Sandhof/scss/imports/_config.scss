@@ -1,0 +1,82 @@
+@import "family";
+@import "mixins";
+
+
+// colors
+
+$white: #FFF;
+$black: #000000;
+$grey-light: #F7F7F7;
+$mint: #6AB4B5;
+$pink: #CFAFC6;
+$grey: #848483;
+
+
+$anchor-color: inherit;
+$anchor-color-hover: inherit;
+
+$primary: #560E30;
+$secondary: $pink;
+$secondary-light: #DCC3D7;
+
+$action-primary: $mint;
+$action-secondary: #A8CEB5;
+
+$warning: orange;
+
+
+// buttons
+$btn-bgcolor: $white;
+$btn-bgcolor-hover: $grey;
+
+$btn-border: 1px solid $black;
+$btn-border-hover: 1px solid $black;
+
+$btn-color: $white;
+$btn-color-hover: $grey;
+
+// radius
+$border-radius: 10px;
+
+
+// breakpoints
+$small: 480;
+$medium: 640;
+$large: 768;
+$xlarge: 1024;
+$xxlarge: 1280;
+$xxxlarge: 1440;
+
+
+// constrainers
+$maxwidth: 1280px;
+$innerwidth: 1024px;
+
+
+// shadows
+$shadow-default: 0px 0px 5px rgba(0,0,0,0.2);
+$shadow-btn: 1px 1px 5px rgba(0,0,0,0.3);
+$shadow-btn-hover: 0px 4px 25px rgba(0,0,0,0.3);
+$textshadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+
+// Spacing
+$gutter-large: 2rem;
+$gutter-small: 1rem;
+$blockseperation: 3rem;
+
+// image path
+$image-path: "../img";
+//$image-path: "/bundles/app/static/frontend/images/";
+
+
+
+// forms
+$formfield-background-color: $white;
+$submit-button-color: $action-primary;
+$mandatory-error: red !default;
+$validation-error: orange !default;
+
+// header values
+$header-height: 85px;
+

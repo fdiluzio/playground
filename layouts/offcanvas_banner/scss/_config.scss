@@ -1,0 +1,49 @@
+@import "gfb_mixins";
+@import "family";
+
+// Colors
+$primary: #abcdef;
+$secondary: #BADA55;
+$primary-light: lighten($primary, 15%);
+
+$anchor: #2ba6cb;
+$anchor-hover:#2795b6;
+
+$black: #000000;
+$white: #FFF;
+$grey: grey;
+
+
+
+$h_navigation: transparent;
+$h_navigation_hover: darken($h_navigation, 2%);
+$h_navigation_offcanvas: lighten($grey, 45%);
+
+
+$maxWidth: 1024px;
+
+
+// font sizes
+
+$h1: 2.125rem;
+$h2: 1.6875rem;
+$h3:1.375rem;
+$h4: 1.125rem;
+$h5: 1.125rem;
+$h6: 1rem;
+
+// Color Transform
+$brightness: 30%;
+
+// local breakpoints
+$small: 320;
+$medium: 480;
+$large: 600;
+$x-large: 1024;
+$xx-large: 1280;
+
+// grid breakpoints
+$medium-grid: $medium;
+$large-grid: $large;
+$xlarge-grid: $x-large;
+$xxlarge-grid: $xx-large;

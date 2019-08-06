@@ -1,0 +1,13 @@
+{
+	"version": 3,
+	"file": "text-teaser.css",
+	"sources": [
+		"../scss/layouts/text-teaser.scss",
+		"../scss/imports/_config.scss",
+		"../scss/imports/_family.scss",
+		"../scss/imports/_mixins.scss",
+		"../scss/imports/_molecules.scss"
+	],
+	"names": [],
+	"mappings": "AAMA,AAAA,mBAAmB,CAAC;EAElB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,SAAS,EAAE,MAAM;CA0ClB;;AA9CD,AAME,mBANiB,CAMjB,QAAQ,CAAC;EAEP,IAAI,EAAE,GAAG;EACT,OAAO,EAAE,GAAG;CAMb;;AAfH,AAWI,mBAXe,CAMjB,QAAQ,CAKN,QAAQ,CAAC;EACP,SAAS,EAAE,MAAM;EACjB,KAAK,ECbH,IAAI;CDcP;;AAdL,AAiBE,mBAjBiB,CAiBjB,eAAe,CAAC;EACd,IAAI,EAAE,SAAS;EACf,KAAK,EAAE,IAAI;CAYZ;;AA/BH,AAqBI,mBArBe,CAiBjB,eAAe,AAIZ,OAAO,CAAC;EACP,OAAO,EAAE,IAAI;EACb,OAAO,EAAE,GAAG;CACb;;AAxBL,AA0BI,mBA1Be,CAiBjB,eAAe,CASb,SAAS,CAAC;EACR,SAAS,EGvBL,OAAoB;EHwBxB,KAAK,EC5BH,IAAI;ED6BN,WAAW,EAAE,GAAG;CACjB;;AA9BL,AAiCE,mBAjCiB,CAiCjB,QAAQ,CAAC;EACP,MAAM,EAAE,GAAG;CACZ"
+}

@@ -1,0 +1,63 @@
+[data-bellow] {
+  display: none;
+}
+
+.bellows-element-wrp {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1em;
+}
+
+.bellows-tab {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.bellows-tab h5 {
+  text-transform: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bellows-tab .bellows-sign {
+  position: relative;
+  margin-right: 0.3em;
+  display: inline-block;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  background-color: #560E30;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 0.5em auto;
+  transition: all 300ms ease-in-out;
+  background-image: url(../icn/plus.svg);
+  transform: rotate(-90deg);
+  flex: 0 0 2em;
+}
+
+.bellows-tab.bellow-open .bellows-sign {
+  transform: rotate(0deg);
+  background-size: 0.6em auto;
+  background-image: url(../icn/minus.svg);
+}
+
+[data-bellow-content] {
+  display: none;
+  overflow: hidden;
+  height: auto;
+}
+
+[data-bellow-content] .content-spacing {
+  margin: 0 0 0 1em;
+  padding: 0 1em 1em 1em;
+}
+
+[data-bellow-content] .content-spacing ul {
+  margin: 0;
+  padding-left: 1em;
+}
+
+/*# sourceMappingURL=bellows.css.map */

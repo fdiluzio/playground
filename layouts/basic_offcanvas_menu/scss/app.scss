@@ -1,0 +1,67 @@
+@import "config";
+@import "normalize";
+@import "gfb_common";
+@import "gfb_global";
+@import "print"; // styles
+@import "navigation";
+@import "list_accordion";
+@import "slick";
+@import "slick-theme";
+@import "layouts";
+
+html {
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0 1em;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+
+.header {
+  display: flex;
+  max-width: $maxWidth;
+  margin: 0 auto 1em;
+
+  .logos {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    width: 200px;
+
+    img {
+      width: 100px;
+    }
+    @include bp-large {
+      margin-left: 0;
+      margin-right: auto;
+    }
+  }
+}
+
+main {
+  display: block;
+  max-width: $maxWidth;
+  margin: 0 auto;
+}
+
+.page-slider {
+  img {
+    width: 100%;
+  }
+}
+
+
+button{
+  border: none;
+  border-radius: 3%;
+  background-color: $primary;
+  color: $white;
+  padding: 0.5em 0.8em 0.4em 0.8em;
+}

@@ -1,0 +1,44 @@
+//  ################################
+//  SPINNERS
+//  ################################
+
+@keyframes spin--clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes spin--counterclockwise {
+  to {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(359deg);
+  }
+}
+
+//  ################################
+//  SCALERS
+//  ################################
+
+@keyframes scale-enlarge {
+  0%, 29% {
+    transform: scale(1);
+    opacity: 1
+  }
+  40%, 50% {
+    transform: scale(1.2);
+    opacity: 0
+  }
+  51% {
+    transform: scale(1);
+    opacity: 0
+  }
+  55% {
+    transform: scale(1);
+    opacity: 1
+  }
+}

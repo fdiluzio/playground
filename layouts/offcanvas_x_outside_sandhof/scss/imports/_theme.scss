@@ -1,0 +1,15 @@
+@import "config";
+
+.pattern {
+
+  &--mint {
+    background-image: url(#{$image-path}/mint.jpg);
+  }
+
+}
+
+.background {
+  &--grey {
+    background-color: $grey-light;
+  }
+}

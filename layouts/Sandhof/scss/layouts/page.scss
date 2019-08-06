@@ -1,0 +1,17 @@
+// ######################
+@import "../imports/config";
+@import "../imports/molecules";
+// ######################
+
+.page {
+
+  .content {
+    @include interpolate(font-size, pixelToEm($medium), pixelToEm($xxlarge), 0.6em, 1em);
+    @extend %text-component;
+  }
+
+  &-image{
+    height: 300px;
+  }
+
+}

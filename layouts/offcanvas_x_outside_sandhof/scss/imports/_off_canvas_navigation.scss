@@ -1,0 +1,226 @@
+@import "../imports/config";
+
+$hamburger_height: 20px;
+$hamburger_width: 30px;
+$hamburger_stroke: 3px;
+$hamburger_size: 45px;
+$hamburer_offset: 25px;
+
+$nav_padding: 1em;
+$canvasWidth: 320px;
+$canvasItemHeight: 40px;
+
+//  ################################################
+//  Off Canvas Menu
+//  ################################################
+
+
+.navigation-offcanvas {
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  //height: calc(100vh - #{$header-height});
+  height: 100vh;
+  width: $canvasWidth;
+  padding-top: calc(#{$hamburger_size} + 1em);
+  transform: translateX(-$canvasWidth);
+  color: $white;
+  background-color: $primary;
+  z-index: 5;
+
+  &.transition {
+    transition: transform 1s ease;
+  }
+
+
+  .scroll-area {
+    //height: calc(100vh - #{$header-height} - #{$hamburger_size} - #{$hamburer_offset});
+    //height: calc(100vh - #{$header-height});
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: 2px;
+    background: $primary;
+  }
+
+  ul[data-list-type = "accordion"] {
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0;
+      display: block;
+      padding: 1em;
+      position: relative;
+
+    }
+
+    > li {
+      border-bottom: 1px solid white;
+    }
+
+    a {
+      font-weight: 300;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+
+
+  &.isopen {
+
+    transform: translateX(0);
+
+    .hamburger-wrp {
+      //transform: translateX(-$hamburger_size);
+    }
+
+    & ~ .close {
+      transform: translateX($canvasWidth - $hamburger_size);
+    }
+  }
+
+}
+
+.navigation-offcanvas-overlay {
+
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: $secondary;
+  height: 100vh;
+  width: 100vw;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+
+  &.show{
+    display: block;
+    animation-name: show-overlay;
+    //animation-delay: 100ms;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes show-overlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+
+.navigation-footer {
+  background-color: $white;
+  color: $black;
+
+  .address {
+    padding: 3em 2em 0 2em;
+  }
+
+  hr {
+    border: 1px solid $black;
+    margin: 1.3em 0 1em 0;
+  }
+
+  .link-btns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .icon-button {
+    display: block;
+    width: 50%;
+  }
+
+  .link-list {
+    padding: 1em;
+    background-color: $grey-light;
+
+    a {
+      margin-right: 1em;
+    }
+  }
+}
+
+//  ################################################
+// hamburger menu icon
+//  ################################################
+
+.hamburger-wrp {
+  background-color: $white;
+  position: absolute;
+  top: 10px;
+  right: -$hamburger_size;
+  height: $hamburger_size;
+  width: $hamburger_size;
+  transition: transform 1s ease;
+  z-index: 1;
+
+  @include bp-medium {
+    top: $hamburer_offset;
+  }
+
+}
+
+.hamburger-slim {
+
+  .hamburger-icon {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    height: $hamburger_height;
+    width: $hamburger_width;
+
+    &:after,
+    &:before {
+      background: $primary;
+      backface-visibility: hidden;
+      content: "";
+      height: $hamburger_stroke;
+      left: 0;
+      transition: 0.75s;
+      width: $hamburger_width;
+    }
+
+    &:before {
+      box-shadow: $primary 0 ($hamburger_height/2) 0 0;
+      position: absolute;
+      top: 0;
+    }
+
+    &:after {
+      position: absolute;
+      top: 100%;
+    }
+
+    //@include bp-large {
+    //  display: none;
+    //}
+  }
+
+  &.close {
+    .hamburger-icon {
+      &:before {
+        box-shadow: transparent 0 0 0 0;
+        top: 50%;
+        transform: rotate(225deg);
+      }
+
+      &:after {
+        top: 50%;
+        transform: rotate(315deg);
+      }
+    }
+  }
+}
+
+
+

@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "newsletter.css",
+	"sources": [
+		"../scss/modules/newsletter.scss",
+		"../scss/imports/_config.scss",
+		"../scss/imports/_family.scss",
+		"../scss/imports/_mixins.scss"
+	],
+	"names": [],
+	"mappings": "AAKG,AAAD,mBAAS,CAAC;EACR,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,GAAG;CAuBb;;AGUD,MAAM,EAAE,SAAS,EAAE,SAAS;EHnC3B,AAAD,mBAAS,CAAC;IAKN,gBAAgB,ECOZ,OAAO;IDNX,KAAK,EAAE,IAAI;GAmBd;;;AAzBA,AASC,mBATO,CASP,YAAY,CAAC;EACX,SAAS,EAAE,KAAK;CACjB;;AAXF,AAaC,mBAbO,CAaP,aAAa,CAAC;EACZ,cAAc,EAAE,SAAS;CAC1B;;AAfF,AAiBC,mBAjBO,CAiBP,EAAE,CAAC;EACD,SAAS,EGbL,OAAoB;EHcxB,WAAW,EAAE,GAAG;CACjB;;AApBF,AAsBC,mBAtBO,CAsBP,QAAQ,CAAC;EACP,MAAM,EAAE,OAAO;CAChB"
+}

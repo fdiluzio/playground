@@ -1,0 +1,196 @@
+/* Typography resets */
+blockquote,
+dd,
+div,
+dl,
+dt,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ol,
+p,
+pre,
+td,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+}
+/* Default Link Styles */
+a {
+    color: $anchor;
+    text-decoration: none;
+    line-height: inherit;
+}
+a:focus,
+a:hover {
+    color: $anchor-hover;
+}
+a,
+a img,
+a:hover {
+    border: none;
+    outline: none;
+}
+/* Default paragraph styles */
+p {
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    text-rendering: optimizeLegibility;
+}
+p aside {
+    font-size: 0.875rem;
+    line-height: 1;
+    font-style: italic;
+}
+/* Default header styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+h1 {
+    font-size: $h1;
+}
+h2 {
+    font-size: $h2;
+}
+h3 {
+    font-size: $h3;
+}
+h4 {
+    font-size: $h4;
+}
+h5 {
+    font-size: $h5;
+}
+h6 {
+    font-size: $h6;
+}
+hr {
+    border: solid #dddddd;
+    border-width: 1px 0 0;
+    clear: both;
+    margin: 1.25rem 0 1.1875rem;
+    height: 0;
+}
+/* Helpful Typography Defaults */
+em,
+i {
+    font-style: italic;
+    line-height: inherit;
+}
+b,
+strong {
+    font-weight: bold;
+    line-height: inherit;
+}
+small {
+    font-size: 80%;
+    line-height: inherit;
+}
+/* Lists */
+dl,
+ol,
+ul {
+    margin-bottom: 1.25rem;
+    list-style-position: outside;
+    font-family: inherit;
+}
+ul {
+    margin-left: 1.1rem;
+}
+/* Unordered Lists */
+ul li ol,
+ul li ul {
+    margin-left: 1.25rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    /* Override nested font-size change */
+}
+/* Ordered Lists */
+ol {
+    margin-left: 1.4rem;
+}
+ol li ol,
+ol li ul {
+    margin-left: 1.25rem;
+    margin-bottom: 0;
+}
+/* Definition Lists */
+dl dt {
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+dl dd {
+    margin-bottom: 0.75rem;
+}
+/* Abbreviations */
+abbr,
+acronym {
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 1px dotted #dddddd;
+    cursor: help;
+}
+abbr {
+    text-transform: none;
+}
+/* Blockquotes */
+blockquote {
+    margin: 0 0 1.25rem;
+    padding: 0.5625rem 1.25rem 0 1.1875rem;
+    border-left: 1px solid #dddddd;
+}
+blockquote cite {
+    display: block;
+    font-size: 0.8125rem;
+    color: #555555;
+}
+blockquote cite:before {
+    content: "\2014 \0020";
+}
+blockquote cite a,
+blockquote cite a:visited {
+    color: #555555;
+}
+blockquote,
+blockquote p {
+    line-height: 1.6;
+    color: #6f6f6f;
+}
+embed,
+object {
+    height: 100%;
+}
+img {
+    -ms-interpolation-mode: bicubic;
+    image-rendering: optimizeQuality;
+    image-rendering: -moz-crisp-edges;
+    /* Firefox             */
+    image-rendering: -o-crisp-edges;
+    /* Opera               */
+    image-rendering: -webkit-optimize-contrast;
+    /* Chrome (and Safari) */
+    image-rendering: optimize-contrast;
+    /*CSS3 Proposed       */
+    display: inline-block;
+    vertical-align: middle;
+}

@@ -1,0 +1,79 @@
+.blockquote {
+  color: #FFF;
+  padding: 5em 12%;
+}
+
+.blockquote .content {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 750px;
+}
+
+.blockquote .content {
+  font-size: 1.375em;
+}
+
+@media screen and (min-width: 40em) {
+  .blockquote .content {
+    font-size: calc(2.8125vw + 0.25em);
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .blockquote .content {
+    font-size: 2.5em;
+  }
+}
+
+.blockquote .author {
+  font-style: italic;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+.blockquote .author {
+  font-size: 0.75em;
+}
+
+@media screen and (min-width: 40em) {
+  .blockquote .author {
+    font-size: calc(1.25vw + 0.25em);
+  }
+}
+
+@media screen and (min-width: 80em) {
+  .blockquote .author {
+    font-size: 1.25em;
+  }
+}
+
+.blockquote .quotemark {
+  height: auto;
+  vertical-align: top;
+}
+
+.blockquote .quotemark {
+  width: 0.9375rem;
+}
+
+@media screen and (min-width: 40rem) {
+  .blockquote .quotemark {
+    width: calc(2.34375vw + 0rem);
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .blockquote .quotemark {
+    width: 1.875rem;
+  }
+}
+
+.blockquote .quotemark:first-of-type {
+  margin-right: 0.2em;
+}
+
+.blockquote .quotemark:last-of-type {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-left: 0.2em;
+}

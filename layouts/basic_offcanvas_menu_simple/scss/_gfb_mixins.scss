@@ -1,0 +1,58 @@
+@mixin ghost-text($color: #FFF) {
+    color: $color;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
+
+// #########################################
+// Mixin to manage responsive breakpoints
+// #########################################
+@mixin min-width($breakpoint) {
+    @media ( min-width: pixelToEm($breakpoint) ) {
+         @content;
+    }
+}
+@mixin max-width($breakpoint) {
+    @media ( max-width: pixelToEm($breakpoint) ) {
+         @content;
+    }
+}
+@mixin bp-xxlarge {
+     @media only screen and (min-width: pixelToEm($xx-large)){
+        @content;
+    }
+}
+@mixin bp-xlarge {
+     @media only screen and (min-width: pixelToEm($x-large)){
+        @content;
+    }
+}
+@mixin bp-large {
+     @media only screen and (min-width: pixelToEm($large)){
+        @content;
+    }
+}
+@mixin bp-medium {
+     @media only screen and (min-width: pixelToEm($medium)){
+        @content;
+    }
+}
+@mixin bp-small {
+     @media only screen and (min-width: pixelToEm($small)){
+        @content;
+    }
+}
+
+// #########################################
+// Functions
+// #########################################
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+@function pixelToEm($pixels) {
+     @return ($pixels * 0.0625em);
+}

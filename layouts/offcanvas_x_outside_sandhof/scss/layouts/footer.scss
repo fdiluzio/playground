@@ -1,0 +1,56 @@
+// ######################
+@import "../imports/config";
+// ######################
+
+.footer {
+
+  margin-bottom: 2em;
+
+
+  .contact {
+    margin-bottom: 1em;
+    display: flex;
+  }
+
+  .address {
+
+  }
+
+  .social-links {
+    margin: auto 0 0 auto;
+    display: flex;
+
+  }
+;
+
+  .link-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: $grey-light;
+    padding: 2em 1em;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+
+    .icon-link {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5em;
+      figcaption{
+        width: 120px;
+      }
+      @include bp-large {
+        width: auto;
+      }
+    }
+
+
+  }
+
+  .link-list {
+    display: flex;
+  }
+;
+
+}

@@ -1,0 +1,187 @@
+// ######################
+@import "../imports/config";
+// ######################
+
+$headWidth: 50%;
+$table-breakpoint--medium: 640;
+$table-breakpoint--large: 900;
+$primary: #363636;
+
+.responsive-table {
+
+
+  .row-item {
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+
+    &:not(:first-child){
+      padding: 1em 0 4em 0;
+      margin: 1em 0;
+
+      @include min-width(640){
+        padding: 0 0 2em 1em;
+      }
+    }
+
+    &:nth-child(2n-1):not(:first-child) {
+      background-color: $grey-light;
+    }
+
+    .row-item--head {
+      width: 100%;
+
+      @include min-width($table-breakpoint--medium) {
+        width: $headWidth;
+      }
+
+
+      .image {
+        align-self: flex-start;
+        height: 50px;
+      }
+
+      .label {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        @include min-width($table-breakpoint--medium) {
+          text-align: left;
+        }
+
+        h5 {
+          margin: 0;
+          font-size: 1.1em;
+        }
+
+        small {
+          position: absolute;
+          bottom: 2em;
+          left: 0;
+          width: 100%;
+
+          @include min-width(640){
+            bottom: 1em;
+            left: 1em;
+          }
+        }
+      }
+
+      .desc {
+        display: none;
+
+        @include min-width($table-breakpoint--large) {
+          display: block;
+        }
+      }
+
+    }
+
+    .row-item--columns {
+
+      width: 100%;
+
+      @include min-width($table-breakpoint--medium) {
+        width: calc(100% - #{$headWidth});
+      }
+
+      //@include min-width($table-breakpoint--large) {
+      //  width: calc(100% - #{$headWidth});
+      //}
+
+      .column-header {
+        margin: 0.5em 0;
+      }
+
+      .column-item {
+        margin: 0.5em 0;
+        line-height: 1.5;
+        font-weight: 300;
+
+        h6 {
+          display: none;
+        }
+
+        &--price {
+          font-size: 1.3rem;
+          font-weight: 700;
+
+          br {
+            display: none;
+            @include min-width($table-breakpoint--medium) {
+
+              display: block;
+
+
+            }
+
+          }
+        }
+      }
+
+      .row-item-column-wrp {
+        position: relative;
+      }
+
+
+    }
+
+    .glide_table_item {
+      position: relative;
+      max-width: 320px;
+      margin: 0 auto;
+      @include min-width($table-breakpoint--medium) {
+        max-width: none;
+      }
+    }
+
+    .glide__slides--head {
+      background-color: $primary;
+      color: $white;
+      padding: 0.5em 0;
+
+    }
+
+    .glide__slide {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h6 {
+        text-transform: uppercase;
+        font-size: 1em;
+        margin: 0;
+      }
+    }
+
+    .glide__arrow_wrp--left, .glide__arrow_wrp--right {
+      background-color: transparent;
+    }
+
+    [data-table-control] {
+
+      border: none;
+
+      &:disabled {
+        opacity: 0.1;
+      }
+    }
+
+    .table-controls {
+
+      height: 0;
+
+      @include min-width(640) {
+        display: none;
+      }
+
+    }
+
+  }
+
+
+}
+

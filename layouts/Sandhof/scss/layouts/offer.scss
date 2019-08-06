@@ -1,0 +1,80 @@
+// ######################
+@import "../imports/config";
+@import "../imports/molecules";
+// ######################
+
+.layout-offer {
+
+  box-shadow: $shadow-default;
+  background-color: $white;
+  //max-width: 450px;
+  display: flex;
+  flex-direction: column;
+
+
+  .header {
+    display: flex;
+    padding: 1em;
+  }
+
+  .headline {
+    font-size: pixelToEm(30);
+    color: $white;
+    font-weight: 400;
+  }
+
+  .subline {
+    margin-bottom: 1em;
+  }
+
+  .content {
+    padding: 1em;
+  }
+
+  footer {
+    padding: 0 1em 1em;
+  }
+
+  .price {
+    margin: 0 0 1em;
+
+    strong {
+      font-weight: 700;
+      font-size: 1.3em;
+    }
+  }
+
+  .wysiwyg {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.6;
+
+  }
+
+  .imagecontainer {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 0.5em;
+
+    figcaption {
+      z-index: 2;
+    }
+
+    &:before {
+      content: "";
+      @include darkenBackground();
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+
+  }
+
+
+}

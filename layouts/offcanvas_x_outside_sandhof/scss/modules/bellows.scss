@@ -1,0 +1,85 @@
+@import "../imports/config";
+
+$bellowsign_size: 2em;
+
+//.bellows {
+//  box-shadow: $shadow-default;
+//}
+
+[data-bellow] {
+  display: none;
+}
+
+.bellows-element-wrp {
+  box-shadow: $shadow-default;
+  margin-bottom: 1em;
+}
+
+.bellows-tab {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em;
+  cursor: pointer;
+
+  //&:nth-of-type(n+2) {
+  //  border-top: 1px solid $grey;
+  //}
+
+  h5 {
+    text-transform: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bellows-sign {
+    position: relative;
+    margin-right: 0.3em;
+    display: inline-block;
+    border-radius: 50%;
+    width: $bellowsign_size;
+    height: $bellowsign_size;
+    background-color: $primary;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0.5em auto;
+    transition: all 300ms ease-in-out;
+    background-image: url(../icons/plus.svg);
+    transform: rotate(-90deg);
+    flex:0 0 $bellowsign_size;
+  }
+
+  &.bellow-open {
+    .bellows-sign {
+      transform: rotate(0deg);
+      background-size: 0.6em auto;
+      background-image: url(../icons/minus.svg);
+    }
+  }
+
+
+}
+
+
+[data-bellow-content] {
+  display: none;
+  overflow: hidden;
+  height: auto;
+
+  .content-spacing {
+    margin: 0 0 0 1em;
+    padding: 0 1em 1em 1em;
+
+    ul {
+      margin: 0;
+      padding-left: 1em;
+    }
+  }
+
+
+}
+
+
+
+
+

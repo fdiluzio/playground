@@ -1,0 +1,174 @@
+// ######################
+@import "../imports/config";
+// ######################
+
+$headWidth: 200px;
+$table-breakpoint--medium: 640;
+$table-breakpoint--large: 900;
+
+.responsive-table {
+
+
+  .row-item {
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 1em 0 0;
+
+    &:nth-child(2n-1):not(:first-child) {
+      background-color: $grey-light;
+    }
+
+    .row-item--head {
+      width: 100%;
+      //color: $white;
+      //background-color: $primary;
+
+      @include min-width($table-breakpoint--medium) {
+        width: $headWidth;
+      }
+
+      //@include min-width($table-breakpoint--large) {
+      //  width: $headWidth;
+      //}
+
+      .image {
+        align-self: flex-start;
+        height: 50px;
+      }
+
+      .label {
+        font-size: 0.8em;
+        text-transform: uppercase;
+        text-align: center;
+        @include min-width($table-breakpoint--medium) {
+          text-align: left;
+        }
+      }
+
+      .desc {
+        display: none;
+
+        @include min-width($table-breakpoint--large) {
+          display: block;
+        }
+      }
+
+    }
+
+    .row-item--columns {
+
+      width: 100%;
+
+      @include min-width($table-breakpoint--medium) {
+        width: calc(100% - #{$headWidth});
+      }
+
+      //@include min-width($table-breakpoint--large) {
+      //  width: calc(100% - #{$headWidth});
+      //}
+
+      .column-header {
+        margin: 0.5em 0;
+      }
+
+      .column-item {
+        padding: 0 0.5em;
+        margin: 0.5em 0;
+        line-height: 1.5;
+        font-size: 0.8rem;
+        font-weight: 300;
+
+        h6 {
+          display: none;
+        }
+
+        &--price {
+          font-size: 1rem;
+          font-weight: 700;
+
+          br {
+            display: none;
+            @include min-width($table-breakpoint--medium) {
+
+              display: block;
+
+
+            }
+
+          }
+        }
+      }
+
+      .row-item-column-wrp {
+        position: relative;
+      }
+
+
+    }
+
+    .glide_table_item {
+      position: relative;
+      max-width: 320px;
+      margin: 0 auto;
+      @include min-width($table-breakpoint--medium) {
+        max-width: none;
+      }
+    }
+
+    .glide__slides--head {
+      background-color: $primary;
+      color: $white;
+
+    }
+
+    .glide__slide {
+      text-align: center;
+      padding: 0.2em 0 0.5em;
+      //background-color: $primary;
+      //color: $white;
+      //min-height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h6 {
+        text-transform: uppercase;
+        border-bottom: 1px solid $white;
+        padding-bottom: 0.7em;
+      }
+    }
+
+    .glide__arrow_wrp--left, .glide__arrow_wrp--right {
+      background-color: transparent;
+    }
+
+    [data-table-control] {
+
+      border: none;
+
+      &:disabled {
+        opacity: 0.1;
+      }
+    }
+
+    .table-controls {
+
+      height: 0;
+
+      @include min-width(1100 + 1) {
+        display: none;
+      }
+
+      @at-root .bellows-content #{&} {
+        display: block;
+      }
+
+    }
+
+  }
+
+
+}
+

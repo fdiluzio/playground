@@ -1,0 +1,215 @@
+@import "../imports/config";
+
+//  ################################
+//  Inline Type
+//  ################################
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.no-underline {
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+//  ################################
+//  List
+//  ################################
+ul.no-bullet {
+  margin-left: 0;
+}
+
+ul.no-bullet li ul, ul.no-bullet li ol {
+  margin-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+ul.square li ul, ul.circle li ul, ul.disc li ul {
+  list-style: inherit;
+}
+
+ul.square {
+  list-style-type: square;
+  margin-left: 1.1rem;
+}
+
+ul.circle {
+  list-style-type: circle;
+  margin-left: 1.1rem;
+}
+
+ul.disc {
+  list-style-type: disc;
+  margin-left: 1.1rem;
+}
+
+ul.no-bullet {
+  list-style: none;
+}
+
+.arrow-bullet {
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    background-image: url(/bundles/app/static/frontend/images/svg/icons/ic_keyboard_arrow_right_24px.svg);
+    background-size: 0.5em;
+    background-position: 0 0.3em;
+    background-repeat: no-repeat;
+    padding-left: 0.8em;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+  }
+}
+
+// ##################################
+// background images
+// ##################################
+
+.no-repeat {
+  background-repeat: no-repeat;
+}
+
+.background-cover {
+  background-size: cover;
+}
+
+.position-center-center {
+  background-position: center;
+}
+
+.position-top-center {
+  background-position: top center;
+
+}
+
+.position-bottom-center {
+  background-position: bottom center;
+
+}
+
+.position-top-left {
+  background-position: top left;
+}
+
+.position-top-right {
+  background-position: top right;
+}
+
+.position-bottom-left {
+  background-position: bottom left;
+}
+
+.position-bottom-right {
+  background-position: bottom right;
+}
+
+//  ################################
+//  Positioning Methods
+//  ################################
+
+.centered-h {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.centered-hv_abs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.centered-h_abs {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.centered-v_abs {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.centered-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-vflex {
+  display: flex;
+  align-items: center;
+}
+
+.flex-anchor--bottom {
+  margin-top: auto;
+}
+
+//  ################################
+//  hiding Methods
+//  ################################
+
+.hide {
+  display: none !important;
+}
+
+.hide-checkbox {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  visibility: hidden;
+}
+
+// dividers
+.divider--pipe{
+  > *:not(:last-child){
+    display: flex;
+    &:after{
+      content: "|";
+      display: inline;
+      margin: 0 0.5em;
+    }
+  }
+}
+
+.divider--spacer{
+  > *:not(:last-child){
+    display: flex;
+    &:after{
+      content: "";
+      display: inline;
+      margin: 0 0.5em;
+    }
+  }
+}
+
+
+
+
+

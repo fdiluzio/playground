@@ -1,0 +1,758 @@
+@import "../imports/config";
+
+$formSize: 3em;
+
+// remove browser specific features
+
+select {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  // use prefixes here to because Autoprefix destroys references in css.map.
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+form {
+  *:focus:not(select) {
+    box-shadow: 0 0 5px $grey;
+    outline: none;
+  }
+}
+
+.form-mandatory {
+  label:after {
+    content: ' *';
+    display: inline;
+  }
+}
+
+
+.form-row--single {
+  @include bp-small {
+    display: flex;
+    .form-item {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.form-row--multiple {
+  @include bp-medium {
+
+    display: flex;
+    .form-item {
+      flex-basis: 49%;
+
+      &:nth-of-type(1) {
+        margin-right: 1%;
+      }
+
+      &:nth-of-type(2) {
+        margin-left: 1%;
+      }
+
+      &:nth-of-type(3) {
+        margin-left: 2%;
+      }
+    }
+
+  }
+}
+
+.form-row--childages {
+
+  @include bp-small {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .form-item {
+      margin: 0 0.3em;
+
+      .input-input {
+        width: 2em;
+        padding: 0;
+      }
+    }
+  }
+
+  .form-item {
+    margin: 1.5em 0;
+    max-width: 100px;
+
+    &:not(:last-child) {
+      margin-right: 0.5em;
+    }
+
+    &.hide {
+      display: none;
+    }
+  }
+
+}
+
+.form-item {
+
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+
+  label {
+    font-size: 0.8em;
+    display: block;
+    color: $black;
+  }
+
+  .input-input, .input-textarea, .input-select {
+    border: 1px solid #ebedef;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+    height: $formSize;
+    background-color: $formfield-background-color;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    input, select, textarea {
+      position: relative;
+      border: none;
+      margin: 1px;
+      width: 100%;
+      background-color: transparent;
+      padding: 0 0 0 0.5em;
+
+      &:focus {
+        outline: none;
+        border: none;
+        box-shadow: none;
+      }
+
+    }
+  }
+
+  select {
+
+  }
+
+  .input-textarea {
+    height: $formSize + 1;
+  }
+
+}
+
+.form--module {
+
+  label {
+    color: $white;
+  }
+
+  .submit-button--module {
+    margin: auto 0;
+
+    :first-child {
+      background-color: $white;
+      color: $black;
+    }
+  }
+
+  @include bp-large {
+
+    display: flex;
+    .form-item {
+      flex: 1 1 0;
+
+      &:nth-of-type(1) {
+        margin-right: 1%;
+      }
+
+      &:nth-of-type(2) {
+        margin-left: 1%;
+      }
+
+      &:nth-of-type(3) {
+        margin-left: 2%;
+      }
+    }
+
+  }
+
+  &--columns-2 {
+
+    @include min-width(1080) {
+
+      display: flex;
+      flex-wrap: wrap;
+
+      > * {
+        flex: 1 1 calc(50% - #{2 * $gutter-small});
+
+        @include even() {
+          padding: 0 0 0 ($gutter-small/2);
+        }
+
+        @include odd() {
+          padding: 0 ($gutter-small/2) 0 0;
+        }
+      }
+
+    }
+
+  }
+
+}
+
+[data-theme="homes"] {
+  .form--module {
+    .error-mandatory, .error-email-validation {
+      [data-errormessage] {
+        color: $white;
+      }
+
+      .input-input {
+        background-color: #6e092e;
+
+        input {
+          color: $white;
+        }
+      }
+    }
+  }
+
+
+}
+
+/* Errors */
+.error-mandatory .input-input, .error-mandatory .input-select {
+  border: 2px solid $mandatory-error;
+}
+
+.error-mandatory [data-errormessage], .error-email-validation [data-errormessage] {
+  display: block;
+  color: $mandatory-error;
+  font-size: 0.8em;
+  margin-bottom: -5px
+}
+
+.error-email-validation .input-input {
+  border: 2px solid $validation-error;
+}
+
+[data-errormessage] {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.data-privacy-statement {
+  font-size: 0.7em;
+  margin-top: 1rem;
+}
+
+// custom checkbox
+
+.input-checkbox {
+  position: absolute; // take it out of document flow
+  opacity: 0; // hide it
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-start;
+    color: $black;
+    margin-top: 0.5em;
+  }
+
+  & + label:before {
+    content: '';
+    margin-right: 0.5em;
+    width: 1.8em;
+    height: 1.8em;
+    border: 1px solid $grey;
+    background: $white;
+    flex-basis: 1.8em;
+    flex-shrink: 0;
+    margin-top: -0.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+  }
+
+  // Box checked
+  &:checked + label:before {
+    content: 'X';
+    background: $black;
+    color: $white;
+    padding-top: 0.1em;
+  }
+
+  // Box hover
+  &:hover + label:before {
+    border: 1px solid $black;
+  }
+
+  // Box focus
+  &:focus + label:before {
+    box-shadow: 0 0 5px $grey;
+  }
+
+  // Disabled state label.
+  &:disabled + label {
+    opacity: 0.5;
+    cursor: auto;
+  }
+
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// SENDING
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+form {
+  .submit-button {
+    margin: 2em 0;
+
+    &.submit-button-quickform {
+      margin: 2em 0 0;
+      font-size: 0.9em;
+      line-height: 2.8em;
+      @include bp-small {
+        margin: 0 0 5px 0;
+      }
+
+      button {
+
+
+        @include bp-medium {
+          width: 100%;
+        }
+
+        @include min-width(1500) {
+          width: 70%;
+        }
+
+      }
+    }
+  }
+
+  &.quickform {
+    padding: 1em 1em 2em;
+    border-radius: $border-radius;
+    @include bp-xxlarge {
+      padding: 1.5em 2em 2.5em;
+    }
+
+    background: $grey-light;
+  }
+
+
+}
+
+.waiting-for-response {
+  display: none;
+}
+
+.sending [type="submit"] {
+  display: none;
+}
+
+.sending .waiting-for-response {
+  display: block;
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// SUBMIT ANIMATION
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.submit-sending {
+  position: relative;
+  height: 60px;
+}
+
+.submit-sending--wrp {
+  height: 50px;
+  width: 40px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.submit-sending-box {
+  position: relative;
+  height: 50px;
+  width: 40px;
+  animation: box 5s infinite linear;
+
+  .border {
+    background: $grey;
+    position: absolute;
+  }
+
+  .border.one {
+    height: 4px;
+    top: 0;
+    left: 0;
+    animation: border-one 5s infinite linear;
+  }
+
+  .border.two {
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 4px;
+    animation: border-two 5s infinite linear;
+  }
+
+  .border.three {
+    bottom: 0;
+    right: 0;
+    height: 4px;
+    width: 100%;
+    animation: border-three 5s infinite linear;
+  }
+
+  .border.four {
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 4px;
+    animation: border-four 5s infinite linear;
+  }
+
+  .line {
+    height: 4px;
+    background: $grey;
+    position: absolute;
+    width: 0%;
+    left: 25%;
+  }
+
+  .line.one {
+    top: 25%;
+    width: 0%;
+    animation: line-one 5s infinite linear;
+  }
+
+  .line.two {
+    top: 45%;
+    animation: line-two 5s infinite linear;
+  }
+
+  .line.three {
+    top: 65%;
+    animation: line-three 5s infinite linear;
+  }
+}
+
+@keyframes border-one {
+  0% {
+    width: 0;
+  }
+  10% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes border-two {
+  0% {
+    height: 0;
+  }
+  10% {
+    height: 0%;
+  }
+  20% {
+    height: 100%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes border-three {
+  0% {
+    width: 0;
+  }
+  20% {
+    width: 0%;
+  }
+  30% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes border-four {
+  0% {
+    height: 0;
+  }
+  30% {
+    height: 0%;
+  }
+  40% {
+    height: 100%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes line-one {
+  0% {
+    left: 25%;
+    width: 0;
+  }
+  40% {
+    left: 25%;
+    width: 0%;
+  }
+  43% {
+    left: 25%;
+    width: 50%;
+  }
+  52% {
+    left: 25%;
+    width: 50%;
+  }
+  54% {
+    left: 25%;
+    width: 0%
+  }
+  55% {
+    right: 25%;
+    left: auto;
+  }
+  63% {
+    width: 10%;
+    right: 25%;
+    left: auto;
+  }
+  100% {
+    width: 10%;
+    right: 25%;
+    left: auto;
+  }
+}
+
+@keyframes line-two {
+  0% {
+    width: 0;
+  }
+  42% {
+    width: 0%;
+  }
+  45% {
+    width: 50%;
+  }
+  53% {
+    width: 50%;
+  }
+  54% {
+    width: 0%
+  }
+  60% {
+    width: 50%
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+@keyframes line-three {
+  0% {
+    width: 0;
+  }
+  45% {
+    width: 0%;
+  }
+  48% {
+    width: 50%;
+  }
+  51% {
+    width: 50%;
+  }
+  52% {
+    width: 0%
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+@keyframes box {
+  0% {
+    opacity: 1;
+    margin-left: 0px;
+    height: 50px;
+    width: 40px;
+  }
+  55% {
+    margin-left: 0px;
+    height: 50px;
+    width: 40px;
+  }
+  60% {
+    margin-left: 0px;
+    height: 35px;
+    width: 50px;
+  }
+  74% {
+    msthin-left: 0;
+  }
+  80% {
+    margin-left: -50px;
+    opacity: 1;
+  }
+  90% {
+    height: 35px;
+    width: 50px;
+    margin-left: 50px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// NUMBER INPUT TYPE +[]-
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+$formScale: .7;
+
+.field-input-number {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid $grey;
+}
+
+.field-input-number .input-input {
+  width: 25%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: $formSize * $formScale;
+  border: none;
+  flex-grow: 1;
+  border: none !important;
+  text-align: center;
+}
+
+.field-btn-plus, .field-btn-minus {
+  background-color: $grey;
+  width: $formSize * $formScale;
+  height: $formSize * $formScale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+  cursor: pointer;
+}
+
+.field-btn-plus.disabled, .field-btn-minus.disabled, .field-btn-plus.disabled:hover, .field-btn-minus.disabled:hover {
+  background-color: $grey;
+}
+
+.field-btn-plus:hover, .field-btn-minus:hover {
+  background-color: #343434;
+}
+
+.field-btn-minus {
+  background-image: url(/bundles/app/static/frontend/images/form/minus.svg);
+}
+
+.field-btn-plus {
+  background-image: url(/bundles/app/static/frontend/images/form/plus.svg);
+}
+
+.fieldsareaname {
+  &:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ICON DECORATION
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%formicon {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: $formSize;
+  height: calc(#{$formSize} - 2px);
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+
+  img {
+    height: 32px;
+  }
+
+}
+
+.form-icon {
+
+
+  &--dropdown {
+    @extend %formicon;
+
+    img {
+      transform-origin: 50% 77%;
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+  }
+
+  &--continue {
+    @extend %formicon;
+
+    img {
+      transform-origin: 50% 77%;
+    }
+
+  }
+
+  &--datepicker {
+    @extend %formicon;
+
+    img {
+      width: 100%;
+    }
+  }
+
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// DSVGO
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.dsvgo {
+  opacity: 0.5;
+}

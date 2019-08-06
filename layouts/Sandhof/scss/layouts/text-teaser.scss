@@ -1,0 +1,53 @@
+// ######################
+@import "../imports/config";
+@import "../imports/molecules";
+// ######################
+
+
+.layout-text-teaser {
+
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+
+  .content {
+    //@extend %text-component;
+    flex: 1 1;
+    padding: 2em;
+
+    .wysiwyg {
+      font-size: 0.9rem;
+      color: $white;
+    }
+  }
+
+  .imagecontainer {
+    flex: 0 0 150px;
+    width: 100%;
+
+    &.header {
+      display: flex;
+      padding: 2em;
+    }
+
+    .headline {
+      font-size: pixelToEm(42);
+      color: $white;
+      font-weight: 400;
+    }
+  }
+
+  .btn-wrp {
+    margin: 2em;
+  }
+
+
+  //@include bp-xxlarge {
+  //
+  //  display: flex;
+  //  .imagecontainer {
+  //    margin-bottom: 0;
+  //  }
+  //}
+
+}

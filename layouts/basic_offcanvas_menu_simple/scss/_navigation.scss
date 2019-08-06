@@ -1,0 +1,116 @@
+@import "config";
+
+$hamburger_height: 20px;
+$hamburger_width: 30px;
+$hamburger_stroke: 3px;
+$hamburger_size: 45px;
+$nav_padding: 1em;
+$canvasWidth: 250px;
+$canvasItemHeight: 40px;
+
+//  ################################################
+//  Off Canvas Menu
+//  ################################################
+
+
+.navigation-offcanvas {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: $canvasWidth;
+  background: $white;
+  height: 100%;
+  padding-top: $hamburger_size;
+  background-color: #9DABBA;
+
+  transition: transform 1s ease;
+  transform: translateX(-$canvasWidth);
+
+
+  &.isopen {
+
+    transform: translateX(0);
+
+    .hamburger-wrp {
+      right: 0;
+    }
+  }
+
+  //@include bp-large {
+  //  position: static;
+  //  padding-top: 0;
+  //  width: 100%;
+  //
+  //  .navigation-quicklinks li {
+  //    background-color: $h_navigation;
+  //  }
+  //}
+}
+
+//  ################################################
+// hamburger menu icon
+//  ################################################
+
+.hamburger-wrp {
+  background-color: $white;
+  position: absolute;
+  top: 0;
+  right: -$hamburger_size;
+  height: $hamburger_size;
+  width: $hamburger_size;
+  transition: right 0.5s ease;
+}
+
+.hamburger-slim {
+
+  .hamburger-icon {
+    position: absolute;
+    top: 10px;
+    left: 8px;
+    height: $hamburger_height;
+    width: $hamburger_width;
+
+    &:after,
+    &:before {
+      background: $primary;
+      backface-visibility: hidden;
+      content: "";
+      height: $hamburger_stroke;
+      left: 0;
+      transition: 0.75s;
+      width: $hamburger_width;
+    }
+
+    &:before {
+      box-shadow: $primary 0 ($hamburger_height/2) 0 0;
+      position: absolute;
+      top: 0;
+    }
+
+    &:after {
+      position: absolute;
+      top: 100%;
+    }
+
+    //@include bp-large {
+    //  display: none;
+    //}
+  }
+
+  &.close {
+    .hamburger-icon {
+      &:before {
+        box-shadow: transparent 0 0 0 0;
+        top: 50%;
+        transform: rotate(225deg);
+      }
+
+      &:after {
+        top: 50%;
+        transform: rotate(315deg);
+      }
+    }
+  }
+}
+

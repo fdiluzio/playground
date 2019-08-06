@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+
+        .figcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .figcontainer figure {
+            flex: 1 1 50%;
+            margin: 0;
+            max-width: 600px;
+        }
+
+        .article-teaser__image {
+            padding-left: 100%;
+            padding-top: 80%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-teaser__image--img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="figcontainer">
+
+    <figure>
+        <div class="article-teaser__image">
+            <img class="article-teaser__image--img" src="https://dummyimage.com/600x450/000/eb443f.jpg&text=ERROR:+missing+image" alt/>
+        </div>
+        <figcaption class="article-teaser--caption">
+            Once upon a time in Africa Once upon a time in Africa Once upon a time in Africa Once upon a time in Africa
+            Once upon a time in Africa Once upon a time in Africa Once upon a time in Africa Once upon a time in Africa
+
+        </figcaption>
+    </figure>
+
+    <figure>
+        <div class="article-teaser__image">
+            <img class="article-teaser__image--img" src="https://dummyimage.com/800x400/000/eb443f.jpg&text=ERROR:+missing+image" alt/>
+        </div>
+        <figcaption class="article-teaser--caption">
+            Once upon a time in Africa Once upon a time in Africa Once upon a time in Africa Once upon a time in Africa
+        </figcaption>
+    </figure>
+
+    <figure>
+        <div class="article-teaser__image">
+            <img class="article-teaser__image--img" src="https://dummyimage.com/600x450/000/eb443f.jpg&text=ERROR:+missing+image" alt/>
+        </div>
+        <figcaption class="article-teaser--caption">
+            Once upon a time in Africa
+        </figcaption>
+    </figure>
+
+    <figure>
+        <div class="article-teaser__image">
+            <img class="article-teaser__image--img" src="https://dummyimage.com/800x400/000/eb443f.jpg&text=ERROR:+missing+image" alt/>
+        </div>
+
+    </figure>
+
+</div>
+
+
+</body>
+</html>

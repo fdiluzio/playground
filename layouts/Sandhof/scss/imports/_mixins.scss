@@ -1,0 +1,180 @@
+// #########################################
+// Functions
+// #########################################
+
+
+@function pixelToRem($pixels) {
+  @return ($pixels * 0.0625rem);
+}
+
+@function pixelToEm($pixels) {
+  @return ($pixels * 0.0625em);
+}
+
+@function numToPixel($num) {
+  @return ($num * 1px);
+}
+
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value) {
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen;
+
+  $sign: "+";
+  @if ($b < 0) {
+    $sign: "-";
+    $b: abs($b);
+  }
+  @return calc(#{$a*100}vw #{$sign} #{$b});
+}
+
+// #########################################
+// Mixin to manage responsive breakpoints
+// #########################################
+
+@mixin min-width($breakpoint) {
+  @media (min-width: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin max-width($breakpoint) {
+  @media (max-width: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin max-height($breakpoint) {
+  @media (max-height: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin min-height($breakpoint) {
+  @media (min-height: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin min-max-width($breakpointMin:0,$breakpointMax:10000) {
+  @media (min-width: pixelToEm($breakpointMin)) and (max-width: pixelToEm($breakpointMax)) {
+    @content;
+  }
+}
+
+@mixin bp-xxxxlarge {
+  @media only screen and (min-width: pixelToEm($xxxxlarge)) {
+    @content;
+  }
+}
+
+@mixin bp-xxxlarge {
+  @media only screen and (min-width: pixelToEm($xxxlarge)) {
+    @content;
+  }
+}
+
+@mixin bp-xxlarge {
+  @media only screen and (min-width: pixelToEm($xxlarge)) {
+    @content;
+  }
+}
+
+@mixin bp-nav-break {
+  @media only screen and (min-width: pixelToEm($nav-break)) {
+    @content;
+  }
+}
+
+@mixin bp-xlarge {
+  @media only screen and (min-width: pixelToEm($xlarge)) {
+    @content;
+  }
+}
+
+@mixin bp-large {
+  @media only screen and (min-width: pixelToEm($large)) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media only screen and (min-width: pixelToEm($medium)) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media only screen and (min-width: pixelToEm($small)) {
+    @content;
+  }
+}
+
+// #########################################
+// Links
+// #########################################
+@mixin linx($link, $visit, $hover, $active) {
+  a {
+    color: $link;
+    &:visited {
+      color: $visit;
+    }
+    &:hover {
+      color: $hover;
+    }
+    &:active {
+      color: $active;
+    }
+  }
+}
+
+// #########################################
+// Color
+// #########################################
+
+
+@mixin darkenBackground($color:#000000, $breakpoint:30%, $orientation:to top) {
+  background: linear-gradient($orientation,
+          transparentize($color, 0.6),
+          transparentize($color, 1) $breakpoint);
+}
+
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  background: linear-gradient($orientation, $start-color, $end-color);
+}
+
+// #########################################
+// Fluid Calculations
+// https://codepen.io/MadeByMike/pen/vNrvdZ
+// #########################################
+
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value);
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+  }
+}
+
+// patch Rotation
+@mixin rotatePatch($rotate: $patch-rotate) {
+  transform-origin: center;
+  transform: rotate($rotate);
+}
+
+
+
+
+
