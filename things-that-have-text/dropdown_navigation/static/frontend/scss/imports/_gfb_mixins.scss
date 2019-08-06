@@ -1,0 +1,163 @@
+// #########################################
+// Mixin to manage responsive breakpoints
+// #########################################
+@mixin min-width($breakpoint) {
+  @media (min-width: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin max-width($breakpoint) {
+  @media (max-width: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin max-height($breakpoint) {
+  @media (max-height: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin min-height($breakpoint) {
+  @media (min-height: pixelToEm($breakpoint)) {
+    @content;
+  }
+}
+
+@mixin bp-xxxxlarge {
+  @media only screen and (min-width: pixelToEm($xxxx-large)) {
+    @content;
+  }
+}
+
+@mixin bp-xxxlarge {
+  @media only screen and (min-width: pixelToEm($xxx-large)) {
+    @content;
+  }
+}
+
+@mixin bp-xxlarge {
+  @media only screen and (min-width: pixelToEm($xx-large)) {
+    @content;
+  }
+}
+
+@mixin bp-nav-break {
+  @media only screen and (min-width: pixelToEm($nav-break)) {
+    @content;
+  }
+}
+
+@mixin bp-xlarge {
+  @media only screen and (min-width: pixelToEm($x-large)) {
+    @content;
+  }
+}
+
+@mixin bp-large {
+  @media only screen and (min-width: pixelToEm($large)) {
+    @content;
+  }
+}
+
+@mixin bp-medium {
+  @media only screen and (min-width: pixelToEm($medium)) {
+    @content;
+  }
+}
+
+@mixin bp-small {
+  @media only screen and (min-width: pixelToEm($small)) {
+    @content;
+  }
+}
+
+// #########################################
+// Links
+// #########################################
+@mixin linx($link, $visit, $hover, $active) {
+  a {
+    color: $link;
+    &:visited {
+      color: $visit;
+    }
+    &:hover {
+      color: $hover;
+    }
+    &:active {
+      color: $active;
+    }
+  }
+}
+
+// #########################################
+// Color
+// #########################################
+
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+// #########################################
+// Functions
+// #########################################
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@function pixelToEm($pixels) {
+  @return ($pixels * 0.0625em);
+}
+
+@mixin gradient-overlay($r: 0, $g: 0, $b: 0, $a: 0, $a2: 0.5, $percentStart: 0%, $percent: 90%, $opacity:0, $zindex: 0) {
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: $zindex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba($r, $g, $g, $a) $percentStart, rgba($r, $g, $g, $a2) $percent);
+    opacity: $opacity;
+    transition: all 400ms ease-in-out;
+  }
+
+}
+
+@mixin gradient($color: #000, $opacity: 0) {
+  background: linear-gradient(to bottom, $color, rgba($color, $opacity));
+}
+
+@mixin dark-overlay {
+  background: rgba(9, 18, 25, .6);
+  position: fixed;
+  top: 44px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 150;
+  display: none;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 80px 0;
+}
+
+@mixin darkener($r: 0, $g: 0, $b: 0, $a: 0, $a2: 0.2,  $zindex: -1) {
+  background: rgba($r, $g, $b, $a2);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $zindex;
+}
+
+

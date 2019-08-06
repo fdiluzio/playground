@@ -1,0 +1,27 @@
+{
+  "name": "Materialize",
+  "version": "1.0.0",
+  "description": "compile js and css",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FND",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "grunt": "~1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-postcss": "^0.8.0",
+    "grunt-sass": "^1.2.0",
+    "node-sass": "^3.7.0",
+    "matchdep": "*"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "Safari > 7"
+  ]
+}

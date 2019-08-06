@@ -1,0 +1,185 @@
+@import "imports/config";
+
+[data-menu="main"] {
+
+  font-size: 1.2em;
+  width: $menu-mobile-width;
+  height: 100vh;
+  background-color: lighten($grey, 10%);
+  position: fixed;
+  top: 0;
+  left: -$menu-mobile-width;
+  -webkit-overflow-scrolling: touch;
+  transition: left 400ms ease;
+  padding: 1em;
+
+  @include min-width($menu-mobile-breakpoint) {
+    background-color: $white;
+    position: inherit;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    padding: 0;
+  }
+
+  &.is-open {
+    left: 0;
+    overflow-y: scroll;
+
+    ul {
+      width: 200px;
+    }
+
+    //ul > li > ul{
+    //    display: inherit;
+    //}
+  }
+
+  ul {
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+
+    // ####################################
+    // Top Level
+    // ####################################
+
+    li {
+      display: block;
+      background-color: $menu-background-color;
+      white-space: nowrap;
+
+      &.hover, &.hover_touch {
+
+        /* Display Dropdowns on Hover */
+        & > ul {
+          display: inherit;
+        }
+
+        & > a {
+          background-color: $menu-anchor-color-hover;
+        }
+      }
+
+      &.hover_touch{
+        // show duplicate first level link for mobile
+        ul{
+          li{
+            &:first-of-type {
+              display: list-item;
+            }
+          }
+        }
+      }
+
+      @include min-width($menu-mobile-breakpoint) {
+        display: inline-block;
+        background-color: $white;
+      }
+    }
+
+    // ####################################
+    // Second level Drop Down
+    // ####################################
+
+    ul {
+
+      // Hide Dropdowns by Default
+      display: none;
+      min-width: $menu-subwidth;
+      margin-left: 1em;
+
+      @include min-width($menu-mobile-breakpoint) {
+        top: $menu-height;
+        position: absolute;
+        margin-left: 0;
+      }
+
+      li {
+
+        display: list-item;
+        position: relative;
+
+        // hide first child link which is a duplicate of the title link which is active
+        // for mouse events. This link is active for touch devices while the title
+        // link is blocked
+        &:first-of-type {
+          display: none;
+        }
+
+      }
+
+      // ####################################
+      // third level Drop Down
+      // ####################################
+
+      ul {
+        li {
+          position: relative;
+          top: -$menu-height;
+          left: $menu-subwidth;
+        }
+
+      }
+
+    }
+
+  }
+
+  // ####################################
+  // anchors
+  // ####################################
+
+  a {
+    display: block;
+    padding: 0 10px;
+    color: $menu-anchor-color;
+    line-height: $menu-height;
+    text-decoration: none;
+  }
+
+  /* Change this in order to change the Dropdown symbol */
+  //li > a:after {
+  //  content: ' +';
+  //}
+  //
+  //li > a:only-child:after {
+  //  content: '';
+  //}
+
+  .burger-icon--placement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
+    right: -$burger_icon_width;
+    top: 0;
+    cursor: pointer;
+    width: $burger-icon-width;
+    height: $burger-icon-width;
+    transition: right 400ms ease-out;
+
+    @include min-width($menu-mobile-breakpoint) {
+      display: none;
+    }
+
+  }
+
+  &.is-open {
+    .burger-icon--placement {
+      right: 0;
+    }
+
+    a:hover {
+      background-color: $menu-anchor-color-hover;
+    }
+  }
+
+}
+
+
+
+

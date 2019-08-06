@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1 width=device-width"/>
+    <title>CSS Dropdown Menu</title>
+    <link href="static/frontend/css/app.css" rel="stylesheet"/>
+    <link href="static/frontend/css/dropdown_navigation.css" rel="stylesheet"/>
+    <link href="static/frontend/css/burger_icon.css" rel="stylesheet"/>
+
+    <style>
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            width: 900px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            min-height: 70px;
+
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+
+    <nav data-menu="main">
+
+        <div class="burger-icon--placement" data-menu="trigger">
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <ul>
+            <li><a href="https://google.com">Hotel Leogang</a>
+                <ul>
+                    <li><a href="https://cloudfaire.com" target="_blank">Cloud Fare</a></li>
+                    <li><a href="https://google.com" target="_blank">Restaurant</a></li>
+                    <li><a href="#">Wellness</a></li>
+                    <li><a href="#">Familienurlaub</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Zimmer</a>
+                <ul>
+                    <li><a href="https://cloudfaire.com" target="_blank">Cloud Fare</a></li>
+                    <li><a href="#">Zimmer Tradition</a></li>
+                    <li><a href="#">Zimmer Design</a></li>
+                    <li><a href="#">Preise</a></li>
+                </ul>
+            </li>
+            <li><a href="https://brille24.de">Pauschalen</a></li>
+            <li><a href="#">Biken</a></li>
+            <li><a href="#">Skifahren Saalbach</a></li>
+            <li><a href="#">Region</a>
+                <ul>
+                    <li><a href="https://cloudfaire.com" target="_blank">Cloud Fare</a></li>
+                    <li><a href="#">Sommer</a></li>
+                    <li><a href="#">Winter</a></li>
+                    <li><a href="#">Löwen Alpin Card</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+
+<a href="https://google.com" target="_blank">Some link to see if styles are contained</a>
+
+<h3>Are styles missing here? Good!</h3>
+
+<nav>
+    <ul>
+        <li><a href="#">Hotel Leogang</a>
+            <ul>
+                <li><a href="#">Restaurant</a></li>
+                <li><a href="#">Wellness</a></li>
+                <li><a href="#">Familienurlaub</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Zimmer</a>
+            <ul>
+                <li><a href="#">Zimmer Tradition</a></li>
+                <li><a href="#">Zimmer Design</a></li>
+                <li><a href="#">Preise</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Pauschalen</a></li>
+        <li><a href="#">Biken</a></li>
+        <li><a href="#">Skifahren Saalbach</a></li>
+        <li><a href="#">Region</a>
+            <ul>
+                <li><a href="#">Sommer</a></li>
+                <li><a href="#">Winter</a></li>
+                <li><a href="#">Löwen Alpin Card</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<script src="static/frontend/js/tools.js"></script>
+<script src="static/frontend/js/modernizr.js"></script>
+
+<script>
+
+
+    (function () {
+
+        var moduleName = 'headernav_module'; // naming convention XXX_module
+
+        // REQUIRES
+        // *gfb.windowResizer()
+        // *mondernizr.mq()
+
+        if (typeof gfb === 'undefined') {
+            gfb = {
+                modules: {}
+            };
+        } else if (!gfb.modules) {
+            gfb.modules = {};
+        }
+
+
+        gfb.modules[moduleName] = {
+
+            name: moduleName,
+
+            init: function () {
+
+                if (gfb.debug) console.log('init', this.name);
+
+                var navigation      = document.querySelector('[data-menu="main"]'),
+                    firstLevelNav   = document.querySelectorAll('[data-menu="main"] > ul > li'),
+                    firstLevelLinks = document.querySelectorAll('[data-menu="main"] > ul > li > a');
+
+
+                // uses touchend event to add special class for touch devices
+                function setHoverState() {
+                    if (this.parentNode.classList.contains('hover_touch')) {
+                        this.parentNode.classList.remove('hover_touch');
+                    } else {
+                        [].forEach.call(firstLevelNav, function (el) {
+                            el.classList.remove('hover_touch');
+                        });
+                        this.parentNode.classList.add('hover_touch');
+                    }
+                }
+
+
+                [].forEach.call(firstLevelLinks, function (el) {
+
+                    if (el.parentNode, el.parentNode.querySelectorAll('ul').length) {
+
+                        // touch device handling to open dropdown
+                        el.addEventListener('touchend', function (e) {
+                            setHoverState.call(this);
+                            if (navigation.classList.contains('is-open') || Modernizr.mq('(min-width: 1024px)')) {
+                                e.preventDefault();
+                            }
+                        }, false);
+
+                        // mouse handling of off canvas menu items to mimic touch handling
+                        el.addEventListener('click', function (e) {
+                            if (navigation.classList.contains('is-open')) {
+                                setHoverState.call(this);
+                                e.preventDefault();
+                            }
+                        }, false);
+                    }
+
+                });
+
+
+                [].forEach.call(navigation.querySelectorAll('li'), function (el) {
+
+                    el.addEventListener('mouseenter', function () {
+
+                        if (!navigation.classList.contains('is-open')) {
+                            this.classList.add('hover');
+                        }
+                    }, false);
+
+                    el.addEventListener('mouseleave', function () {
+                        if (!navigation.classList.contains('is-open')) {
+                            this.classList.remove('hover');
+                        }
+                    }, false);
+
+                    document.querySelector('[data-menu="trigger"]').addEventListener('click', function (e) {
+                        navigation.classList.toggle('is-open');
+                        e.stopImmediatePropagation();
+                    }, false)
+                });
+
+
+                gfb.windowResizer.add(function () {
+                    navigation.classList.remove('is-open');
+                    [].forEach.call(firstLevelNav, function (el) {
+                        el.classList.remove('hover_touch');
+                    });
+                }, false);
+            }
+
+        }
+
+
+        gfb.modules[moduleName].init();
+
+
+    }());
+
+
+</script>
+
+</body>
+</html>

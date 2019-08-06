@@ -1,0 +1,91 @@
+[data-menu="main"] {
+  font-size: 1.2em;
+  width: 300px;
+  height: 100vh;
+  background-color: #cccccc;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  -webkit-overflow-scrolling: touch;
+  transition: left 400ms ease;
+  padding: 1em;
+  /* Change this in order to change the Dropdown symbol */ }
+  @media (min-width: 64em) {
+    [data-menu="main"] {
+      background-color: #FFF;
+      position: inherit;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      padding: 0; } }
+  [data-menu="main"].is-open {
+    left: 0;
+    overflow-y: scroll; }
+    [data-menu="main"].is-open ul {
+      width: 200px; }
+  [data-menu="main"] ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative; }
+    [data-menu="main"] ul li {
+      display: block;
+      background-color: transparent;
+      white-space: nowrap; }
+      [data-menu="main"] ul li.hover, [data-menu="main"] ul li.hover_touch {
+        /* Display Dropdowns on Hover */ }
+        [data-menu="main"] ul li.hover > ul, [data-menu="main"] ul li.hover_touch > ul {
+          display: inherit; }
+        [data-menu="main"] ul li.hover > a, [data-menu="main"] ul li.hover_touch > a {
+          background-color: #F28E3E; }
+      [data-menu="main"] ul li.hover_touch ul li:first-of-type {
+        display: list-item; }
+      @media (min-width: 64em) {
+        [data-menu="main"] ul li {
+          display: inline-block;
+          background-color: #FFF; } }
+    [data-menu="main"] ul ul {
+      display: none;
+      min-width: 140px;
+      margin-left: 1em; }
+      @media (min-width: 64em) {
+        [data-menu="main"] ul ul {
+          top: 2em;
+          position: absolute;
+          margin-left: 0; } }
+      [data-menu="main"] ul ul li {
+        display: list-item;
+        position: relative; }
+        [data-menu="main"] ul ul li:first-of-type {
+          display: none; }
+      [data-menu="main"] ul ul ul li {
+        position: relative;
+        top: -2em;
+        left: 140px; }
+  [data-menu="main"] a {
+    display: block;
+    padding: 0 10px;
+    color: #000;
+    line-height: 2em;
+    text-decoration: none; }
+  [data-menu="main"] .burger-icon--placement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
+    right: -70px;
+    top: 0;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    transition: right 400ms ease-out; }
+    @media (min-width: 64em) {
+      [data-menu="main"] .burger-icon--placement {
+        display: none; } }
+  [data-menu="main"].is-open .burger-icon--placement {
+    right: 0; }
+  [data-menu="main"].is-open a:hover {
+    background-color: #F28E3E; }
+
+/*# sourceMappingURL=dropdown_navigation.css.map */

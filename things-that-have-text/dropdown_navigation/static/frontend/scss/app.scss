@@ -1,0 +1,185 @@
+@import "imports/config";
+@import "imports/normalize";
+@import "imports/gfb_common";
+@import "imports/gfb_global";
+
+.print-only {
+  display: none;
+}
+
+.constrainer {
+  max-width: $maxwidth;
+  margin: 0 auto;
+}
+
+.custom-select {
+  border: 1px solid #c77bd4;
+  width: 1007%;
+  overflow: hidden;
+  background-image: url(/plugins/Progfb_Project/static/images/form/dropdown.svg);
+  background-size: 25px;
+  background-color: #FFF;
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.custom-select select {
+  padding: 5px 8px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+}
+
+.custom-select select:focus {
+  outline: none;
+}
+
+// radio Buttons
+
+.radio-wrp {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  align-items: center;
+
+  .group-label {
+    width: 100%;
+    margin-bottom: 1em;
+    order: 2;
+  }
+
+  .group-label--icon {
+    display: none;
+  }
+
+  @include bp-large {
+
+    flex-wrap: nowrap;
+
+    .group-label {
+      width: 40%;
+      order: 1;
+    }
+
+    .group-label--icon {
+      display: block;
+    }
+
+  }
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  order: 2;
+}
+
+.radio-group--icon {
+  order: 3;
+}
+
+.custom-radio--wrp {
+  margin-right: 1em;
+  width: 100%;
+
+  @include bp-medium {
+    width: 46%;
+  }
+
+  &:nth-child(1) {
+    width: 100%;
+  }
+}
+
+.custom-radio {
+
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  font-size: 0.9rem;
+  margin: 0.5em 0;
+
+  input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+  }
+  label {
+    cursor: pointer;
+    position: relative;
+    span {
+      display: inline-block;
+      position: relative;
+      line-height: 1;
+      z-index: 1;
+      margin-left: 1.8em;
+    }
+  }
+  input[type="radio"] + label::before {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    border: 2px solid $secondary;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+  }
+
+  input[type="radio"].white + label::before {
+    border: 2px solid #FFF;
+  }
+
+  /* Checked */
+  input[type="radio"]:checked + label {
+    color: #FFF;
+    padding: 0 1em;
+    margin-right: 1em;
+    span {
+      color: #FFF;
+      margin-left: 1em;
+    }
+  }
+  input[type="radio"]:checked + label::before {
+    width: 100%;
+    background: $secondary;
+    border-radius: 18px;
+    padding: 0.3em;
+    height: 100%;
+    top: -0.4em;
+  }
+  /* Transition */
+  label,
+  label::before {
+    transition: .25s all ease-in-out;
+  }
+
+}
+
+.gaudiscore {
+  position: relative;
+  display: flex;
+  padding-top: 0.3em;
+
+  .emoji {
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .label {
+    font-size: 0.3em;
+    padding: 0 1.5em;
+    margin-left: -0.5em;
+    align-self: center;
+    background-color: #fff;
+    position: relative;
+    z-index: 0;
+  }
+}
+

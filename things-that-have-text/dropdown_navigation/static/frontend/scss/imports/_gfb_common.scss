@@ -1,0 +1,136 @@
+//  ################################
+//  Inline Type
+//  ################################
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-justify {
+  text-align: justify !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+//  ################################
+//  Block Type
+//  ################################
+.left {
+  float: left !important;
+}
+
+.right {
+  float: right !important;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.fixed {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+//  ################################
+//  Centering Methods
+//  ################################
+
+.centered-h{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.centered-hv_abs{
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.centered-h_abs{
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+.centered-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-wrp{
+  display:table;
+}
+.table-cell{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.hide {
+  display: none;
+}
+
+//  ################################
+//  List
+//  ################################
+ul.no-bullet {
+  margin-left: 0;
+}
+
+ul.no-bullet li ul, ul.no-bullet li ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+ul.square li ul, ul.circle li ul, ul.disc li ul {
+  list-style: inherit;
+}
+
+ul.square {
+  list-style-type: square;
+  margin-left: 1.1rem;
+}
+
+ul.circle {
+  list-style-type: circle;
+  margin-left: 1.1rem;
+}
+
+ul.disc {
+  list-style-type: disc;
+  margin-left: 1.1rem;
+}
+
+ul.no-bullet {
+  list-style: none;
+}
+
+//  ################################
+//  Typography
+//  ################################
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+}

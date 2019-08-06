@@ -1,0 +1,126 @@
+$textColor: #c0cdd7;
+
+body {
+  color: $textColor;
+}
+
+.hide {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+
+.row {
+  margin: 1em 0;
+}
+
+.controlpanel {
+  display: flex;
+  margin-bottom: 0.5em;
+
+  header {
+    margin-bottom: 1em;
+  }
+
+  h4 {
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
+
+.cropper-controls-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  :last-child {
+    margin-left: auto;
+  }
+
+  > * {
+    margin-right: 0.5em !important;
+  }
+}
+
+.cropper-img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+  vertical-align: top;
+}
+
+.cropper-workspace {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #403f3f;
+  padding: 1em;
+}
+
+.cropper-preview-field {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1em;
+}
+
+.cropper-preview-area {
+  width: 150px;
+  height: 150px;
+  background-color: #4e555b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0 0 0;
+  padding: 0;
+
+}
+
+.cropper-preview {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+
+}
+
+.cropper-result {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.button {
+  color: $textColor;
+  border: 2px solid black;
+  outline: none;
+  padding: 0.4em 1em 0.5em;
+  line-height: 1.5;
+  cursor: pointer;
+  border-radius: 5px;
+  background: rgb(29, 30, 29);
+  min-width: 100px;
+  margin: 1em 0;
+  transition: background-color 200ms ease-in-out;
+
+  &:hover, &.selected {
+    background: rgb(64, 65, 64);
+    color: #FFF;
+  }
+
+  &.selected{
+    border-color: darken($textColor, 40%);
+    box-shadow: none;
+  }
+}
+
+
+.hightlite {
+  background-color: #117c03;
+  color: #FFF;
+  width: 180px;
+}
+
+.shadow {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}

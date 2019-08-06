@@ -1,0 +1,5 @@
+*.map
+_*
+coverage
+node_modules
+cropper/node_modules

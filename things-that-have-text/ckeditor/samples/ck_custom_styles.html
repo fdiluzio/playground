@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor Sample</title>
+    <script src="../ckeditor.js"></script>
+    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+
+    <style>
+        [data-ck-editor]{
+            margin:3em;
+        }
+    </style>
+</head>
+<body>
+
+<div id="editor1" data-ck-editor>
+    This is my textarea to be replaced with CKEditor.
+</div>
+
+<div id="editor2" data-ck-editor>
+    This is my textarea 2.
+</div>
+
+<div id="editor3" data-ck-editor>
+    This is my textarea 3.
+</div>
+
+
+<script>
+
+    document.querySelectorAll('[data-ck-editor]').forEach(function (el) {
+       el.addEventListener('click', function (e) {
+           CKEDITOR.replace(e.currentTarget.id);
+       })
+    });
+
+
+</script>
+
+
+<script>
+
+    // ##########################################
+    //
+    // CK Editor Helper
+    //
+    // Add Style Sheet:
+    // @param url = path or link to stylesheet
+    // @param bodyClass = class name to add to CK body element
+    // USAGE:
+    // ckEditorHelper.addStyleSheet(url, bodyClass);
+    //
+    // PREFERRED METHOD
+    // Set config of editor at onset
+    // CKEDITOR.config.bodyClass =  'category-description';
+    // CKEDITOR.config.contentsCss = 'css/ck-editor-external.css';
+    // ##########################################
+
+    window.ckEditorHelper = {
+
+        // ------------------------------------------
+        // Defaults
+        // ------------------------------------------
+
+        bodyClass: 'category-description',
+        externalStyleSheet: 'http://stage-doellererweinhandel.myincert.com/templates/dow_stage/t1/stylesheet.css',
+
+        // ------------------------------------------
+        // Public Methods
+        // ------------------------------------------
+
+        addStyleSheet: function(url,parentSelector){
+
+            if (url){
+                this.externalStyleSheet = url;
+            }
+            this._apply(this._addExternalStylesheet);
+
+            if (parentSelector){
+                this.bodyClass = parentSelector
+            }
+            this._apply(this._addBodyClass);
+
+        },
+
+        // ------------------------------------------
+        // Private Methods
+        // ------------------------------------------
+
+        _addExternalStylesheet: function (el) {
+            el.document.appendStyleSheet(ckEditorHelper.externalStyleSheet);
+        },
+
+        _addBodyClass: function (el) {
+            el.document.getBody().addClass(ckEditorHelper.bodyClass);
+        },
+
+        _getInstances: function () {
+
+            if ( typeof CKEDITOR === 'object' && CKEDITOR.instances){
+                return Object.entries(CKEDITOR.instances);
+            }
+
+            return [];
+
+        },
+
+        _apply: function (fn) {
+            this._getInstances().forEach(function (entry) {
+                if ( typeof fn === 'function'){
+                    fn(entry[1]);
+                }
+            })
+        }
+
+    };
+</script>
+
+</body>
+</html>
