@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="gfb_post_message.js"></script>
+    <script type="text/javascript">
+
+    function fluidIframe() {
+
+          var messenger = new gfb.Messenger();
+
+          // init postMessage
+          messenger.init(window.parent);
+
+          var $content = $(document.body);
+
+          var message = {
+                    name: window.location.href,
+                    params: {
+                      paddingTop: ( $content.height() / $content.width() ) * 100
+                    }
+                };
+
+          messenger.sendMessage(message);
+
+
+        };
+    </script>
+
+  </head>
+  <body style="padding:0;margin:0">
+    <img src="green.png" alt="" width="100%" />
+    <img src="test.png" alt="" width="100%" onload="fluidIframe()" />
+  </body>
+</html>

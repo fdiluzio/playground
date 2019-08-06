@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body style="background-color:blue;padding:0;margin:0">
+
+<style media="screen">
+    .fluid-iframe-wrp {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        padding-top: 30%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+        height: 0;
+        overflow: hidden;
+    }
+
+    [data-fluid-iframe] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+</style>
+<div style="width:100%;margin:0 auto">
+    <div class="fluid-iframe-wrp">
+        <iframe src="iframe_content.html" frameborder="0" scrolling="no" data-fluid-iframe></iframe>
+    </div>
+
+    <div class="fluid-iframe-wrp">
+        <iframe src="iframe_content_green.html" frameborder="0" scrolling="no" data-fluid-iframe></iframe>
+    </div>
+
+    <div class="fluid-iframe-wrp">
+        <iframe src="iframe_content_pink.html" frameborder="0" scrolling="no" data-fluid-iframe></iframe>
+    </div>
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="gfb_post_message.js"></script>
+
+<script type="text/javascript">
+
+    (function fluidIframe() {
+
+        $('[data-fluid-iframe]').each(
+            function initMessenger(index, el) {
+
+                var messenger = new gfb.Messenger();
+
+                // init postMessage
+                messenger.init(el.contentWindow);
+
+                // add command
+                messenger.command[el.src] = function (data) {
+                    console.log(data);
+                    el.parentNode.style.paddingTop = data.params.paddingTop + '%';
+                }
+
+            }
+        );
+
+    }());
+
+</script>
+
+
+</body>
+</html>
