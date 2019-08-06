@@ -1,4 +1,4 @@
-###My Plug-in to remove div containers
+### My Plug-in to remove div containers
 /ckeditor/samples/
 
 In the toolbox for source code is new button.
