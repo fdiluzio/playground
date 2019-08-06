@@ -1,0 +1,562 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tirol Banner - Medium Rectangle : 300 x 250 px</title>
+
+
+    <script>
+
+        /* /\/\/\/\/\/\/\/\/\ CLICK TAG /\/\/\/\/\/\/\/\/\/\/\/\/\/\ */
+
+        var clickTag = 'http://www.progfb.com';
+
+        /* /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\ */
+
+    </script>
+
+    <style>
+
+        /* Normalize */
+        * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 2em
+        }
+
+        img {
+            border: 0;
+            -ms-interpolation-mode: bicubic;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        h1, p {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            font-size: 1em;
+            line-height: 1em;
+            font-weight: normal;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .clearfix:before, .clearfix:after {
+            content: " ";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        /* Tirol font */
+        @font-face {
+            font-family: "TWCharacterSansRegular";
+            font-style: normal;
+            font-weight: normal;
+            src: url("http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/tw_character_sans-webfont.eot?#iefix") format("embedded-opentype");
+            src: url("http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/tw_character_sans-webfont.woff") format("woff"),
+            url("http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/tw_character_sans-webfont.ttf") format("truetype"),
+            url('http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/tw_character_sans-webfont.svg') format('svg');
+        }
+
+        @font-face {
+            font-family: 'icomoon';
+            font-style: normal;
+            font-weight: normal;
+            src: url("http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/icomoon.eot?#iefix") format("embedded-opentype");
+            src: url("http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/icomoon.woff") format("woff"),
+            url("http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/icomoon.ttf") format("truetype"),
+            url('http://angebote.urlaubsanfragen.com/gfb_shared/font/tirol/icomoon.svg') format('svg');
+
+        }
+
+        [class^="icon-"], [class*=" icon-"] {
+            font-family: 'icomoon';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            position: absolute;
+            font-size: 1.6em;
+            top: -0.1em;
+            left: 0.1em;
+
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-Wind:before {
+            content: "\e601";
+        }
+
+        .icon-Wetter:before {
+            content: "\e603";
+        }
+
+        .icon-StarkeBewoelkung:before {
+            content: "\e610";
+        }
+
+        .icon-SonneWolkeSchwererRegenschauer:before {
+            content: "\e612";
+        }
+
+        .icon-SonneWolkeRegenschauer:before {
+            content: "\e613";
+        }
+
+        .icon-SonneWolkeNieselregen:before {
+            content: "\e614";
+        }
+
+        .icon-SonneWolke:before {
+            content: "\e615";
+        }
+
+        .icon-Sonne:before {
+            content: "\e616";
+        }
+
+        .icon-SchwererSchneefallSonne:before {
+            content: "\e620";
+        }
+
+        .icon-SchwererSchneefall:before {
+            content: "\e621";
+        }
+
+        .icon-SchwererRegenschauer:before {
+            content: "\e622";
+        }
+
+        .icon-Schnee:before {
+            content: "\e624";
+        }
+
+        .icon-Nebel:before {
+            content: "\e630";
+        }
+
+        .icon-MittlererSchneefall:before {
+            content: "\e634";
+        }
+
+        .icon-MittlererRegenschauer:before {
+            content: "\e635";
+        }
+
+        .icon-Gewitter:before {
+            content: "\e649";
+        }
+
+        .icon-Bewoelkt:before {
+            content: "\e65f";
+        }
+
+        /* ########################### */
+        /* DEVELOPER */
+        /* ########################### */
+
+        #progfb .grid-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            display: none;
+            background-color: transparent;
+            background-size: 1000px 1000px, 1000px 1000px, 10px 10px, 10px 10px;
+            background-position: 0 -1px, -1px 0px, 0 -1px, -2px -1px;
+            background-image: -webkit-linear-gradient(white 1px, transparent 2px),
+            -webkit-linear-gradient(0, white 1px, transparent 1px),
+            -webkit-linear-gradient(rgba(50, 0, 0, .2) 1px, transparent 1px),
+            -webkit-linear-gradient(0, rgba(50, 0, 0, .2) 1px, transparent 1px);
+            background-image: -moz-linear-gradient(white 1px, transparent 1px),
+            -moz-linear-gradient(0, white 1px, transparent 1px),
+            -moz-linear-gradient(rgba(50, 0, 0, .2) 1px, transparent 1px),
+            -moz-linear-gradient(0, rgba(50, 0, 0, .2) 1px, transparent 1px);
+            background-image: linear-gradient(white 1px, transparent 1px),
+            linear-gradient(90deg, white 1px, transparent 1px),
+            linear-gradient(rgba(50, 0, 0, .2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(50, 0, 0, .2) 1px, transparent 1px);
+        }
+
+
+        /* ########################### */
+        /* BANNER */
+        /* ########################### */
+
+        #progfb {
+            font-family: "TWCharacterSansRegular";
+            visibility: hidden;
+        }
+
+        /* 728x90 Leaderboard  */
+        #progfb.mediumrectangle {
+            height: 250px;
+            width: 300px;
+            border: 1px solid #d4d6d4;
+            padding: 0;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+            xbackground: url(http://adserver.de.dedi1369.your-server.de/1308m/300x250.jpg) 0 0 no-repeat #eee;
+            visibility: visible;
+        }
+
+        #progfb header {
+            height: 20px;
+            width: 100%;
+            background-color: #FFFFFF;
+            position: relative;
+            z-index: 1;
+        }
+
+        #progfb header div {
+            background: url("http://adserver.de.dedi1369.your-server.de/shared/tirol_logo.svg") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+            position: absolute;
+            right: 40px;
+            top: 15px;
+            width: 78px !important;
+            height: 30px;
+        }
+
+        #progfb figure, #progfb figure img {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #progfb section {
+            left: 0;
+            padding-left: 9px;
+            position: absolute;
+            top: 90px;
+            width: 300px;
+        }
+
+        #progfb section.copytext {
+            padding-left: 11px;
+            top: 114px;
+        }
+
+        #progfb section.doubleHeadline {
+            top: 80px;
+        }
+
+        #progfb article.subhead {
+            margin-top: 2px;
+        }
+
+        #progfb footer {
+            background-color: #FFFFFF;
+            bottom: 0;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 14px;
+            height: 61px;
+            left: 0;
+            padding-left: 18px;
+            position: absolute;
+            width: 100%;
+            letter-spacing: 0.0625px;
+        }
+
+        #progfb footer p {
+            line-height: 16px;
+            margin-top: 15px;
+            width: 135px;
+            float: left;
+        }
+
+        #progfb button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            background-color: #991d27;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            width: 110px;;
+            margin-right: 20px;
+            margin-top: 17px;
+            padding: 7px 0.3em 6px;
+            display: block;
+            float: right;
+            font-size: 12px;
+            letter-spacing: 0.0625px;
+            cursor: pointer;
+            white-space: nowrap;
+            border: 1px solid #991d27;
+        }
+
+        #progfb button:hover, #progfb button.hover {
+            border-top: 1px solid #666;
+            border-left: 1px solid #666;
+            border-right: 1px solid #CCC;
+            border-bottom: 1px solid #CCC;
+        }
+
+        #progfb h1 {
+            font-size: 28px;
+            letter-spacing: 0.0625px;
+            line-height: 30px;
+            margin-top: -4px;
+            position: relative;
+        }
+
+        #progfb h1:first-child span {
+            padding-top: 6px;
+        }
+
+        #progfb h1 span {
+            background-color: #FFFFFF;
+            display: inline-block;
+            padding: 0 10px 4px 10px;
+        }
+
+        #progfb h1:first-child {
+            margin-top: 0;
+        }
+
+        #progfb h1:last-child {
+            padding-top: 0;
+        }
+
+        #progfb article p {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 15px;
+            margin-bottom: 1px;
+        }
+
+        #progfb p span {
+            background-color: #FFFFFF;
+            display: inline-block;
+            padding: 2px 0.5em;
+        }
+
+        #progfb p.forecast, #progfb .forecast-as-header {
+            position: relative;
+        }
+
+        #progfb .forecast span, #progfb .forecast-as-header span {
+            padding-left: 1.6em;
+        }
+
+        #progfb .forecast-as-header [class^="icon-"] {
+            top: -3px;
+            left: 0;
+        }
+
+        #progfb .forecast-as-header article:last-child {
+            margin-top: 2px;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+<!-- Developer wrapper: Remove in production-->
+<div id="developer">
+
+    <div class="showGrid"><label>
+        <small>Show Grid</small>
+        <input type="checkbox" onclick="gfb.setGrid(this)"/></label>
+        <small id="ani-type" style="float:right;">[AnimationType]</small>
+    </div>
+
+    <div id="progfb" class="mediumrectangle" onclick="window.open(clickTag)">
+
+        <div class="grid-overlay"></div>
+
+        <header>
+            <div></div>
+        </header>
+
+        <figure>
+            <img src="couple.jpg" alt=""/>
+            <img src="kite.jpg" alt=""/>
+        </figure>
+
+        <!-- Headline -->
+        <section class="doubleHeadline">
+
+            <article>
+                <h1><span>Auf den Gipfel,</span></h1>
+                <h1><span>fertig, los!</span></h1>
+            </article>
+
+        </section>
+
+        <!-- Copy Text -->
+        <section class="copytext">
+            <article>
+                <p><span>Gipfel stürmen -</span></p>
+                <p><span>mit den 18 ausgezeichneten</span></p>
+                <p><span>Tiroler Sommerbahnen</span></p>
+            </article>
+        </section>
+
+        <!-- Copy Text -->
+        <section class="copytext">
+            <article>
+                <p><span>Gipfel stürmen -</span></p>
+                <p><span>mit den 18 ausgezeichneten</span></p>
+                <p><span>Tiroler Sommerbahnen</span></p>
+            </article>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Werden Sie zum Gipfelstürmer</p>
+            <button>Mehr erfahren!</button>
+        </footer>
+
+    </div>
+
+</div><!-- /Developer wrapper -->
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
+
+<script>
+
+    var gfb      = {};
+    gfb.getParam = function (e) {
+        var t = window.location.search.substring(1).split("&"), n, r;
+        for (r = 0; t[r]; r++) {
+            n = t[r].split("=");
+            if (n[0] === e) {
+                return n[1]
+            }
+        }
+    };
+    var grids    = document.getElementsByClassName("grid-overlay");
+    gfb.setGrid  = function (e) {
+        var t = "none";
+        if (e.checked === true) {
+            t = "block"
+        }
+        for (var n in grids) {
+            if (grids.hasOwnProperty(n)) grids[n].style.display = t
+        }
+    };
+    (function () {
+        function v() {
+            if (r > 0 && t[r - 1]) {
+                w(r - 1)
+            }
+            if (!t[r]) return;
+            b(r);
+            r += 1
+        }
+
+        function m(e) {
+            window.setTimeout(function () {
+                v()
+            }, e)
+        }
+
+        function g(e) {
+            i.footer.play()
+        }
+
+        function y(e) {
+            window.setTimeout(function () {
+                w(t.length - 1);
+                r = 0;
+                v()
+            }, e)
+        }
+
+        function b(e) {
+            if (!t[e]) return;
+            TweenLite.fromTo(t[e], .3, {alpha: 0, scale: 1}, {alpha: 1, scale: 1, ease: Power4.easeOut, onComplete: E, onCompleteParams: [e]})
+        }
+
+        function w(e) {
+            if (!t[e]) return;
+            TweenLite.to(t[e], 2, {alpha: 0, scale: .9, ease: Power4.easeOut, onComplete: S, onCompleteParams: [e]})
+        }
+
+        function E(e) {
+            i["t" + e].play(0, false)
+        }
+
+        function S(e) {
+            i["t" + e].seek(0).pause()
+        }
+
+        var e = {appearFrom: {alpha: 0, scale: 1.1, ease: Power2.easeOut}, appearTo: {alpha: 1, scale: 1, ease: Power2.easeOut}}, t = document.getElementsByTagName("section"), n = document.getElementById("progfb"), r = 0, i = {}, s, o, u, a, f, l = 1, c = .2, h = 2e3, p = document.querySelector("button");
+        var d = gfb.getParam("ani");
+        if (d) {
+            textAniDesc                                   = e[d];
+            document.getElementById("ani-type").innerHTML = d
+        }
+        f          = 0;
+        i["t" + f] = new TimelineMax({paused: true, onComplete: m, onCompleteParams: [h]});
+        s          = t[f].querySelector("article");
+        i["t" + f].fromTo(s, l, e.appearFrom, e.appearTo, c);
+        f += 1;
+        i["t" + f]       = new TimelineLite({paused: true, onComplete: m, onCompleteParams: [h]});
+        i["t" + f].items = s = t[f].querySelectorAll("article p");
+        i["t" + f].staggerFromTo(s, l, e.appearFrom, e.appearTo, c);
+        f += 1;
+        i["t" + f]       = new TimelineLite({paused: true, onComplete: y, onCompleteParams: [h]});
+        i["t" + f].items = s = t[f].querySelectorAll("article p");
+        i["t" + f].staggerFromTo(s, l, e.appearFrom, e.appearTo, c);
+        var x = {
+            kenburnsDuration: 10, images: document.querySelectorAll("figure img"), button: document.querySelector("button"), start: function () {
+                this.imageGrow()
+            }, imageGrow: function () {
+                var e = new TimelineLite, t = x.getRandomTransformOrigin();
+                e.fromTo(x.images[1], x.kenburnsDuration, {scale: 1}, {scale: 1.2, transformOrigin: t}, "fade").to(x.images[1], 2, {opacity: 1}, "fade").to(x.images[1], 2, {opacity: 0, onStart: x.imageShrink}, "-=3")
+            }, imageShrink: function () {
+                var e = new TimelineLite, t = x.getRandomTransformOrigin();
+                e.fromTo(x.images[0], x.kenburnsDuration, {scale: 1.2, opacity: 1, transformOrigin: t}, {scale: 1}).to(x.images[0], 2, {onStart: x.imageGrow}, "-=3")
+            }, getRandomTransformOrigin: function () {
+                return ["top", "bottom"][Math.floor(Math.random() * 2)] + [" right", " left"][Math.floor(Math.random() * 2)]
+            }
+        };
+        x.start();
+        TweenLite.set(n, {visibility: "visible"});
+        v()
+    })()
+
+
+</script>
+
+
+</body>
+</html>
