@@ -40,3 +40,8 @@ function addOneOrTwo(num1, num2 = 0) {
     return num1 + num2;
 }
 console.log('add One or Two', addOneOrTwo(42));
+let tom = {
+    surname: 'diluzio',
+    firstName: 'frank'
+};
+console.log(tom);

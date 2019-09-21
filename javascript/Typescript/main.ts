@@ -41,4 +41,28 @@ function addOneOrTwo(num1: number,num2: number = 0): number {
 
 console.log('add One or Two', addOneOrTwo(42));
 
+interface man {
+    surname: string;
+    firstName: string;
+    middleName?: string;
+}
+
+// extend man
+interface man {
+    race: string;
+}
+
+let tom: man = {
+    surname: 'diluzio',
+    firstName: 'frank',
+    race: 'caucasion'
+};
+
+console.log(tom);
+
+
+
+
+
+
 
