@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+        <title>Token</title>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </head>
+    <body>
+        <h1 id="output">Output</h1>
+
+    
+        <script>
+
+            function clientFunction() {
+                console.log("inside client function");
+
+                for (let i = 10000; i > 0; i--) {
+                    console.log("waiting ...");
+                }
+                
+                console.log("starting an ajax call inside client function");
+
+                return 'token4455';
+
+                return $.ajax({url: "token.html"}).done(function (data) {
+                    console.log("client function complete");
+                    return data;
+                });
+
+               
+            }
+
+
+            // Promise
+            function clientFunctionPromise() {
+
+                return new Promise(function (resolve, reject) { // maybe do some async stuff in here
+                   
+                    console.log("calling client function");
+                    const value = clientFunction();
+                    resolve(value);
+
+                });
+
+            }
+        </script>
+
+        <script>
+            // Step 1. Wrap client function in promise
+            function getToken() {
+                console.log("get client function from promise");
+                clientFunctionPromise().then(function (result) {
+                    console.log("Token available in function getToken()", /token/.test(result));
+                    console.log(result);
+                });
+
+            }
+
+            getToken();
+        </script>
+    </body>
+</html>
