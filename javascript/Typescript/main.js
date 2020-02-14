@@ -1,13 +1,12 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-let message = 'HELLO World';
+exports.__esModule = true;
+var message = 'HELLO World';
 console.log(message);
-let isBeginner = true;
-let total = 23;
-let sentance = `I am a ${isBeginner ? 'beginner' : 'expert'}.
-in typescript`;
+var isBeginner = true;
+var total = 23;
+var sentance = "I am a " + (isBeginner ? 'beginner' : 'expert') + ".\nin typescript";
 console.log(sentance);
-let person = ['tom', 5];
+var person = ['tom', 5];
 console.log(person);
 var Color;
 (function (Color) {
@@ -16,7 +15,7 @@ var Color;
     Color[Color["Blue"] = 2] = "Blue";
 })(Color || (Color = {}));
 ;
-let c = Color.Green;
+var c = Color.Green;
 console.log('color = ', c);
 var Colors;
 (function (Colors) {
@@ -25,7 +24,7 @@ var Colors;
     Colors[Colors["Blue"] = 456] = "Blue";
 })(Colors || (Colors = {}));
 ;
-let cs = Colors.Blue;
+var cs = Colors.Blue;
 console.log('color = ', cs);
 function hasName(obj) {
     return !!obj &&
@@ -36,17 +35,25 @@ function add(num1, num2) {
     return num1 + num2;
 }
 console.log(add(3, 9));
-function addOneOrTwo(num1, num2 = 0) {
+function addOneOrTwo(num1, num2) {
+    if (num2 === void 0) { num2 = 0; }
     return num1 + num2;
 }
 console.log('add One or Two', addOneOrTwo(42));
-let tom = {
+var tom = {
     surname: 'diluzio',
     firstName: 'frank',
     race: 'caucasion'
 };
 console.log(tom);
+// https://www.typescriptlang.org/docs/handbook/generics.html
 function identity(arg) {
     return arg;
 }
 console.log(identity("myString"));
+function loggingIdentity(arg) {
+    console.log(arg.length);
+    return arg;
+}
+console.log(loggingIdentity([4, 5]));
+console.log(loggingIdentity(['tom', 'cat']));

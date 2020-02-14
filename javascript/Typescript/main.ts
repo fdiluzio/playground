@@ -62,7 +62,20 @@ console.log(tom);
 
 
 
+// https://www.typescriptlang.org/docs/handbook/generics.html
 
+function identity<T>(arg: T): T {
+    return arg;
+}
 
+console.log( identity<string>("myString") );
+
+function loggingIdentity<T>(arg: T[]): T[] {
+    console.log(arg.length);
+    return arg;
+}
+
+console.log( loggingIdentity<number>([4,5]) );
+console.log( loggingIdentity<string>(['tom', 'cat']) );
 
 
