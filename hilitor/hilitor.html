@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="mark.js"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    var options = {
+        "element": "span",
+        "className": "highlight",
+        "acrossElements": true,
+        "separateWordSearch": false,
+        "ignoreJoiners": true,
+        "exclude": ['em'],
+        "accuracy": {
+            "value": "exactly",
+            "limiters": [",", ".", ";", "-", "—", "<", ">", "\"", "'", "?"]
+        },
+        "diacritics": true,
+        done: function (matches) {
+            console.log("Matches: ", matches)
+        }
+    }
+
+</script>
+
+
+<h1>Highlight Term</h1>
+<em>der alte Gehäuseöffnungstürschließer</em>
+
+<p>The term above is not highlighted because emphasised elements have been excluded.</p>
+
+<fieldset>
+    <p> Da hilft’s auch nicht, wenn der alte Gehäuseöffnungstürschließer mit beiden Türen kompatibel ist.</p>
+</fieldset>
+<br/>
+<fieldset>
+    <pre>Geh<span>&</span>auml;use<span>&</span>ouml;ffnungst<span>&</span>uuml;rschließer</pre>
+    <p> Da hilft’s auch nicht, wenn der alte Geh&auml;use&ouml;ffnungst&uuml;rschließer mit beiden Türen kompatibel ist.</p>
+</fieldset>
+<br/>
+<fieldset>
+    <pre>Accents are ignored</pre>
+    <p> Da hilft’s auch nicht, wenn dér altè Gehäusèöffnúngstürschließer mit beiden Türen kompatibel ist.</p>
+</fieldset>
+<br/>
+<fieldset>
+    <pre>Html tags seperating the word parts are recognised</pre>
+    <p> Da hilft’s auch nicht, wenn der alte <b style="color: blue;">Gehäuse</b><i style="color:green;">öffnungs</i><del style="color:red">türschließer</del>
+        mit beiden Türen kompatibel ist.
+    </p>
+</fieldset>
+
+<h1>Using Limiters</h1>
+<em>Searching for the word "high"</em><br/><br/>
+
+<fieldset>
+    <em>Limiters: <b>, . ; - — < ></b></em>
+    <p>highlight "high" text</p>
+    <p>highlight 'high' text</p>
+    <p>highlight 'high?' text</p>
+    <p>highlight-high text</p>
+    <p>highlight -high text</p>
+    <p>highlight high-text</p>
+    <p>highlight—high text</p>
+    <p>highlight,high text</p>
+    <p>highlight, high, text</p>
+    <p>highlight, high-text</p>
+    <p>highlight, >high text</p>
+    <p>highlight, &lt;high text</p>
+    <p>highlight, &lt;high&gt; text</p>
+</fieldset>
+
+<div>
+    <a href="https://markjs.io/configurator.html">Configurator</a>
+</div>
+
+
+<script>
+    var marker = new Mark(document.querySelector('body'));
+    marker.mark("high", options);
+    marker.mark("der alte Gehäuseöffnungstürschließer", options);
+</script>
+
+
+</body>
+</html>
