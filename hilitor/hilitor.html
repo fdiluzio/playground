@@ -5,7 +5,7 @@
     <title>Title</title>
     <script src="mark.js"></script>
     <style>
-        .highlight {
+        .ifs-highlite {
             background-color: yellow;
         }
     </style>
@@ -15,7 +15,7 @@
 <script>
     var options = {
         "element": "span",
-        "className": "highlight",
+        "className": "ifs-highlite",
         "acrossElements": true,
         "separateWordSearch": false,
         "ignoreJoiners": true,
@@ -54,7 +54,8 @@
 <br/>
 <fieldset>
     <pre>Html tags seperating the word parts are recognised</pre>
-    <p> Da hilft’s auch nicht, wenn der alte <b style="color: blue;">Gehäuse</b><i style="color:green;">öffnungs</i><del style="color:red">türschließer</del>
+    <p> Da hilft’s auch nicht, wenn der alte <b style="color: blue;">Gehäuse</b><i style="color:green;">öffnungs</i>
+        <del style="color:red">türschließer</del>
         mit beiden Türen kompatibel ist.
     </p>
 </fieldset>
@@ -85,6 +86,15 @@
 
 
 <script>
+    // "className": "ifs-highlite",
+    function addStyle(styles) {
+        var css = document.createElement('style');
+        css.appendChild(document.createTextNode(styles));
+        document.getElementsByTagName("head")[0].appendChild(css);
+    }
+    var styles = '.ifs-highlite { background-color: yellow }';
+    addStyle(styles);
+
     var marker = new Mark(document.querySelector('body'));
     marker.mark("high", options);
     marker.mark("der alte Gehäuseöffnungstürschließer", options);
