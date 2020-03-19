@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="mark.js"></script>
     <style>
         .ifs-highlite {
@@ -34,6 +35,7 @@
 
 
 <h1>Highlight Term</h1>
+<button>Scroll To Element</button>
 <em>der alte Gehäuseöffnungstürschließer</em>
 
 <p>The term above is not highlighted because emphasised elements have been excluded.</p>
@@ -62,6 +64,22 @@
 
 <h1>Using Limiters</h1>
 <em>Searching for the word "high"</em><br/><br/>
+<fieldset>
+    <em>Limiters: <b>, . ; - — < ></b></em>
+    <p>highlight "high" text</p>
+    <p>highlight 'high' text</p>
+    <p>highlight 'high?' text</p>
+    <p>highlight-high text</p>
+    <p id="scrollTarget">highlight -high text</p>
+    <p>highlight high-text</p>
+    <p>highlight—high text</p>
+    <p>highlight,high text</p>
+    <p>highlight, high, text</p>
+    <p>highlight, high-text</p>
+    <p>highlight, >high text</p>
+    <p>highlight, &lt;high text</p>
+    <p>highlight, &lt;high&gt; text</p>
+</fieldset>
 
 <fieldset>
     <em>Limiters: <b>, . ; - — < ></b></em>
@@ -92,12 +110,29 @@
         css.appendChild(document.createTextNode(styles));
         document.getElementsByTagName("head")[0].appendChild(css);
     }
+
     var styles = '.ifs-highlite { background-color: yellow }';
     addStyle(styles);
 
     var marker = new Mark(document.querySelector('body'));
     marker.mark("high", options);
     marker.mark("der alte Gehäuseöffnungstürschließer", options);
+
+
+    scrollToFilter = function (selector) {
+        var $scrollingContainer = $('html, body');
+            var scrollTop = $scrollingContainer.scrollTop();
+            var link      = $(selector);
+            var position  = link.position();
+            $scrollingContainer.animate({
+                scrollTop: position.top + scrollTop
+            }, 500);
+    }
+
+    $('button').on('click', function () {scrollToFilter('#scrollTarget')})
+
+
+
 </script>
 
 
