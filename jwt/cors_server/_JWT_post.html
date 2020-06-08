@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Authentication</title>
+
+    <style>
+        button, button:focus, button:active {
+            padding: 0.5em 1em;
+            border: 1px solid black;
+            outline: none;
+            border-radius: 3px;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<section>
+    <h3>Monster Server JWT</h3>
+    <button id="monsterJWT">Monster Info (with JWT when present below)</button>
+</section>
+<fieldset>
+    <legend>JWT</legend>
+    <textarea name="jwt" id="jwt" style="width: 100%; height: 300px">eyJhbGciOiJSUzI1NiJ9.eyJuYmYiOjE1OTExMDg0MjMsImRvbWFpbiI6Im11Yy5pbnRyYWZpbmQuZGUiLCJleHAiOjE1OTExMTg1MDMsInR5cGUiOiJkb21haW4iLCJ1c2VybmFtZSI6ImlmaW5kZXIifQ.LIyPHilLb9pmA1OsbbyRXHWiPrTwW5tZrJ8iGUWPRSGzhV9xbhwYsPHuJDbnjL_qyZy2R1qgntm5etkeyjRODA</textarea>
+</fieldset>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+
+  function request(jwtToken, url) {
+
+    // ==================
+    // Ajax Setup
+    // ==================
+    let headers = {};
+    let credentials = true;
+    if (jwtToken) {
+      credentials = false;
+      headers["Authorization"] = 'Bearer ' + jwtToken;
+    }
+
+    return $.ajax({
+      url: url + '&v=' + Date.now(),
+      contentType: 'text/plain; charset=UTF-8',
+      dataType: 'json',
+      async: true,
+      xhrFields: {
+        withCredentials: credentials
+      },
+      headers: headers,
+      crossDomain: true,
+      cache: false,
+      type: 'GET',
+      beforeSend: null
+    });
+  }
+
+
+  $('#monsterJWT').click(function () {
+    // 'http://ml-if-monster:8080/iFinder5/info?_=1590755965114'
+    const jwtToken = document.getElementById('jwt').value;
+    request(jwtToken, 'http://ml-if-monster:8080/iFinder5/api/search?iSearchIndex=1%23%23c2VhcmNocHJvZmlsZS1zdGFuZGFyZA%3D%3D&action=autocomplete&sSearchTerm=muni&searchprofile.applications=ifinder&appLanguage=de');
+  });
+
+</script>
+</body>
+
+</html>

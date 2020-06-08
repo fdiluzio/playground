@@ -1,0 +1,17 @@
+{
+  "name": "Typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {}
+}
