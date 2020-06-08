@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+<script>
+  function clientFunction() {
+    console.log("inside client function");
+
+    for (let i = 100; i > 0; i--) {
+      console.log("waiting ...");
+    }
+    console.log("starting an ajax call inside client function");
+    return $.ajax({
+      url: "token.html"
+    }).done(function(data) {
+      console.log("client function complete");
+      return data;
+    });
+  }
+
+  // Step 1. Wrap client function in an async function and call it with await
+  async function getToken() {
+    console.log("call client function with await within an async function");
+    const token = await clientFunction();
+    console.log(
+      "Token available in function getToken()",
+      /token/.test(token)
+    );
+    return token;
+  }
+
+  // Step 2. User wrapper function retrieve value from client
+  async function useValueFromClient() {
+    console.log("use async function to call client function");
+    const token = await getToken();
+    console.log(
+token
+    );
+    return String(token).toUpperCase();
+  }
+
+  (async function myToken() {
+    console.log("GET TOKEN");
+    const token = await useValueFromClient();
+    console.log(
+      "Token available in function myToken()",
+      /token/.test("token")
+    );
+    console.table({ token: token });
+  })();
+</script>
+
+</body>
+</html>

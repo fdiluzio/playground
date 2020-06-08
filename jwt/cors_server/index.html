@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Authentication</title>
+
+    <style>
+        button, button:focus, button:active {
+            padding: 0.5em 1em;
+            border: 1px solid black;
+            outline: none;
+            border-radius: 3px;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        .valid {
+            background-color: #299c02;
+            color: white;
+        }
+
+        .error {
+            background-color: #9c1417;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <h3>Node Server JWT</h3>
+    <button id="credentials">Set Credentials</button>
+    <button id="ifsAjax">Use Searchbar Request</button>
+    <button id="test">Test Node Login</button>
+    <button id="logout">Unset Credentials</button>
+    <p>
+    <button onclick="testCors()">Test Cors Node.js</button>
+    </p>
+</div>
+
+<section>
+    <h3>Monster Server JWT</h3>
+    <button id="monsterJWT">Monster Info (with JWT when present below)</button>
+  <fieldset>
+    <legend>JWT</legend>
+    <textarea name="jwt" id="jwt" style="width: 100%; height: 300px"></textarea>
+  </fieldset>
+</section>
+
+<section>
+    <a href="http://if-wiki:8090/rest/universalsearch/1.0/token" target="_blank" rel="noreferrer">Universal Search Token</a>
+</section>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+
+  function setAjax(jwtToken) {
+    // ==================
+    // Ajax Setup
+    // ==================
+    let headers = {};
+    let credentials = true;
+    if (jwtToken){
+      credentials = false;
+      headers["Authorization"] = 'Bearer ' + jwtToken;
+    }
+    $.ajaxSetup({
+      dataType: 'json',
+      async: true,
+      xhrFields: {
+        withCredentials: credentials
+      },
+      headers: headers,
+      crossDomain: true,
+      cache: false
+    });
+  }
+
+  function request(url) {
+    // 'http://ml-if-monster:8080/iFinder5/info?_=1590755965114'
+    return $.ajax({
+      url: url,
+      contentType: 'text/plain; charset=UTF-8',
+      type: 'GET',
+      beforeSend: null
+    });
+  }
+
+  $('#monster').click(function () {
+    setAjax();
+    request('http://ml-if-monster:8080/iFinder5/info');
+    this.style.color = "red";
+  });
+
+  $('#monsterJWT').click(function () {
+    const token = document.getElementById('jwt').value;
+    setAjax(token);
+    request('http://ml-if-monster:8080/iFinder5/info');
+  });
+
+
+  $('#ifsAjax').click(function () {
+    this.className = "";
+    setAjax(localStorage.token);
+    request('/api/profile').done((data, status, xhr) => {
+      console.log('Hello ' + data.name + '! You have successfully accessed to /api/profile.');
+      this.classList.add('valid');
+    }).fail(
+      (ajaxOptions, thrownError) => {
+        console.log(ajaxOptions, thrownError);
+        this.classList.add('error');
+      }
+    );
+
+  });
+
+  // #######################################################################
+  // Functions
+  // #######################################################################
+
+
+  function testLogin(token) {
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:8080/api/profile',
+      beforeSend: function (xhr) {
+        if (localStorage.token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + localStorage.token);
+        } else if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+        }
+      },
+      success: function (data) {
+        alert('Hello ' + data.name + '! You have successfully accessed to /api/profile.');
+      },
+      error: function () {
+        alert("Sorry, you are not logged in.");
+      }
+    });
+  }
+
+  function getNodeLogin() {
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/login",
+      data: {
+        username: "john.doe",
+        password: "foobar"
+      },
+      success: function (data) {
+        localStorage.token = data.token;
+        alert('Got a token from the server! Token: ' + data.token);
+      },
+      error: function () {
+        alert("Login Failed");
+      }
+    });
+  }
+
+  function testCors() {
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/products/345",
+      crossDomain: true,
+      success: function (data) {
+        alert('Test OK: ' + data.msg);
+      },
+      error: function () {
+        alert("Test Failed");
+      }
+    });
+  }
+
+
+  // #######################################################################
+  // Events
+  // #######################################################################
+
+
+  $('#test').click(testLogin);
+  $('#credentials').click(getNodeLogin);
+  $('#logout').click(function () {
+    localStorage.clear();
+  });
+
+</script>
+</body>
+
+</html>

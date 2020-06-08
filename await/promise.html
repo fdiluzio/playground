@@ -17,13 +17,12 @@
             function clientFunction() {
                 console.log("inside client function");
 
-                for (let i = 10000; i > 0; i--) {
+      /*          for (let i = 10000; i > 0; i--) {
                     console.log("waiting ...");
-                }
+                }*/
                 
                 console.log("starting an ajax call inside client function");
 
-                return 'token4455';
 
                 return $.ajax({url: "token.html"}).done(function (data) {
                     console.log("client function complete");
