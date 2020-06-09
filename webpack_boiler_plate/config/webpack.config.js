@@ -54,6 +54,28 @@ module.exports = {
               sourceMap: true,
             },
           },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              config: {
+                path: path.resolve(ROOT_DIRECTORY, 'config'),
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[path][name].[ext]',
+              limit: 4096,
+              outputPath: 'assets',
+            },
+          },
         ],
       },
     ],

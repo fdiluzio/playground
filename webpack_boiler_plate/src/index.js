@@ -1,4 +1,5 @@
 import './styles.scss';
+import './scss/_grid.scss'
 
 import {greet} from "./modules/greet";
 
