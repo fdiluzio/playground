@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const path = require('path');
 const ROOT_DIRECTORY = process.cwd();
@@ -35,23 +36,9 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              url: true,
-              import: true,
-              modules: false,
-            },
-          },
-        ],
-      },
-      {
         test: /\.(sass|scss)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -76,5 +63,6 @@ module.exports = {
       template: path.resolve(ROOT_DIRECTORY, 'src/index.html'),
       filename: 'index.html',
     }),
+    new MiniCssExtractPlugin()
   ],
 };

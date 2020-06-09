@@ -1,6 +1,6 @@
-import './main.css';
-import './module.scss';
-import {greet} from "./greet";
+import './styles.scss';
+
+import {greet} from "./modules/greet";
 
 
 async function print() {
