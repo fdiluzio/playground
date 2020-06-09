@@ -1,0 +1,20 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.main {
+  background-color: lightseagreen;
+  margin: 0;
+  padding: 0;
+
+  .headline {
+    font-size: 1.6em;
+  }
+}

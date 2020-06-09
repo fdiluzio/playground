@@ -81,6 +81,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(ROOT_DIRECTORY, 'src/index.html'),
       filename: 'index.html',
