@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Uploader</title>
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
+
+</head>
+<body>
+
+
+<main class="ifs-page">
+
+    <section class="ifs-uploader">
+        <h3 class="ifs-uploader-title">Dateien hochladen</h3>
+        <p>Dieses unterteilt Text gemäß den Regeln der Unicode-Textsegmentierung in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen
+            sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.</p>
+
+        <div class="ifs-uploader-output-area">
+
+            <div class="ifs-uploader-filelist">
+                <ul id="ifs-uploader-filelist" class="ifs-uploader-list">
+                    <h4>Noch keine Dateien ausgewählt.</h4>
+                    <small>Bitte wählen Sie eine oder mehrere Dateien aus.</small>
+                </ul>
+            </div>
+
+            <div class="ifs-uploader-input-area">
+                <label id="ifs-uploader-select" class="ifs-uploader-input-btn" for="ifs-uploader">Dateien auswählen</label>
+                <button disabled id="ifs-uploader-submit" class="ifs-uploader-input-btn ifs-uploader-input-btn-send">Dateien hochladen</button>
+            </div>
+
+        </div>
+
+        <input type="file" id="ifs-uploader" multiple="multiple" class="ifs-uploader-input"/>
+
+
+    </section>
+
+</main>
+
+<script id="template-file-item" type="text/template">
+    <li class="ifs-uploader-list-item">
+        <h4>{{name}} <small class="ifs-uploader-filesize">({{size}})</small></h4>
+    </li>
+</script>
+
+
+<script>
+  document.getElementById('ifs-uploader-submit').addEventListener('click', function () {
+    uploadFile();
+  }, false);
+  document.getElementById('ifs-uploader').addEventListener('change', function () {
+
+    var template = document.getElementById("template-file-item");
+    var templateHtml = template.innerHTML;
+    var FileListHTML = "";
+
+    for (var i = 0; i < this.files.length; i++) {
+      var file = this.files[i];
+
+
+      var dO = {
+        name: file.name,
+        size: bytesToSize(file.size),
+        type: file.type,
+        lastmodifiedDate: (new Date(file.lastModified)).toLocaleString()
+      };
+
+      FileListHTML += templateHtml.replace(/{{name}}/g, dO.name)
+        .replace(/{{size}}/g, dO.size)
+        .replace(/{{type}}/g, dO.type)
+        .replace(/{{lastmodified}}/g, dO.lastmodifiedDate);
+
+      // Replace the HTML of #list with final HTML
+      document.getElementById("ifs-uploader-filelist").innerHTML = FileListHTML;
+      document.getElementById('ifs-uploader-submit').removeAttribute('disabled')
+
+    }
+  }, false);
+
+  function uploadFile() {
+    var files = document.getElementById('ifs-uploader').files;
+    console.log(files);
+    var url = 'http://ml-if-monster:8080/iFinder5/FileInputStreamServlet';
+    var xhr = new XMLHttpRequest();
+    var fd = new FormData();
+    xhr.open("POST", url, true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        window.parent.location.reload();
+      } else {
+        document.getElementById("ifs-uploader-filelist").innerHTML = '<p>Fehler bei der übertragung. Sie werden automatisch weitergeleitet.</p>';
+        window.setTimeout(function () {
+          window.parent.location.reload();
+        }, 1000)
+      }
+    };
+    fd.append("upload_file", files);
+    xhr.send(fd);
+  }
+
+  function bytesToSize(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB'];
+    if (bytes === 0) return 'n/a';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+  }
+
+</script>
+
+
+</body>
+</html>
