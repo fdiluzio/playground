@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <title>Webpack Boilerplate</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Markdown Render</title>
 </head>
 <body>
 <main class="main">
-<h1 class="headline">Webpack boilerplate</h1>
+
+    <div>
+        <fieldset>
+            <legend>Preview</legend>
+            <button data-action="clean">Render Clean Input</button>
+            <button data-action="input">Render Raw Input</button>
+        </fieldset>
+            <div id="output" class="ifs-markdown"></div>
+    </div>
+    <div>
+        <fieldset data-action="populate">
+            <legend>Input for rendering</legend>
+            <label><input type="radio" name="source" value="complete" checked>Complete Feature Set</label>
+            <label><input type="radio" name="source" value="dirty">Dirty</label>
+            <label><input type="radio" name="source" value="mixed">Mixed (Markdown + Html)</label>
+            <label><input type="radio" name="source" value="link">Just Links</label>
+            <label><input type="radio" name="source" value="iframe">Just Iframes</label>
+        </fieldset>
+            <textarea></textarea>
+    </div>
+
 </main>
+
+<a href="https://github.com/ttscoff/MarkedCustomStyles">Marked Styles</a>
+<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a>
 </body>
 </html>

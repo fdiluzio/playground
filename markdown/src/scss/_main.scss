@@ -1,20 +1,88 @@
-html {
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
 .main {
+  font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
   background-color: lightseagreen;
   margin: 0;
-  padding: 0;
 
-  .headline {
-    font-size: 1.6em;
+  textarea{
+    min-height: 350px;
+    padding: 1rem;
+    background-color: #f1f1f9;
+    &:focus{
+      outline: none;
+      background-color: white;
+    }
+  }
+
+  > * {
+    padding: 0.5rem;
+  }
+
+
+  @media all and (min-width: 1024px) {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      flex: 1 1 50%;
+    }
+  }
+
+  .ifs-markdown, textarea {
+    display: block;
+    height: calc(100vh - 200px);
+    overflow: auto;
+    width: 100%;
+    border: none;
+  }
+
+
+  fieldset {
+    border: none;
+    border-top: 10px solid grey;
+    height: 150px;
+
+    legend {
+      padding: 0.3em 1em;
+      background-color: grey;
+      color: wheat;
+      border-radius: 3px;
+    }
+  }
+
+  label {
+    display: inline-block;
+    padding: 0.6em 1em 0.4em 0.8em;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 0.5em 0.5em 1em 0;
+    cursor: pointer;
+    user-select: none;
+    &:hover{
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    input {
+      padding: 0;
+      margin: 0 0.5em 0 0;
+    }
+  }
+
+  button, button:focus {
+    font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
+    padding: 0.6em 1.2em;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 1em 1rem 1rem 0;
+    cursor: pointer;
+    &:hover{
+    background-color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  .ifs-markdown {
+    min-height: 50px;
+    background-color: white;
   }
 }
