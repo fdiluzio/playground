@@ -23,7 +23,9 @@
     flex-wrap: wrap;
 
     > * {
-      flex: 1 1 50%;
+      flex: 0 0 50%;
+      overflow-wrap: break-word;
+      overflow-x: auto;
     }
   }
 
@@ -47,39 +49,43 @@
       color: wheat;
       border-radius: 3px;
     }
-  }
 
-  label {
-    display: inline-block;
-    padding: 0.6em 1em 0.4em 0.8em;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    margin: 0.5em 0.5em 1em 0;
-    cursor: pointer;
-    user-select: none;
-    &:hover{
-      background-color: rgba(255, 255, 255, 0.6);
+    button, button:focus {
+      font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
+      padding: 0.6em 1.2em;
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.3);
+      margin: 1em 1rem 1rem 0;
+      cursor: pointer;
+      &:hover{
+        background-color: rgba(255, 255, 255, 0.6);
+      }
     }
 
-    input {
-      padding: 0;
-      margin: 0 0.5em 0 0;
+    label {
+      display: inline-block;
+      padding: 0.6em 1em 0.4em 0.8em;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      margin: 0.5em 0.5em 1em 0;
+      cursor: pointer;
+      user-select: none;
+      &:hover{
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+
+      input {
+        padding: 0;
+        margin: 0 0.5em 0 0;
+      }
     }
+
   }
 
-  button, button:focus {
-    font-family: "Consolas", "Menlo", "Monaco", monospace, serif;
-    padding: 0.6em 1.2em;
-    border: none;
-    outline: none;
-    border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin: 1em 1rem 1rem 0;
-    cursor: pointer;
-    &:hover{
-    background-color: rgba(255, 255, 255, 0.6);
-    }
-  }
+
+
 
   .ifs-markdown {
     min-height: 50px;

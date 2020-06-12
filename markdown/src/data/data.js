@@ -1,7 +1,15 @@
 const dataSet = {};
-const ifsLink = 'http://ml-if-monster:8080/iFinder5/?&ifs_app_states_0=id:682be94d-bdad-4e3e-9260-418aba3f05e8;title:Intrafind;type:default;sSearchTerm:Intrafind;iSearchIndex:1%23%23c2VhcmNocHJvZmlsZS1zdGFuZGFyZA%3D%3D;connectorId:all';
+const ifsLink = encodeURI('//localhost:8001/?ifs_app_states_0=sSearchTerm:Micheal Jackson;facets:[_facet.application|[Word],_facet.language|[en]]');
+const tabLink = encodeURI('ifs:sSearchTerm:Micheal Jackson;facets:[_facet.application|[Word],_facet.language|[en]]');
 
 dataSet.link = `# Just Links
+
+*IFS.openNewInternalTab('sSearchTerm:Micheal Jackson;facets:[_facet.application|[Word],_facet.language|[en]]');*
+
+Add [Product Information](${tabLink} "Micheal Jackson") to your search or go to to the [product website](https://intrafind.de "Product Name") 
+
+-----
+
 [I'm an inline-style link](${ifsLink})
 
 [I'm an inline-style link with title](${ifsLink} "Search Word: Intrafind")
@@ -118,7 +126,7 @@ they|before|heard|having|for|
 > Herald read in search of having found the subject.
 
 
-### This is two types of code
+### This is two types of pre/code
 
       Collar that part about once without a child
       but why it made Alice or
