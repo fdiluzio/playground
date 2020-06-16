@@ -2,6 +2,7 @@ $markdownColor-main: #006ea3;
 $markdownColor-text: #444;
 $markdownColor-bg: #e6e6ee;
 $markdownColor-anchor: $markdownColor-main;
+$markdownColor-bg-button: lighten($markdownColor-text, 70%);
 $markdownColor-border: lighten($markdownColor-text, 50%);
 $markdown-space: 1rem;
 
@@ -14,14 +15,17 @@ $markdown-space: 1rem;
   line-height: 1.45;
   padding: $markdown-space;
 
-
+  /* SEMANTIC STYLING */
   h1, h2, h3, h4, h5, h6 {
     margin: $markdown-space 0;
     padding: 0;
   }
 
-  h1 {
-    border-bottom: 2px solid $markdownColor-border;
+  h2 {
+    padding: 0.5em 0;
+    border-top: 1px solid $markdownColor-border;
+    border-bottom: 1px solid $markdownColor-border;
+    margin: ($markdown-space * 2) 0;
   }
 
   a,
@@ -35,12 +39,10 @@ $markdown-space: 1rem;
     }
   }
 
-
   p, div, section, article {
     font-size: 1rem;
     margin: $markdown-space 0;
   }
-
 
   small {
     font-size: .7em;
@@ -62,10 +64,7 @@ $markdown-space: 1rem;
     }
   }
 
-  /* ##################################### */
-  /* TABLE */
-  /* ##################################### */
-
+  // table
   caption, col, colgroup, table, tbody, td, tfoot, th, thead, tr {
     border-spacing: 0;
   }
@@ -103,22 +102,38 @@ $markdown-space: 1rem;
 
   }
 
-  /* ##################################### */
-  /* CODE */
-  /* ##################################### */
+  // code
   $precolor: #444444;
+
   pre {
     padding: $markdown-space;
-    background-color:$precolor;
+    background-color: $precolor;
     color: invert($precolor);
     margin: $markdown-space;
     border-radius: 5px;
   }
 
+  // divider
+
   hr {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, transparent, $markdownColor-border 10%, $markdownColor-border 90%, transparent);
+    background-image: linear-gradient(to right, transparent, $markdownColor-main 10%, $markdownColor-main 90%, transparent);
+    margin: ($markdown-space * 2) 0;
+  }
+
+  /* ###################################### */
+  /* CLASSES */
+  /* ###################################### */
+
+  .searchTab-btn {
+    border: 1px solid $markdownColor-border;
+    background-color: $markdownColor-bg-button;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    cursor: pointer;
   }
 
 
