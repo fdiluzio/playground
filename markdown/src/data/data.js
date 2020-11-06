@@ -64,6 +64,10 @@ Only videos hosted from 'www.youtube-nocookie.com' are allowed. Try Rendering Ra
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/GIg2XZGMIwQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://intrafind.de"></iframe>
+
+<div style="position: relative;padding-top: 56.25%;overflow: hidden">
+<iframe style="width:100%;height:100%;position:absolute;left: 0;top:0;border:none" src="https://www.youtube-nocookie.com/embed/GIg2XZGMIwQ"></iframe>
+</div>
 `
 
 dataSet.complete = `# Welcome to Tomorrow

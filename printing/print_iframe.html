@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Print iFrame</title>
+
+
+
+<script>
+
+  function printMe() {
+
+    var printable = window.frames.tom;
+    printable.document.body.innerHTML = '<h1>body</h1>';
+
+    try {
+      printable.document.execCommand('print', false, null);
+    } catch (e) {
+      console.log(e);
+      // printable.print();
+    }
+
+
+  }
+
+  function printMe2() {
+
+    var divContents = '<h1>body</h1>';
+    var a = window.open('', '');
+    a.document.write('<html>');
+    a.document.write('<body > <h1>Div contents are <br>');
+    a.document.write(divContents);
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
+
+  }
+
+  function printMe4() {
+    // Print the selected window/iframe
+
+    var frameWindow = window.frames.tom;
+    var content = '<h1>Hellow</h1>';
+    var options = {
+      docType: '<!DOCTYPE html>',
+      timeout: 1000
+    };
+
+    try {
+      frameWindow = frameWindow.contentWindow || frameWindow.contentDocument || frameWindow;
+      var wdoc = frameWindow.document || frameWindow.contentDocument || frameWindow;
+      if (options.doctype) {
+        wdoc.write(options.doctype);
+      }
+      wdoc.write(content);
+      wdoc.close();
+      var printed = false;
+      var callPrint = function () {
+        if (printed) {
+          return;
+        }
+        // Fix for IE : Allow it to render the iframe
+        frameWindow.focus();
+        // try {
+        //   // Fix for IE11 - printng the whole page instead of the iframe content
+        //   if (!frameWindow.document.execCommand('print', false, null)) {
+        //     // document.execCommand returns false if it failed -http://stackoverflow.com/a/21336448/937891
+        //     frameWindow.print();
+        //   }
+        //   // focus body as it is losing focus in iPad and content not getting printed
+        //   $('body').focus();
+        // } catch (e) {
+        //   frameWindow.print();
+        // }
+        frameWindow.close();
+        printed = true;
+
+      };
+      // Print once the frame window loads - seems to work for the new-window option but unreliable for the iframe
+      frameWindow.addEventListener("load", callPrint);
+      // Fallback to printing directly if the frame doesn't fire the load event for whatever reason
+      setTimeout(callPrint, options.timeout);
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
+</script>
+
+</head>
+
+<body style="text-align:center;">
+
+<h1>Print me</h1>
+
+<iframe id="printFrame" name="tom"></iframe>
+
+<button type="button" onclick="printMe2()">
+    Print IFrame
+</button>
+
+
+</body>
+</html>
