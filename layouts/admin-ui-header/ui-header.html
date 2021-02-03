@@ -1,0 +1,117 @@
+<header id="app-header">
+    <div class="header-left">
+        <div class="logopanel">
+            <img src="images/if-icon.png" height="16" class="if-logo"> <span class="app-title"
+                id="app-title">Administration</span>
+        </div>
+    </div>
+
+    <style>
+        .app-license--good {
+            background-color: green;
+        }
+        .app-license--warning {
+            background-color: rgb(224, 119, 21);
+        }
+        .app-license--expired {
+            background-color: rgb(185, 31, 20);
+        }
+
+        .app-license {
+            float: left;
+            display: flex;
+            align-items: center;
+            height: 44px;
+            padding-left: 10px;
+            margin-left: 50px;
+        }
+
+        .toggled .app-license {
+            margin-left: 0;
+        }
+
+        .app-license-item {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+            line-height: 1;
+            margin-right: 30px;
+        }
+
+        .app-license-item label {
+            color: white;
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+    </style>
+
+    <div class="header-right app-license--good">
+
+        <div class="app-license">
+            <div class="app-license-item">
+                <label data-globalize="app-license">Lizenz:</label>
+                <span>IntraFind Software AG</span>
+            </div>
+            <div class="app-license-item">
+                <label data-globalize="app-license-days-left">Tage verbleibend</label>
+                <span>123</span>
+            </div>
+            <div class="app-license-item">
+                <label data-globalize="app-license-status">Status</label>
+                <span>GOOD</span>
+            </div>
+        </div>
+
+
+        <ul class="headermenu">
+            <li>
+                <div id="tmpInfo"></div>
+            </li>
+            <li id="btnExpert">
+                <a href="#" role="button" class="notaus inner-wrapper" id="toggle-expert" data-globalize="exp-mode"
+                    data-globalize-target="data-original-title" data-currentstate="off" data-toggle="tooltip"
+                    data-placement="bottom" data-original-title="Expertenmodus">
+                    <div class="na-btn-wrapper">
+                        <div class="na-btn on disabled"><span data-globalize="nav-btn-expm-on">AN</span></div>
+                        <div class="na-btn off"><span data-globalize="nav-btn-expm-off">AUS</span></div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle tp-icon" data-toggle="dropdown">
+                        <i class="glyphicons glyphicons-user"></i> <span id="app-username">ifadmin</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                        <li><a href="#" id="userpassword"><span data-globalize="nav-btn-password">Passwort</span></a>
+                        </li>
+                        <li><a href="#" id="logout"><span data-globalize="nav-btn-logout">Abmelden</span></a></li>
+                        <li>
+                            <p class="dropdown-footer" id="version-num">Version </p>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+            <li id="btn-lang-select">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle tp-icon" data-toggle="dropdown">
+                        <span id="current-lang">de</span>
+                    </button>
+                    <ul id="change-lang" class="dropdown-menu dropdown-menu-lang pull-right">
+                        <li data-lang="de" class="active"><a href="#">de</a></li>
+                        <li data-lang="en"><a href="#">en</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="btn-help">
+                <button type="button" class="btn btn-default dropdown-toggle tp-icon">
+                    <i class="glyphicons glyphicons-circle-question-mark"></i>
+                </button>
+            </li>
+        </ul>
+
+    </div>
+</header>

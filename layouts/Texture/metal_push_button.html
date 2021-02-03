@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+
+
+    <style>
+        :root {
+            --main-bg-color: brown;
+        }
+
+
+
+
+
+        html {
+            box-sizing: border-box;
+            min-height: 100%;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+
+            background: linear-gradient(45deg, rgba(128, 112, 112, 0.1) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 100%);
+            background-image: linear-gradient(-45deg, rgb(255 255 255), #f8f8f88f), linear-gradient(148deg, whitesmoke, transparent), linear-gradient(-45deg, #00000073 30%, transparent 40%, #0000009e);
+            background-color: #9ba6b1;
+
+
+            background-size: 2px 2px;
+
+            padding: 6rem;
+        }
+
+        .button,
+        .button:before,
+        .button:after {
+            border-radius: 3px;
+        }
+
+        .button {
+            font-size: 0.9rem;
+            vertical-align: bottom;
+            position: relative;
+            line-height: 1.5em;
+            margin: 0;
+            padding: 0 0.5em;
+            background-color: transparent;
+            border: none;
+            display: inline-flex;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+            box-shadow: inset rgba(255, 255, 255, 0.3) -5px -30px 10px,
+                inset rgba(255, 255, 255, 0.3) 0px 30px 10px,
+                inset rgba(255, 255, 255, 1) 0px 2px 1px,
+                rgba(0, 0, 0, 0.2) 0px 1px 3px;
+        }
+
+        .icon {
+            padding: 0;
+        }
+
+        .icon svg {
+            height: 1.5em;
+            padding: 0.2em;
+        }
+
+        .button:before,
+        .button:after {
+            content: "";
+            display: block;
+            position: absolute;
+        }
+
+        .button:before {
+            z-index: -1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(10deg, rgba(0, 0, 0, 0.4) 0%, rgba(255, 255, 255, 0.5) 50%, #dbdbdb 100%);
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="button"></div>
+
+    <p>
+        What about us?
+        <button class="button">A</button>
+        <button class="button"></button>
+        <button class="button icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                    d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z" />
+            </svg></button>
+        <button class="button">Delete</button>
+    </p>
+</body>
+
+</html>
