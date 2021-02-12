@@ -4,40 +4,27 @@
     const templateHtml = document.getElementById("template-file-item").innerHTML;
     const fileDisplayList = document.getElementById("ifs-uploader-filelist");
     const upLoadSubmitBtn = document.getElementById('ifs-uploader-submit');
-    const maxFileSize = 1048576 * 1; // 10 MB (1MB = 1048576)
+    const section = document.querySelector('.ifs-uploader');
+    const maxFileSize = 1048576 * 10; // 10 MB (1MB = 1048576)
+    const maxNumberOfFiles = 10;
     const FileUploaderServlet = '/iFinder5/FileUploaderServlet';
     const fileUploadInput = document.getElementById('ifs-uploader');
 
-    function enablepLoad() {
-        upLoadSubmitBtn.style.display = "inline";
-    };
-
-    function disablepLoad() {
-        upLoadSubmitBtn.style.display = "none";
-    };
-
-    function isFileSizeValid(bytes) {
-        return !!(bytes <= maxFileSize);
-    }
-
-    function formNotValidError(message){
-        document.forms['ifs-upload-files'].reset();
-        fileDisplayList.innerHTML =  message;
-    }
+    document.getElementById('ifs-uploader-submit').addEventListener('click', onUploadFiles, false);
+    document.getElementById('ifs-uploader').addEventListener('change', onInputChange, false)
 
 
-    document.getElementById('ifs-uploader-submit').addEventListener('click', function () {
-        uploadFiles();
-    }, false);
 
-    document.getElementById('ifs-uploader').addEventListener('change', function () {
+    // EVENTS
+
+    function onInputChange() {
         disablepLoad();
         let FileListHTML = "";
         let fileCount = this.files.length;
 
-        if (fileCount > 10) {
-            const overDrawn = fileCount - 10;
-            formNotValidError(`Only 10 files may be submited as once. You've selected ${overDrawn} too many.`);
+        if (fileCount > maxNumberOfFiles) {
+            const overDrawn = fileCount - maxNumberOfFiles;
+            formNotValidError(`Only ${maxNumberOfFiles} files may be submited at once. You've selected ${overDrawn} too many.`);
             return;
         }
 
@@ -50,7 +37,7 @@
                 bytes: file.size,
                 size: bytesToSize(file.size),
                 type: file.type,
-                lastmodifiedDate: (new Date(file.lastModified)).toLocaleString()
+                lastmodifiedDate: formatDate(file.lastModified)
             };
 
             if (isFileSizeValid(dO.bytes)) {
@@ -68,43 +55,45 @@
 
         }
 
+    }
+
+    function onUploadFiles() {
+
+        disablepLoad();
+
+        const files = fileUploadInput.files;
+        //resetForm();
+
+        let processedFiles = 0;
         
 
-        
-
-    }, false);
-
-    function uploadFiles() {
-
-        var files = fileUploadInput.files;
-       
-        var results = "";
-        var progress = String.fromCharCode(9675);
-        var sumReadyState = 0;
-        var processedFiles = 0;
-        var timeOutMs = 2000;
-        let statusMessage = "&#x26A0;";
-
-        for (file of files) {
+        Array.prototype.forEach.call(files, function (file) {
 
             let xhr = new XMLHttpRequest();
             let currentFile = file.name;
             xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
 
-                    if (xhr.status = 200) statusMessage = "&check;";
-                   
+                let statusMessageIcon = "&#x26A0;";
 
-                    document.getElementById("ifs-uploader-filelist").innerHTML += currentFile + " " + statusMessage + "<br>\n";
+                if (xhr.readyState == 4) { // done
+
                     ++processedFiles;
-                    if (processedFiles >= files.length) {
-                        document.getElementById("ifs-uploader-filelist").innerHTML += "<p>" + files.length + " Dateien verarbeitet. Versuchen Sie eine Suche nach * in einem Such-Tab, um ihre Dokumente zu finden, oder laden Sie weitere Dokumente hoch.</p>";
-                        //document.getElementById('ifs-uploader-submit').setAttribute('disabled', true);
-                        document.getElementById('ifs-uploader-submit').style.display = "none";
-                        document.getElementById('ifs-uploader-select').style.display = "inline";
+                    switch (xhr.status) {
+                        case 200:
+                            statusMessageIcon = "&check;";
+                            fileUploaded(currentFile, statusMessageIcon);
+                            if (processedFiles >= files.length) {
+                                fileUploadComplete(files.length);
+                            }
+                            break;
+                        case 404:
+                            formNotValidError(`Unable to upload files: ${xhr.status}`);
+                            break;
+
                     }
+
+
                 }
-                sumReadyState += xhr.readyState;
             }
 
             xhr.open("POST", FileUploaderServlet, true);
@@ -113,8 +102,53 @@
             xhr.setRequestHeader("File-Date", file.lastModified);
             xhr.send(file);
 
-        };
+        });
+
     };
+
+    // HELPERS
+
+    function fileUploaded(currentFile, statusMessage) {
+        fileDisplayList.innerHTML.innerHTML += currentFile + " " + statusMessage + "<br>\n";
+    }
+
+    function fileUploadComplete(nrOfFiles) {
+        fileDisplayList.innerHTML += `<p> $(nrOfFiles) were uploaded. Go to the searchbar and type a asterix (*) in the search field to find all your documents. You may also continue by adding further documents.`;
+    }
+
+    function enablepLoad() {
+        section.classList.add('ifs-files-selected');
+        upLoadSubmitBtn.style.display = "inline";
+    };
+
+    function disablepLoad() {
+        section.classList.remove('ifs-files-selected');
+        upLoadSubmitBtn.style.display = "none";
+    };
+
+    function isFileSizeValid(bytes) {
+        return !!(bytes <= maxFileSize);
+    }
+
+    function resetForm() {
+        document.forms['ifs-upload-files'].reset();
+    }
+
+    function formNotValidError(message) {
+        resetForm();
+        fileDisplayList.innerHTML = '<span class="ifs-uploader-error">' + message + '</span>';
+    }
+
+    function formatDate(millisecs) {
+        let options = {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        };
+        const date = new Date(millisecs);
+        return date.toLocaleString('en-US', options);
+    }
 
     function bytesToSize(bytes) {
         var sizes = ['Bytes', 'KB', 'MB'];

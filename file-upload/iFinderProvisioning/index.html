@@ -17,10 +17,10 @@
 
             <h3 class="ifs-uploader-title">Upload Files Frank</h3>
 
-            <div class="ifs-uploader-output-area">
+            <div class="ifs-uploader-drop-area">
 
 
-                <h3 class="ifs-files-selected--hide">Please select files to upload.</h3>
+                <h4 class="ifs-uploader-instruction ifs-files-selected--hide">Please select files to upload.</h4>
 
 
                 <ul id="ifs-uploader-filelist" class="ifs-uploader-list"></ul>
@@ -55,8 +55,8 @@
     <script id="template-file-item" type="text/template">
 
             <li class="ifs-uploader-list-item">
-                <h4>{{name}}</h4>
-                <small class="ifs-uploader-filesize">({{size}} {{lastmodifiedDate}})</small>
+                <strong>{{name}}</strong><br />
+                <small class="ifs-uploader-filesize">{{size}} | {{lastmodifiedDate}}</small>
             </li>
 
         </script>
