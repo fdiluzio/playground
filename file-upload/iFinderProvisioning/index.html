@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>File Uploader</title>
+    <link rel="stylesheet" type="text/css" href="app.css">
+    <link rel="stylesheet" type="text/css" href="file-uploader.css">
+    <script src="file-uploader.js" defer></script>
+</head>
+
+<body>
+
+    <main class="ifs-page">
+
+        <section class="ifs-uploader">
+
+            <h3 class="ifs-uploader-title">Upload Files Frank</h3>
+
+            <div class="ifs-uploader-output-area">
+
+
+                <h3 class="ifs-files-selected--hide">Please select files to upload.</h3>
+
+
+                <ul id="ifs-uploader-filelist" class="ifs-uploader-list"></ul>
+
+                <div class="ifs-uploader-input-area">
+                    <label id="ifs-upifloader-select" class="ifs-uploader-input-btn" for="ifs-uploader">Select
+                        files</label>
+                    <button style="display:none" id="ifs-uploader-submit"
+                        class="ifs-uploader-input-btn ifs-uploader-input-btn-send">Upload files</button>
+                </div>
+
+            </div>
+
+            <div class="ifs-restrictions ifs-files-selected--hide">
+                <h4>Please keep the following in mind when uploading files:</h4>
+                <ul>
+                    <li>You may upload 10 files at once. Individual file sizes up to 10 MB are allowed.</li>
+                    <li>Do not upload files that are confidential to you, your company or anyone else.</li>
+                    <li>We support a wide range of file types — including MS Office, PDF, images and more.</li>
+                </ul>
+            </div>
+
+            <form name="ifs-upload-files">
+                <input type="file" id="ifs-uploader" multiple="multiple" class="ifs-uploader-input" />
+            </form>
+
+        </section>
+
+
+    </main>
+
+    <script id="template-file-item" type="text/template">
+
+            <li class="ifs-uploader-list-item">
+                <h4>{{name}}</h4>
+                <small class="ifs-uploader-filesize">({{size}} {{lastmodifiedDate}})</small>
+            </li>
+
+        </script>
+
+
+
+</body>
+
+</html>

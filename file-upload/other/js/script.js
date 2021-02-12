@@ -2,7 +2,7 @@
 var iBytesUploaded = 0;
 var iBytesTotal = 0;
 var iPreviousBytesLoaded = 0;
-var iMaxFilesize = 1048576; // 1MB
+var iMaxFilesize = 10485760; // 1MB
 var oTimer = 0;
 var sResultFileSize = '';
 
@@ -19,11 +19,12 @@ function secondsToTime(secs) { // we will use this function to convert seconds i
 };
 
 function bytesToSize(bytes) {
-    var sizes = ['Bytes', 'KB', 'MB'];
-    if (bytes == 0) return 'n/a';
-    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
-};
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
+    if (bytes === 0) return 'n/a'
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10)
+    if (i === 0) return `${bytes} ${sizes[i]})`
+    return `${(bytes / (1024 ** i)).toFixed(1)} ${sizes[i]}`
+  }
 
 function fileSelected() {
 
@@ -38,10 +39,10 @@ function fileSelected() {
     var oFile = document.getElementById('image_file').files[0];
 
     // filter for image files
-    var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
+    var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)|image\/svg\+xml$/i;
     if (! rFilter.test(oFile.type)) {
-        document.getElementById('error').style.display = 'block';
-        return;
+        debugger;
+       alert('Image Detected')
     }
 
     // little test for filesize
