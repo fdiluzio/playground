@@ -12,6 +12,7 @@
 
 .ifs-uploader {
     max-width: 1024px;
+    margin: 0 auto;
 }
 
 .ifs-files-selected .ifs-files-selected--hide {
@@ -56,6 +57,7 @@
     transform: translateX(-50%) translateY(-50%);
     top: 0;
     display: none;
+    width: fit-content;
 }
 
 
@@ -67,7 +69,7 @@
 .ifs-uploader-input-btn {
     display: inline-block;
     font-family: LatoLatinWebSemibold;
-    font-size:14px;
+    font-size: 14px;
     border: 1px #cee6ff solid;
     color: #169cd7;
     background-color: #fff;
@@ -119,6 +121,10 @@
     padding: 1rem;
 }
 
+.ifs-uploader-list-item-details {
+    color: rgb(133, 133, 133);
+}
+
 
 
 @media (min-width: 768px) {
@@ -138,10 +144,7 @@
 /* ######################## */
 
 .ifs-restrictions {
-    display: inline-block;
-    border-radius: 5px;
-    padding: 1px 2rem 1rem 1rem;
-    margin-top: 1rem;
+   font-size: 14px;
     color: #646464;
     line-height: 1.5;
 }
@@ -160,11 +163,20 @@ form[name="ifs-upload-files"] {
 }
 
 /* ######################## */
-/* CUSTOM */
+/* MISC */
 /* ######################## */
 .ifs-background-message {
     position: relative;
     z-index: 1;
+}
+
+.ifs-loading-animation{
+    width: 100px;
+    opacity: 0.5;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    display: none;
 }
 
 .ifs-background-message> :first-child {
@@ -178,4 +190,6 @@ form[name="ifs-upload-files"] {
     align-items: center;
     margin: 0;
     z-index: 0;
+    padding: 1rem;
+    text-align: center;
 }

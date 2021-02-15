@@ -18,13 +18,29 @@
             <h3 class="ifs-uploader-title">Upload Files</h3>
 
 
+            <div class="ifs-restrictions ifs-files-selected--hide">
+                <h4>Please keep the following in mind when uploading files:</h4>
+                <ul>
+                    <li>You may upload 10 files at once. Individual file sizes up to 10 MB are allowed.</li>
+                    <li>Do not upload files that are confidential to you, your company or anyone else.</li>
+                    <li>We support a wide range of file types — including MS Office, PDF, images and more.</li>
+                </ul>
+            </div>
+
+
             <div class="ifs-background-message">
+
+                
                 <div id="ifs-background-message" class="ifs-files-selected--hide">Add files by dropping them here or
                     using the button below.</div>
                 <div id="ifs-uploader-drop-area" class="ifs-uploader-drop-area">
-                    <ul id="ifs-uploader-filelist" class="ifs-uploader-list"></ul>
+                    <ul id="ifs-uploader-filelist" class="ifs-uploader-list">
+                    </ul>
+                    <svg class="ifs-loading-animation" viewBox="0 0 100 100"><use href="#ifs-file-loader-loading-ani" /></svg>
+
                 </div>
                 <div id="ifs-error-message" class="ifs-uploader-error"></div>
+            
             </div>
 
 
@@ -35,14 +51,7 @@
                     class="ifs-uploader-input-btn ifs-uploader-input-btn-send">Upload files</button>
             </div>
 
-            <div class="ifs-restrictions ifs-files-selected--hide">
-                <h4>Please keep the following in mind when uploading files:</h4>
-                <ul>
-                    <li>You may upload 10 files at once. Individual file sizes up to 10 MB are allowed.</li>
-                    <li>Do not upload files that are confidential to you, your company or anyone else.</li>
-                    <li>We support a wide range of file types — including MS Office, PDF, images and more.</li>
-                </ul>
-            </div>
+
 
             <form name="ifs-upload-files">
                 <input type="file" id="ifs-uploader" multiple="multiple" class="ifs-uploader-input" />
@@ -53,11 +62,65 @@
 
     </main>
 
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  preserveAspectRatio="xMidYMid" style="display: none;">
+        <defs>
+            <g id="ifs-file-loader-loading-ani">
+                <circle cx="84" cy="50" r="10" fill="#6a6a6a">
+                    <animate attributeName="r" repeatCount="indefinite" dur="0.6578947368421053s" calcMode="spline"
+                        keyTimes="0;1" values="10;0" keySplines="0 0.5 0.5 1" begin="0s"></animate>
+                    <animate attributeName="fill" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="discrete"
+                        keyTimes="0;0.25;0.5;0.75;1" values="#6a6a6a;#e2e2e2;#bdbdbd;#979797;#6a6a6a" begin="0s">
+                    </animate>
+                </circle>
+                <circle cx="16" cy="50" r="10" fill="#6a6a6a">
+                    <animate attributeName="r" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="0s"></animate>
+                </circle>
+                <circle cx="50" cy="50" r="10" fill="#979797">
+                    <animate attributeName="r" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.6578947368421053s">
+                    </animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.6578947368421053s">
+                    </animate>
+                </circle>
+                <circle cx="84" cy="50" r="10" fill="#bdbdbd">
+                    <animate attributeName="r" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.3157894736842106s">
+                    </animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.3157894736842106s">
+                    </animate>
+                </circle>
+                <circle cx="16" cy="50" r="10" fill="#e2e2e2">
+                    <animate attributeName="r" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="0;0;10;10;10"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.9736842105263157s">
+                    </animate>
+                    <animate attributeName="cx" repeatCount="indefinite" dur="2.6315789473684212s" calcMode="spline"
+                        keyTimes="0;0.25;0.5;0.75;1" values="16;16;16;50;84"
+                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" begin="-1.9736842105263157s">
+                    </animate>
+                </circle>
+            </g>
+        </defs>
+        <!-- [ldio] generated by https://loading.io/ -->
+    </svg>
+
     <script id="template-file-item" type="text/template">
 
             <li class="ifs-uploader-list-item">
                 <strong>{{name}}</strong><br />
-                <small class="ifs-uploader-filesize">{{size}} | {{lastmodifiedDate}}</small>
+                <small class="ifs-uploader-list-item-details">{{size}} | {{lastmodifiedDate}}</small>
             </li>
 
         </script>
@@ -72,9 +135,10 @@
             var upLoadSubmitBtn = document.getElementById('ifs-uploader-submit');
             var errorMsg = document.getElementById('ifs-error-message');
             var section = document.querySelector('.ifs-uploader');
+            var loadingAni = document.querySelector('.ifs-loading-animation');
             var maxFileSize = 1048576 * 10; // 10 MB (1MB = 1048576)
             var maxNumberOfFiles = 10;
-            var FileUploaderServvar = '/iFinder5/FileUploaderServvar';
+            var FileUploaderServlet = '/iFinder5/FileUploaderServlet';
             var fileUploadInput = document.getElementById('ifs-uploader');
             var fileList = [];
 
@@ -91,8 +155,7 @@
 
 
             function onDragAndDrop(e) {
-                console.log(e.type);
-
+               
                 e.preventDefault();
                 e.stopPropagation();
 
@@ -153,7 +216,7 @@
                         fileDisplayList.innerHTML = FileListHTML;
                         enablepLoad();
                     } else {
-                        formNotValidError(`Please try again. File ${dO.name} is greater than 10 MB (${dO.size}).`);
+                        formNotValidError(`File ${dO.name} is greater than the 10 MB limit (${dO.size}).`);
                         return;
                     }
 
@@ -171,10 +234,10 @@
             function onUploadFiles() {
 
                 disablepLoad();
-
-                //resetForm();
+                showLoading();
 
                 var processedFiles = 0;
+                var upLoadedFiles = 0;
 
 
                 fileList.forEach(function (file) {
@@ -188,26 +251,26 @@
                         if (xhr.readyState == 4) { // done
 
                             ++processedFiles;
-                            switch (xhr.status) {
-                                case 200:
+                            switch (true) {
+                                case (xhr.status === 200):
+                                    upLoadedFiles++
                                     statusMessageIcon = "&check;";
-                                    fileUploaded(currentFile, statusMessageIcon);
-                                    if (processedFiles >= files.length) {
-                                        fileUploadCompvare(files.length);
+                                    fileProcessed(currentFile, statusMessageIcon);
+                                    if (processedFiles >= fileList.length) {
+                                        fileUploadComplete(upLoadedFiles);
                                     }
                                     break;
-                                case 404:
-                                case 500:
+                                case (xhr.status >= 400 && xhr.status < 600):
+                                    hideLoading();
                                     formNotValidError(`Unable to upload files: ${xhr.status}`);
                                     break;
-
                             }
 
 
                         }
                     }
 
-                    xhr.open("POST", FileUploaderServvar, true);
+                    xhr.open("POST", FileUploaderServlet, true);
                     xhr.setRequestHeader("File-Name", file.name);
                     xhr.setRequestHeader("File-Size", file.size);
                     xhr.setRequestHeader("File-Date", file.lastModified);
@@ -219,12 +282,25 @@
 
             // HELPERS
 
-            function fileUploaded(currentFile, statusMessage) {
-                fileDisplayList.innerHTML.innerHTML += currentFile + " " + statusMessage + "<br>\n";
+            function clearFileDisplayList() {
+                fileDisplayList.innerHTML = "";
             }
 
-            function fileUploadCompvare(nrOfFiles) {
-                fileDisplayList.innerHTML = `<p> $(nrOfFiles) were uploaded. Go to the searchbar and type an asterix (*) in the search field to find all your documents. You may also continue by adding further documents.</p>` + fileDisplayList.innerHTML;
+            function fileProcessed(currentFile, statusMessage) {
+                var entry = document.createElement('li');
+                entry.style.flexBasis = '100%';
+                entry.innerHTML = statusMessage + '&nbsp;' + currentFile
+                fileDisplayList.appendChild(entry);
+            }
+
+            function fileUploadComplete(nrOfFiles) {
+                var entry = document.createElement('li');
+                entry.style.flexBasis = '100%';
+                entry.style.marginTop = '2rem';
+                entry.textContent = nrOfFiles + ' ' + ((nrOfFiles > 1) ? 'files' : 'file') + " uploaded. Go to the searchbar and use an asterix (*) in the search field to find all your documents. You may also continue by adding further documents.";
+                fileDisplayList.appendChild(entry);
+                hideLoading();
+
             }
 
             function enablepLoad() {
@@ -233,7 +309,7 @@
             };
 
             function disablepLoad() {
-                section.classList.remove('ifs-files-selected');
+                clearFileDisplayList();
                 upLoadSubmitBtn.style.display = "none";
                 errorMsg.style.display = 'none';
             };
@@ -244,8 +320,17 @@
 
             function resetForm() {
                 disablepLoad();
+                section.classList.remove('ifs-files-selected');
                 fileDisplayList.innerHTML = "";
                 document.forms['ifs-upload-files'].reset();
+                dropArea.classList.remove('ifs-drag-active');
+            }
+
+            function showLoading(){
+                loadingAni.style.display = 'block'
+            }
+            function hideLoading(){
+                loadingAni.style.display = 'none'
             }
 
             function formNotValidError(message) {
