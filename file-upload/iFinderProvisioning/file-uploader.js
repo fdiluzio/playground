@@ -1,13 +1,16 @@
 (function (window) {
 
 
+    // 53320dfa-6774-11ea-9671-8b6efc230f9e
+
+
     const templateHtml = document.getElementById("template-file-item").innerHTML;
     const fileDisplayList = document.getElementById("ifs-uploader-filelist");
     const upLoadSubmitBtn = document.getElementById('ifs-uploader-submit');
     const section = document.querySelector('.ifs-uploader');
     const maxFileSize = 1048576 * 10; // 10 MB (1MB = 1048576)
     const maxNumberOfFiles = 10;
-    const FileUploaderServlet = '/iFinder5/FileUploaderServlet';
+    const FileUploaderServlet = 'http://localhost/iFinder5/FileUploaderServlet';
     const fileUploadInput = document.getElementById('ifs-uploader');
 
     document.getElementById('ifs-uploader-submit').addEventListener('click', onUploadFiles, false);

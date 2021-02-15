@@ -15,15 +15,26 @@
 }
 
 .ifs-files-selected .ifs-files-selected--hide {
-    display: none;
+    display: none !important;
 }
 
-.ifs-uploader-drop-area{
-    padding: 1rem 2rem;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+.ifs-files-selected .ifs-uploader-drop-area {
+    border-style: solid;
+    border-color: #169cd7;
+}
+
+.ifs-uploader-drop-area {
+    position: relative;
+    padding: 2rem 1rem;
     border-radius: 5px;
+    margin-top: 2rem;
+    border: 5px dashed #c9c9c9;
+    min-height: 200px;
 }
 
+.ifs-uploader-drop-area.ifs-drag-active {
+    border-color: #169cd7;
+}
 
 .ifs-uploader-title {
     margin: 0 0 1rem;
@@ -35,11 +46,16 @@
     margin: 0;
 }
 
-.ifs-uploader-error{
+.ifs-uploader-error {
+    color: white;
     padding: 1rem;
-    background-color: rgba(171,13,25,0.4);
+    background-color: rgba(171, 13, 25, 1);
     border-radius: 5px;
-    margin-top: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 0;
+    display: none;
 }
 
 
@@ -50,8 +66,8 @@
 
 .ifs-uploader-input-btn {
     display: inline-block;
-    font-size: 12px;
     font-family: LatoLatinWebSemibold;
+    font-size:14px;
     border: 1px #cee6ff solid;
     color: #169cd7;
     background-color: #fff;
@@ -67,7 +83,7 @@
     color: #0f6a92;
     background-color: #cee6ff;
     transform: translateY(-1px);
-    box-shadow: 0 5px 50px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .ifs-uploader-input-btn-send {
@@ -90,7 +106,7 @@
 /* LISTS */
 /* ######################## */
 
-.ifs-uploader-list { 
+.ifs-uploader-list {
     margin: 0 0 1rem 0;
     padding: 0;
     list-style: none;
@@ -99,22 +115,21 @@
 
 .ifs-uploader-list-item {
     color: #169cd7;
-    font-size: 0.9rem;
     margin-bottom: 0.5rem;
     padding: 1rem;
 }
 
 
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
 
-    .ifs-uploader-list { 
+    .ifs-uploader-list {
         display: flex;
         flex-wrap: wrap;
     }
 
     .ifs-uploader-list-item {
-       flex: 1 0 50%;
+        flex: 1 0 50%;
     }
 }
 
@@ -125,11 +140,9 @@
 .ifs-restrictions {
     display: inline-block;
     border-radius: 5px;
-    background-color: #e0e0e0;
     padding: 1px 2rem 1rem 1rem;
     margin-top: 1rem;
     color: #646464;
-    font-size: 14px;
     line-height: 1.5;
 }
 
@@ -137,11 +150,32 @@
 /* FORM */
 /* ######################## */
 
-form[name="ifs-upload-files"]{
+form[name="ifs-upload-files"] {
     top: -5000px;
     left: -5000px;
     opacity: 0;
     overflow: hidden;
     position: absolute;
     z-index: -1;
+}
+
+/* ######################## */
+/* CUSTOM */
+/* ######################## */
+.ifs-background-message {
+    position: relative;
+    z-index: 1;
+}
+
+.ifs-background-message> :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    z-index: 0;
 }

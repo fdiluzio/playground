@@ -17,22 +17,32 @@
 
             <h3 class="ifs-uploader-title">Upload Files</h3>
 
+            <div class="ifs-uploader-drop-area">
 
-            <div class="ifs-background-message">
-                <div id="ifs-background-message" class="ifs-files-selected--hide">Add files by dropping them here or
-                    using the button below.</div>
-                <div id="ifs-uploader-drop-area" class="ifs-uploader-drop-area">
-                    <ul id="ifs-uploader-filelist" class="ifs-uploader-list"></ul>
+
+                <h4 class="ifs-uploader-instruction ifs-files-selected--hide">Please select files to upload.</h4>
+
+
+                <ul id="ifs-uploader-filelist" class="ifs-uploader-list">WIN_20200604_18_00_34_Pro.jpg ✓<br>
+                    cathy_and_winfield (2).jpg ✓<br>
+                    ortona.jpg ✓<br>
+                    BASEBALL.jpg ✓<br>
+                    WIN_20200619_10_08_51_Pro.jpg ✓<br>
+                    MAGNOLIA_600jpg.jpg ✓<br>
+                    vodka.jpg ✓<br>
+                    4SEASONS.jpg ✓<br>
+                    LIGHTPENCILIDEAS_DRUCKjpg.jpg ✓<br>
+                    <p> 9 were uploaded. Go to the searchbar and type a asterix (*) in the search field to find all your
+                        documents. You may also continue by adding further documents.</p>
+                </ul>
+
+                <div class="ifs-uploader-input-area">
+                    <label id="ifs-upifloader-select" class="ifs-uploader-input-btn" for="ifs-uploader">Select
+                        files</label>
+                    <button style="display: none;" id="ifs-uploader-submit"
+                        class="ifs-uploader-input-btn ifs-uploader-input-btn-send">Upload files</button>
                 </div>
-                <div id="ifs-error-message" class="ifs-uploader-error"></div>
-            </div>
 
-
-            <div class="ifs-uploader-input-area">
-                <label id="ifs-upifloader-select" class="ifs-uploader-input-btn" for="ifs-uploader">Select
-                    files</label>
-                <button style="display:none" id="ifs-uploader-submit"
-                    class="ifs-uploader-input-btn ifs-uploader-input-btn-send">Upload files</button>
             </div>
 
             <div class="ifs-restrictions ifs-files-selected--hide">
@@ -45,13 +55,15 @@
             </div>
 
             <form name="ifs-upload-files">
-                <input type="file" id="ifs-uploader" multiple="multiple" class="ifs-uploader-input" />
+                <input type="file" id="ifs-uploader" multiple="multiple" class="ifs-uploader-input">
             </form>
 
         </section>
 
 
     </main>
+
+
 
     <script id="template-file-item" type="text/template">
 
@@ -66,75 +78,36 @@
         (function (window) {
 
 
-            var dropArea = document.getElementById("ifs-uploader-drop-area");
-            var templateHtml = document.getElementById("template-file-item").innerHTML;
-            var fileDisplayList = document.getElementById("ifs-uploader-filelist");
-            var upLoadSubmitBtn = document.getElementById('ifs-uploader-submit');
-            var errorMsg = document.getElementById('ifs-error-message');
-            var section = document.querySelector('.ifs-uploader');
-            var maxFileSize = 1048576 * 10; // 10 MB (1MB = 1048576)
-            var maxNumberOfFiles = 10;
-            var FileUploaderServvar = '/iFinder5/FileUploaderServvar';
-            var fileUploadInput = document.getElementById('ifs-uploader');
-            var fileList = [];
+            const templateHtml = document.getElementById("template-file-item").innerHTML;
+            const fileDisplayList = document.getElementById("ifs-uploader-filelist");
+            const upLoadSubmitBtn = document.getElementById('ifs-uploader-submit');
+            const section = document.querySelector('.ifs-uploader');
+            const maxFileSize = 1048576 * 10; // 10 MB (1MB = 1048576)
+            const maxNumberOfFiles = 10;
+            const FileUploaderServlet = '/iFinder5/FileUploaderServlet';
+            const fileUploadInput = document.getElementById('ifs-uploader');
 
-            upLoadSubmitBtn.addEventListener('click', onUploadFiles, false);
-            document.getElementById('ifs-uploader').addEventListener('change', onInputChange, false);
+            document.getElementById('ifs-uploader-submit').addEventListener('click', onUploadFiles, false);
+            document.getElementById('ifs-uploader').addEventListener('change', onInputChange, false)
+
+
 
             // EVENTS
 
-            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(function (eventName) {
-                dropArea.addEventListener(eventName, onDragAndDrop, false)
-                document.body.addEventListener(eventName, onDragAndDrop, false)
-            });
-
-
-
-            function onDragAndDrop(e) {
-                console.log(e.type);
-
-                e.preventDefault();
-                e.stopPropagation();
-
-                switch (e.type) {
-                    case "dragenter":
-                        this.classList.add('ifs-drag-active');
-                        break;
-
-                    case "dragleave":
-                        this.classList.remove('ifs-drag-active');
-                        break;
-
-                    case "drop":
-
-                        processFiles(e.dataTransfer.files);
-                        break;
-
-                }
-
-            }
-
-            function processFiles(files) {
-
-                fileList = Array.prototype.slice.call(files, 0);
-
-
+            function onInputChange() {
                 disablepLoad();
-                var FileListHTML = "";
-                var fileCount = fileList.length;
-                if (fileCount < 1) {
-                    fileDisplayList.innerHTML = "";
-                }
+                let FileListHTML = "";
+                let fileCount = this.files.length;
 
                 if (fileCount > maxNumberOfFiles) {
-                    var overDrawn = fileCount - maxNumberOfFiles;
+                    const overDrawn = fileCount - maxNumberOfFiles;
                     formNotValidError(`Only ${maxNumberOfFiles} files may be submited at once. You've selected ${overDrawn} too many.`);
                     return;
                 }
 
-                for (var i = 0; i < fileCount; i++) {
+                for (let i = 0; i < this.files.length; i++) {
 
-                    var file = fileList[i];
+                    let file = this.files[i];
 
                     var dO = {
                         name: file.name,
@@ -161,29 +134,23 @@
 
             }
 
-
-
-
-            function onInputChange(e) {
-                processFiles(this.files);
-            }
-
             function onUploadFiles() {
 
                 disablepLoad();
 
+                const files = fileUploadInput.files;
                 //resetForm();
 
-                var processedFiles = 0;
+                let processedFiles = 0;
 
 
-                fileList.forEach(function (file) {
+                Array.prototype.forEach.call(files, function (file) {
 
-                    var xhr = new XMLHttpRequest();
-                    var currentFile = file.name;
+                    let xhr = new XMLHttpRequest();
+                    let currentFile = file.name;
                     xhr.onreadystatechange = function () {
 
-                        var statusMessageIcon = "&#x26A0;";
+                        let statusMessageIcon = "&#x26A0;";
 
                         if (xhr.readyState == 4) { // done
 
@@ -193,11 +160,10 @@
                                     statusMessageIcon = "&check;";
                                     fileUploaded(currentFile, statusMessageIcon);
                                     if (processedFiles >= files.length) {
-                                        fileUploadCompvare(files.length);
+                                        fileUploadComplete(files.length);
                                     }
                                     break;
                                 case 404:
-                                case 500:
                                     formNotValidError(`Unable to upload files: ${xhr.status}`);
                                     break;
 
@@ -207,7 +173,7 @@
                         }
                     }
 
-                    xhr.open("POST", FileUploaderServvar, true);
+                    xhr.open("POST", FileUploaderServlet, true);
                     xhr.setRequestHeader("File-Name", file.name);
                     xhr.setRequestHeader("File-Size", file.size);
                     xhr.setRequestHeader("File-Date", file.lastModified);
@@ -223,8 +189,8 @@
                 fileDisplayList.innerHTML.innerHTML += currentFile + " " + statusMessage + "<br>\n";
             }
 
-            function fileUploadCompvare(nrOfFiles) {
-                fileDisplayList.innerHTML = `<p> $(nrOfFiles) were uploaded. Go to the searchbar and type an asterix (*) in the search field to find all your documents. You may also continue by adding further documents.</p>` + fileDisplayList.innerHTML;
+            function fileUploadComplete(nrOfFiles) {
+                fileDisplayList.innerHTML += `<p> $(nrOfFiles) were uploaded. Go to the searchbar and type a asterix (*) in the search field to find all your documents. You may also continue by adding further documents.`;
             }
 
             function enablepLoad() {
@@ -235,7 +201,6 @@
             function disablepLoad() {
                 section.classList.remove('ifs-files-selected');
                 upLoadSubmitBtn.style.display = "none";
-                errorMsg.style.display = 'none';
             };
 
             function isFileSizeValid(bytes) {
@@ -243,25 +208,22 @@
             }
 
             function resetForm() {
-                disablepLoad();
-                fileDisplayList.innerHTML = "";
                 document.forms['ifs-upload-files'].reset();
             }
 
             function formNotValidError(message) {
                 resetForm();
-                errorMsg.textContent = message;
-                errorMsg.style.display = 'block';
+                fileDisplayList.innerHTML = '<span class="ifs-uploader-error">' + message + '</span>';
             }
 
             function formatDate(millisecs) {
-                var options = {
+                let options = {
                     weekday: 'long',
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
                 };
-                var date = new Date(millisecs);
+                const date = new Date(millisecs);
                 return date.toLocaleString('en-US', options);
             }
 
