@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="if-logo">
+    <img src="https://dummyimage.com/50x100/000/fff" className="if-logo-desktop" alt="IntraFind Software AG"/>
+    <img src="https://dummyimage.com/30x40/000/fff" className="if-logo-mobile" alt="IntraFind Software AG"/>
+</div>
+
+<script>
+
+  (function (document) {
+    function wrap(el, wrapper) {
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+      return wrapper
+    }
+
+    function replace(el, wrapper) {
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.innerHTML = el.innerHTML;
+      el.parentNode.removeChild(el);
+      return wrapper
+    }
+
+    // var wrapper =  wrap(document.querySelector('.if-logo'), document.createElement('a'));
+    var wrapper = replace(document.querySelector('.if-logo'), document.createElement('a'));
+    wrapper.href = "https://intrafind.de"
+
+  })(document);
+</script>
+
+</body>
+</html>
