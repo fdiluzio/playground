@@ -41,13 +41,13 @@ ListboxButton.prototype.checkHide = function (evt) {
 };
 
 ListboxButton.prototype.showListbox = function () {
-  this.listbox.listboxNode.classList.remove('hidden');
+  this.listbox.listboxNode.style.display = 'block';
   this.button.setAttribute('aria-expanded', 'true');
   this.listbox.listboxNode.focus();
 };
 
 ListboxButton.prototype.hideListbox = function () {
-  this.listbox.listboxNode.classList.add('hidden');
+  this.listbox.listboxNode.style.display = 'none'
   this.button.removeAttribute('aria-expanded');
 };
 

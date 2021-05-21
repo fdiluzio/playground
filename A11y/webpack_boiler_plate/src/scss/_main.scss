@@ -18,3 +18,7 @@ html {
     font-size: 1.6em;
   }
 }
+
+@import "ifs-variables";
+@import "ifs-mixins";
+@import "ifs-dropdowns";

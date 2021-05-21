@@ -15,4 +15,3 @@ print();
 const button = document.getElementById('exp_button');
 const exListbox = document.getElementById('exp_elem_list');
 new Listbox(button, exListbox);
-console.log('ListBox')
