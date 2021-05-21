@@ -1,5 +1,5 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const path = require('path');
@@ -20,6 +20,7 @@ module.exports = {
     compress: true,
     port: 3000,
     overlay: true,
+    writeToDisk: true,
   },
   devtool: 'eval-cheap-module-source-map',
   module: {

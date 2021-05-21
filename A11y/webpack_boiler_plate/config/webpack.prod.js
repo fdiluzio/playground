@@ -1,12 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const path = require('path');
 const ROOT_DIRECTORY = process.cwd();
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     main: path.resolve(ROOT_DIRECTORY, 'src/index.js'),
   },
@@ -14,14 +13,6 @@ module.exports = {
     path: path.resolve(ROOT_DIRECTORY, 'build'),
     filename: '[name].js'
   },
-  devServer: {
-    contentBase: path.resolve(ROOT_DIRECTORY, 'build'),
-    // Enable gzip compression
-    compress: true,
-    port: 3000,
-    overlay: true,
-  },
-  devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {

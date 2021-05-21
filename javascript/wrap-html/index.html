@@ -20,17 +20,23 @@
       return wrapper
     }
 
-    function replace(el, wrapper) {
-      el.parentNode.insertBefore(wrapper, el);
-      wrapper.innerHTML = el.innerHTML;
-      el.parentNode.removeChild(el);
-      return wrapper
-    }
-
-    // var wrapper =  wrap(document.querySelector('.if-logo'), document.createElement('a'));
-    var wrapper = replace(document.querySelector('.if-logo'), document.createElement('a'));
-    wrapper.href = "https://intrafind.de"
-
+    var targetNode = document.body;
+    var config = {attributes: false, childList: true, subtree: true};
+    var callback = function (mutationsList, observer) {
+      Array.prototype.forEach.call(mutationsList, function (mutation){
+        if (mutation.type === 'childList') {
+          for (var index = 0; index < mutation.addedNodes.length; index++){
+            if (mutation.addedNodes[index].classList && mutation.addedNodes[index].classList.contains('if-logo')){
+              observer.disconnect();
+              var wrapper =  wrap(document.querySelector('.if-logo'), document.createElement('a'));
+              wrapper.href = "https://intrafind.de"
+            }
+          }
+        }
+      })
+    };
+    var observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
   })(document);
 </script>
 
