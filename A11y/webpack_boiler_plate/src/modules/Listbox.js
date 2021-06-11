@@ -6,7 +6,8 @@ import ListboxButton from "./ListBoxButton";
 import KeyCodes from "./KeyCodes";
 
 
-const Listbox = function (button, list) {
+export default function Listbox(button, list, callback) {
+  this.selection = null;
   this.listboxNode = list;
   this.activeDescendant = this.listboxNode.getAttribute('aria-activedescendant');
   this.multiselectable = this.listboxNode.hasAttribute('aria-multiselectable');
@@ -16,10 +17,20 @@ const Listbox = function (button, list) {
   this.downButton = null;
   this.moveButton = null;
   this.keysSoFar = '';
-  this.handleFocusChange = function () {};
-  this.handleItemChange = function (event, items) {};
+  this.handleFocusChange = () => {
+  };
+  this.handleItemChange = (event, items) => {
+  };
   this.registerEvents();
-  this.listboxButton = new ListboxButton(button, this );
+  this.listboxButton = new ListboxButton(button, this);
+  if (typeof callback === 'function') {
+    this.callback = callback;
+  } else {
+    this.callback = (selection) => {
+      this.listboxButton
+      console.log(selection.textContent);
+    };
+  }
 };
 
 /**
@@ -28,8 +39,14 @@ const Listbox = function (button, list) {
  */
 Listbox.prototype.registerEvents = function () {
   this.listboxNode.addEventListener('focus', this.setupFocus.bind(this));
+  this.listboxNode.addEventListener('blur', this.onBlur.bind(this));
   this.listboxNode.addEventListener('keydown', this.checkKeyPress.bind(this));
   this.listboxNode.addEventListener('click', this.checkClickItem.bind(this));
+};
+
+Listbox.prototype.selected = function () {
+  this.listboxButton.hideListbox();
+  this.callback(this.selection, this);
 };
 
 /**
@@ -76,53 +93,42 @@ Listbox.prototype.focusLastItem = function () {
  *  The keydown event object
  */
 Listbox.prototype.checkKeyPress = function (evt) {
-  const key = evt.which || evt.keyCode;
+  const key = parseInt(evt.which || evt.keyCode);
   let nextItem = document.getElementById(this.activeDescendant);
-
   if (!nextItem) {
     return;
   }
-
   switch (key) {
     case KeyCodes.PAGE_UP:
     case KeyCodes.PAGE_DOWN:
       if (this.moveUpDownEnabled) {
         evt.preventDefault();
-
         if (key === KeyCodes.PAGE_UP) {
           this.moveUpItems();
-        }
-        else {
+        } else {
           this.moveDownItems();
         }
       }
-
       break;
     case KeyCodes.UP:
     case KeyCodes.DOWN:
       evt.preventDefault();
-
       if (this.moveUpDownEnabled && evt.altKey) {
         if (key === KeyCodes.UP) {
           this.moveUpItems();
-        }
-        else {
+        } else {
           this.moveDownItems();
         }
         return;
       }
-
       if (key === KeyCodes.UP) {
         nextItem = nextItem.previousElementSibling;
-      }
-      else {
+      } else {
         nextItem = nextItem.nextElementSibling;
       }
-
       if (nextItem) {
         this.focusItem(nextItem);
       }
-
       break;
     case KeyCodes.HOME:
       evt.preventDefault();
@@ -142,7 +148,6 @@ Listbox.prototype.checkKeyPress = function (evt) {
       if (!this.moveButton) {
         return;
       }
-
       const keyshortcuts = this.moveButton.getAttribute('aria-keyshortcuts');
       if (key === KeyCodes.RETURN && keyshortcuts.indexOf('Enter') === -1) {
         return;
@@ -153,9 +158,7 @@ Listbox.prototype.checkKeyPress = function (evt) {
       ) {
         return;
       }
-
       evt.preventDefault();
-
       let nextUnselected = nextItem.nextElementSibling;
       while (nextUnselected) {
         if (nextUnselected.getAttribute('aria-selected') != 'true') {
@@ -177,6 +180,12 @@ Listbox.prototype.checkKeyPress = function (evt) {
 
       if (!this.activeDescendant && nextUnselected) {
         this.focusItem(nextUnselected);
+      }
+      break;
+    case KeyCodes.TAB:
+      if (this.listboxButton.button.getAttribute('aria-expanded') === 'true') {
+        evt.preventDefault();
+        this.listboxButton.hideListbox();
       }
       break;
     default:
@@ -248,9 +257,11 @@ Listbox.prototype.findMatchInRange = function (list, startIndex, endIndex) {
  *  The click event object
  */
 Listbox.prototype.checkClickItem = function (evt) {
-  if (evt.target.getAttribute('role') === 'option') {
-    this.focusItem(evt.target);
-    this.toggleSelectItem(evt.target);
+  const option = getOption(evt);
+  if (option.getAttribute('role') === 'option') {
+    this.focusItem(option);
+    this.toggleSelectItem(option);
+    this.selected();
   }
 };
 
@@ -271,8 +282,7 @@ Listbox.prototype.toggleSelectItem = function (element) {
     if (this.moveButton) {
       if (this.listboxNode.querySelector('[aria-selected="true"]')) {
         this.moveButton.setAttribute('aria-disabled', 'false');
-      }
-      else {
+      } else {
         this.moveButton.setAttribute('aria-disabled', 'true');
       }
     }
@@ -304,6 +314,7 @@ Listbox.prototype.defocusItem = function (element) {
  *  The element to focus
  */
 Listbox.prototype.focusItem = function (element) {
+
   this.defocusItem(document.getElementById(this.activeDescendant));
   if (!this.multiselectable) {
     element.setAttribute('aria-selected', 'true');
@@ -317,8 +328,7 @@ Listbox.prototype.focusItem = function (element) {
     const elementBottom = element.offsetTop + element.offsetHeight;
     if (elementBottom > scrollBottom) {
       this.listboxNode.scrollTop = elementBottom - this.listboxNode.clientHeight;
-    }
-    else if (element.offsetTop < this.listboxNode.scrollTop) {
+    } else if (element.offsetTop < this.listboxNode.scrollTop) {
       this.listboxNode.scrollTop = element.offsetTop;
     }
   }
@@ -329,6 +339,12 @@ Listbox.prototype.focusItem = function (element) {
 
   this.checkUpDownButtons();
   this.handleFocusChange(element);
+  this.selection = element;
+
+};
+
+Listbox.prototype.onBlur = function (element) {
+  this.selected();
 };
 
 /**
@@ -351,8 +367,7 @@ Listbox.prototype.checkUpDownButtons = function () {
   if (this.upButton) {
     if (activeElement.previousElementSibling) {
       this.upButton.setAttribute('aria-disabled', false);
-    }
-    else {
+    } else {
       this.upButton.setAttribute('aria-disabled', 'true');
     }
   }
@@ -360,8 +375,7 @@ Listbox.prototype.checkUpDownButtons = function () {
   if (this.downButton) {
     if (activeElement.nextElementSibling) {
       this.downButton.setAttribute('aria-disabled', false);
-    }
-    else {
+    } else {
       this.downButton.setAttribute('aria-disabled', 'true');
     }
   }
@@ -406,9 +420,8 @@ Listbox.prototype.deleteItems = function () {
 
   if (this.multiselectable) {
     itemsToDelete = this.listboxNode.querySelectorAll('[aria-selected="true"]');
-  }
-  else if (this.activeDescendant) {
-    itemsToDelete = [ document.getElementById(this.activeDescendant) ];
+  } else if (this.activeDescendant) {
+    itemsToDelete = [document.getElementById(this.activeDescendant)];
   }
 
   if (!itemsToDelete || !itemsToDelete.length) {
@@ -455,7 +468,7 @@ Listbox.prototype.moveUpItems = function () {
 
   if (previousItem) {
     this.listboxNode.insertBefore(currentItem, previousItem);
-    this.handleItemChange('moved_up', [ currentItem ]);
+    this.handleItemChange('moved_up', [currentItem]);
   }
 
   this.checkUpDownButtons();
@@ -477,7 +490,7 @@ Listbox.prototype.moveDownItems = function () {
 
   if (nextItem) {
     this.listboxNode.insertBefore(nextItem, currentItem);
-    this.handleItemChange('moved_down', [ currentItem ]);
+    this.handleItemChange('moved_down', [currentItem]);
   }
 
   this.checkUpDownButtons();
@@ -539,4 +552,10 @@ Listbox.prototype.setHandleFocusChange = function (focusChangeHandler) {
   this.handleFocusChange = focusChangeHandler;
 };
 
-export {Listbox};
+function getOption(evt) {
+  let el = evt.target;
+  while (el.nodeName !=='LI') {
+    el = el.parentNode;
+  }
+  return el;
+}

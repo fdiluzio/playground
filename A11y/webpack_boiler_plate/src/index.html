@@ -15,14 +15,14 @@
 <main class="main">
     <h1 class="headline">Webpack boilerplate</h1>
 
-    <div class="ifs-dropdown">
-        <button class="ifs-button" aria-haspopup="listbox" aria-labelledby="exp_elem exp_button" id="exp_button">Neptunium</button>
-        <ul id="exp_elem_list" tabindex="-1" role="listbox" aria-labelledby="exp_elem" class=" hidden" aria-activedescendant="exp_elem_Np">
-            <li id="exp_elem_Np" role="option" aria-selected="true" class=" focused">Neptunium</li>
+    <div class="ifs-dropdown" data-aria-listbox>
+        <button class="ifs-button" aria-haspopup="listbox" aria-labelledby="exp_elem exp_button" id="exp_button"><span data-listbox-selection>Berkelium</span></button>
+        <ul id="exp_elem_list" tabindex="-1" role="listbox" aria-labelledby="exp_elem" aria-activedescendant="exp_elem_Bk">
+            <li id="exp_elem_Np" role="option">Neptunium</li>
             <li id="exp_elem_Pu" role="option">Plutonium</li>
             <li id="exp_elem_Am" role="option">Americium</li>
             <li id="exp_elem_Cm" role="option">Curium</li>
-            <li id="exp_elem_Bk" role="option">Berkelium</li>
+            <li id="exp_elem_Bk" role="option" aria-selected="true" class="focused">Berkelium</li>
             <li id="exp_elem_Cf" role="option">Californium</li>
             <li id="exp_elem_Es" role="option">Einsteinium</li>
             <li id="exp_elem_Fm" role="option">Fermium</li>
@@ -47,6 +47,79 @@
         </ul>
     </div>
 
+    <div style="margin-top:2rem">
+        <label for="pet-select">Choose a pet:</label>
+
+        <select name="pets" id="pet-select">
+            <option value="">--Please choose an option--</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+        </select>
+
+    </div>
+
+    <div style="margin-top:2rem">
+        <label for="pet-selector">Choose a pet:</label>
+
+        <select name="pets" id="pet-selector">
+            <option value="">--Please choose an option--</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+        </select>
+
+    </div>
+
+    <div style="margin-top:2rem">
+
+        <div class="menu_button">
+            <button id="menubutton1"
+                    aria-haspopup="true"
+                    aria-controls="menu1">
+                Actions
+            </button>
+            <ul id="menu1"
+                role="menu"
+                aria-labelledby="menubutton1"
+                aria-activedescendant="mi1">
+                <li id="mi1"
+                    role="menuitem"
+                    >
+                    Action 1
+                </li>
+                <li id="mi2"
+                    role="menuitem"
+                    >
+                    Action 2
+                </li>
+                <li id="mi3"
+                    role="menuitem"
+                    >
+                    Action 3
+                </li>
+                <li id="mi4"
+                    role="menuitem"
+                    >
+                    Action 4
+                </li>
+            </ul>
+        </div>
+        <p>
+            <label>
+                Last Action:
+                <input id="action_output"
+                       type="text"
+                       value="">
+            </label>
+        </p>
+    </div>
 </main>
 </body>
 </html>

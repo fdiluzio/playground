@@ -2,7 +2,6 @@ import './styles.scss';
 import './scss/_grid.scss'
 
 import {greet} from "./modules/greet";
-import {Listbox} from "./modules/Listbox";
 
 
 async function print() {
@@ -12,6 +11,7 @@ async function print() {
 
 print();
 
-const button = document.getElementById('exp_button');
-const exListbox = document.getElementById('exp_elem_list');
-new Listbox(button, exListbox);
+
+import AriaWidgets from "./modules/AriaWidgets";
+AriaWidgets.listbox(document.querySelector('main'));
+
