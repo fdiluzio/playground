@@ -12,6 +12,6 @@ async function print() {
 print();
 
 
-import AriaWidgets from "./modules/AriaWidgets";
-AriaWidgets.listbox(document.querySelector('main'));
+import {AriaWidgets} from "./modules/AriaWidgets";
+AriaWidgets.listbox(document.body);
 

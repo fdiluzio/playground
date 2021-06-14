@@ -26,7 +26,7 @@ ListboxButton.prototype.checkShow = function (evt) {
     case KeyCodes.UP:
     case KeyCodes.DOWN:
       evt.preventDefault();
-      this.showListbox();
+      // this.showListbox();
       this.listbox.checkKeyPress(evt);
       break;
     case KeyCodes.ESC:
@@ -41,9 +41,6 @@ ListboxButton.prototype.checkShow = function (evt) {
         this.button.focus();
       }
       break;
-    default:
-      this.showListbox();
-      this.listbox.checkKeyPress(evt);
   }
 };
 
@@ -78,23 +75,23 @@ ListboxButton.prototype.expand = function () {
   EventBus.dispatch(this.constants.events.BODY_CLICK, this);
   this.listbox.listboxNode.style.display = 'block';
   this.button.setAttribute('aria-expanded', 'true');
+  this.listbox.listboxNode.focus();
 };
 
 
 ListboxButton.prototype.showListbox = function () {
   this.expand();
-  this.listbox.listboxNode.focus();
+
 };
 
 ListboxButton.prototype.hideListbox = function () {
   this.listbox.listboxNode.style.display = 'none';
   this.button.removeAttribute('aria-expanded');
-  this.button.focus();
 };
 
 ListboxButton.prototype.onFocusChange = function (focusedItem) {
   if (this.selection)
-    this.selection.innerText = focusedItem.innerText;
+    this.selection.innerHTML = focusedItem.innerHTML;
 };
 
 export default ListboxButton;

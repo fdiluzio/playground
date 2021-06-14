@@ -17,6 +17,8 @@ export default function Listbox(button, list, callback) {
   this.downButton = null;
   this.moveButton = null;
   this.keysSoFar = '';
+  this.callback = () => {
+  }; // empty function
   this.handleFocusChange = () => {
   };
   this.handleItemChange = (event, items) => {
@@ -25,11 +27,6 @@ export default function Listbox(button, list, callback) {
   this.listboxButton = new ListboxButton(button, this);
   if (typeof callback === 'function') {
     this.callback = callback;
-  } else {
-    this.callback = (selection) => {
-      this.listboxButton
-      console.log(selection.textContent);
-    };
   }
 };
 
@@ -185,7 +182,7 @@ Listbox.prototype.checkKeyPress = function (evt) {
     case KeyCodes.TAB:
       if (this.listboxButton.button.getAttribute('aria-expanded') === 'true') {
         evt.preventDefault();
-        this.listboxButton.hideListbox();
+        this.selected();
       }
       break;
     default:

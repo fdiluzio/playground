@@ -1,183 +1,128 @@
+/*
+Dropdown is initially on the left side of the button.
+If you want it to be on the right side add the class 'right' to 'ifs-dropdown'.
+
+<div class="ifs-dropdown open">
+    <button type="button" class="ifs-button">
+        <i class="ifs-icons ifs-icon-swap_vert"></i>
+    </button>
+    <ul class="ifs-dropdown-menu pull-right" aria-labelledby="examplePanelDropdown" role="menu">
+        <li>
+            <a href="javascript:void(0);">
+                <span>Dropdown Entry 1</span>
+            </a>
+            <i class="ifs-icons ifs-icon-arrow_upward"></i>
+        </li>
+        <li class="active">
+            <a href="javascript:void(0);">
+                <span>Dropdown Entry 2</span>
+            </a>
+            <i class="ifs-icons ifs-icon-arrow_downward"></i>
+        </li>
+    </ul>
+</div>
+*/
 
 .ifs-dropdown {
-
-  [role="listbox"] {
-    padding: 0;
-    border: 1px solid $main-border-color;
-    background: $main-background;
-    display: none;
-
-    li {
-      cursor: pointer;
-
-      &:hover:not([aria-selected]) {
-        background: $table-nth-child;
-      }
-    }
-  }
-
-  [role="option"] {
-    display: block;
-    padding: 0 1em 0 1.5em;
-    position: relative;
-    line-height: 1.8em;
-  }
-
-  [role="option"].focused {
-    color: $main-background;
-    background: $second-color;
-  }
-
-  [role="option"][aria-selected="true"]::before {
-    content: '✔';
-    position: absolute;
-    left: 0.5em;
-  }
-
-
-  button[aria-disabled="true"] {
-    opacity: 0.5;
-  }
-
-  [aria-haspopup="listbox"] {
-    border-radius: 0;
-    font-size: 16px;
-    text-align: left;
-    padding: 0 20px 0 0;
     position: relative;
 
-    &::after {
-      width: 0;
-      height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 6px solid rgba(0, 0, 0, 0.5);
-      content: " ";
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translateY(-60%);
+    > .ifs-dropdown-menu {
+        display: none;
+        position: absolute;
+        left: 0;
+        min-width: 150px;
+        max-width: 250px;
+        margin: 0;
+        padding: 0;
+        z-index: 2000;
+        list-style-type: none;
+        border: 1px solid $main-border-color;
+        background: $main-background;
+        @include button-active-state;
+
+        > li {
+            display: flex;
+            align-items: center;
+            padding: 0.2rem 0.5rem;
+            border-bottom: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        > li:last-child {
+            border-bottom: none;
+        }
+
+        > li:hover {
+            background: $table-nth-child;
+        }
+
+        > li.active {
+            background: $second-color;
+
+            > a > span {
+                color: $main-background;
+            }
+
+            > .ifs-icons {
+                color: $main-background;
+            }
+        }
+
+        > li.seperator {
+            border-bottom: 1px solid $main-border-color;
+        }
+
+        > li > a {
+            display: flex;
+            flex: auto;
+            overflow: hidden;
+            color: $main-font-color;
+            text-decoration: none;
+
+            > span {
+                flex: auto;
+                display: block;
+                text-align: left;
+                @include ellipsis;
+            }
+
+            > .ifs-icons {
+                padding-left: 0.5rem;
+                font-size: $dropdown-font-size-xl;
+            }
+        }
     }
-
-    &[aria-expanded="true"]::after {
-      border-top: 0;
-      border-bottom: 6px solid rgba(0, 0, 0, 0.5);
-    }
-  }
-
-
-  [role="listbox"] {
-    border-top: 0;
-    max-height: 10em;
-    overflow-y: auto;
-    position: absolute;
-    margin: 0;
-    min-width: 150px;
-    @include scrollbars(5px, #aaa, #cccccc);
-  }
-}
-
-
-.ifs-dropdown {
-  position: relative;
-
-  > .ifs-dropdown-menu {
-    display: none;
-    position: absolute;
-    left: 0;
-    min-width: 150px;
-    max-width: 250px;
-    margin: 0;
-    padding: 0;
-    z-index: 2000;
-    list-style-type: none;
-    border: 1px solid $main-border-color;
-    background: $main-background;
-    @include button-active-state;
-
-    > li {
-      display: flex;
-      align-items: center;
-      padding: 0.2rem 0.5rem;
-      border-bottom: 1px solid transparent;
-      cursor: pointer;
-    }
-
-    > li:last-child {
-      border-bottom: none;
-    }
-
-    > li:hover {
-      background: $table-nth-child;
-    }
-
-    > li.active {
-      background: $second-color;
-
-      > a > span {
-        color: $main-background;
-      }
-
-      > .ifs-icons {
-        color: $main-background;
-      }
-    }
-
-    > li.seperator {
-      border-bottom: 1px solid $main-border-color;
-    }
-
-    > li > a {
-      display: flex;
-      flex: auto;
-      overflow: hidden;
-      color: $main-font-color;
-      text-decoration: none;
-
-      > span {
-        flex: auto;
-        display: block;
-        text-align: left;
-        @include ellipsis;
-      }
-
-      > .ifs-icons {
-        padding-left: 0.5rem;
-        font-size: $dropdown-font-size-xl;
-      }
-    }
-  }
 }
 
 .ifs-dropdown.open {
-  > .ifs-button {
-    @include button-active-state;
-  }
+    > .ifs-button {
+        @include button-active-state;
+    }
 
-  > .ifs-dropdown-menu {
-    display: block;
-  }
+    > .ifs-dropdown-menu {
+        display: block;
+    }
 }
 
 .ifs-dropdown.right {
-  > .ifs-dropdown-menu {
-    left: auto;
-    right: 0;
-  }
+    > .ifs-dropdown-menu {
+        left: auto;
+        right: 0;
+    }
 }
 
 .ifs-dropdown.triangle {
-  > .ifs-button {
-    > label {
-      padding-right: 0.5rem;
-    }
+        > .ifs-button {
+            > label {
+                padding-right: 0.5rem;
+            }
 
-    @include triangle;
-  }
+            @include triangle;
+        }
 }
 
 .ifs-dropdown.open.triangle {
-  > .ifs-button > .ifs-triangle {
-    @include triangle-open;
-  }
+    > .ifs-button > .ifs-triangle {
+        @include triangle-open;
+    }
 }

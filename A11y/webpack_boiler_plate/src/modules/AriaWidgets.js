@@ -15,4 +15,4 @@ const AriaWidgets = {
   }
 };
 
-export default AriaWidgets;
+export {AriaWidgets};

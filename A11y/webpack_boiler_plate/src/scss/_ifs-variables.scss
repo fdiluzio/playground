@@ -6,9 +6,10 @@ $breakpoint-extra-large: 1440px;
 $searchbar-mobile-height: 38px;
 $searchbar-mobile-height-number: 38;
 $searchbar-mobile-input-height: 36px;
-$main-font: "Lato";
-$demi-font: "Lato";
-$bold-font: "Lato";
+
+$main-font: "LatoLatinWeb";
+$demi-font: "LatoLatinWebSemibold";
+$bold-font: "LatoLatinWebBold";
 $unicode-font: "Segoe UI",
 Tahoma,
 Arial,
@@ -147,6 +148,8 @@ $swy-hover-color: rgb(192, 212, 221);
 $sis-freemium-info-color: rgb(138, 138, 138);
 $knowledgemap-facet-hook-background-color: rgb(161, 187, 201);
 $knowledge-graph-background: linear-gradient(220deg, rgba(67,125,150,0.1) 0%, transparent 7%), linear-gradient(to top, rgba(67, 125, 150, 0.1), transparent);
+$focus-background: rgb(245, 245, 245);
+$focus-outline: #b9e0ef;
 // ----------------------------------
 
 $standard-animation-time: 0.4s;
