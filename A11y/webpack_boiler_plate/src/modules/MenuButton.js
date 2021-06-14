@@ -54,6 +54,7 @@ MenuButton.prototype.handleClick = function () {
   } else {
     this.popupMenu.open();
     this.popupMenu.setFocusToFirstItem();
+    this.popupMenu.removeFocus();
   }
 };
 
@@ -63,8 +64,11 @@ MenuButton.prototype.handleMouseover = function (event) {
     event.stopImmediatePropagation();
     return;
   }
-  if (!this.touchDevice)
+  if (!this.touchDevice){
     this.popupMenu.open();
+    this.popupMenu.setFocusToFirstItem();
+    this.popupMenu.removeFocus();
+  }
 };
 
 MenuButton.prototype.handleMouseout = function () {
