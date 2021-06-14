@@ -38,11 +38,11 @@
     border: 0;
   }
 
-  [data-aria-listbox] {
+  [data-aria-listbox], [data-aria-menu] {
 
     position: relative;
 
-    [role="listbox"] {
+    [role="listbox"], [role="menu"] {
       display: none;
       padding: 0;
       border: 1px solid $main-border-color;
@@ -67,7 +67,7 @@
       }
     }
 
-    [role="option"] {
+    [role="option"], [role="menuitem"] {
       cursor: pointer;
       display: flex;
       padding: 0 1em 0 1.5em;
@@ -87,7 +87,11 @@
       }
     }
 
-    [role="option"].focused {
+    [role="menuitem"] {
+      padding: 0 0.5em;
+    }
+
+    [role="option"].focused, [role="menuitem"].focused {
       color: $main-background;
       background: $second-color;
 
@@ -100,7 +104,7 @@
       content: '✔';
       position: absolute;
       left: 0.5em;
-      top:0;
+      top: 0;
     }
 
 

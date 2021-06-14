@@ -33,53 +33,9 @@
         </ul>
     </div>
 
-    <div style="padding: 3em 0"></div>
-
-    <div data-aria-listbox>
-    <button class="ifs-button" aria-haspopup="listbox" id="ifs-sb-btn-sources2" title="Search profile">
-        <span id="ifs.btn.sources2" class="aria-only">Search profile</span>
-        <span id="ifs-current-sources2" data-listbox-selection="">Global</span>
-    </button>
-    <ul id="ifs-sb-sources2" tabindex="-1" role="listbox" aria-labelledby="ifs-sb-btn-sources" aria-activedescendant="opt-Global2">
-
-        <li id="opt-Global2" aria-selected="true" class="focused" role="option" data-value="1##c2VhcmNocHJvZmlsZS1zdGFuZGFyZA==">
-            xxxxxxxxxxxxx
-        </li>
-
-        <li id="opt-Personen2" role="option" data-value="1##c2VhcmNocHJvZmlsZS1zZWFyY2hwcm9maWxlLXBlb3BsZQ==" aria-selected="null">
-            yyyyyyyyyyyyyyyyyy
-        </li>
-
-    </ul>
-    </div>
-
-    <div style="padding: 3em 0"></div>
-
-    <div data-aria-listbox>
-        <button class="ifs-button" aria-haspopup="listbox" id="ifs-sb-btn-sources3" title="Search profile">
-            <span id="ifs.btn.sources3" class="aria-only">Search profile</span>
-            <span id="ifs-current-sources3" data-listbox-selection="">Global</span>
-        </button>
-        <ul id="ifs-sb-sources3" tabindex="-1" role="listbox" aria-labelledby="ifs-sb-btn-sources" aria-activedescendant="opt-Global3">
-
-            <li id="opt-Global3" aria-selected="true" class="focused" role="option" data-value="1##c2VhcmNocHJvZmlsZS1zdGFuZGFyZA==">
-                sssssssssssssss
-            </li>
-
-            <li id="opt-Personen3" role="option" data-value="1##c2VhcmNocHJvZmlsZS1zZWFyY2hwcm9maWxlLXBlb3BsZQ==" aria-selected="null">
-                ssssssssssssssss
-            </li>
-
-        </ul>
-    </div>
-
-
-
-    <div style="padding: 3em 0"></div>
-
     <div class="ifs-aria-dropdown" data-aria-listbox="">
         <button id="ifs-resultlist-view" type="button" class="ifs-button ifs-no-border ifs-no-listbox-handle" data-globalize="ifs.label.detail.view" data-globalize-target="title" aria-haspopup="listbox" title="Change view">
-            <i class="ifs-icons ifs-icon-full_view">View</i>
+            <i class="ifs-icons ifs-icon-full_view" data-listbox-selection>View</i>
             <span data-globalize="ifs.label.detail.view" class="aria-only">Change view</span> <span class="aria-only">full</span>
         </button>
 
@@ -89,27 +45,6 @@
                 <i class="ifs-icons ifs-icon-full_view"></i>
             </li>
             <li id="opt-compact" role="option" data-value="compact" data-action="switch-view">
-                <span data-listbox-selection="" data-globalize="ifs-label.resultlist.viewmode.compact">Compact</span>
-                <i class="ifs-icons ifs-icon-compact_view"></i>
-            </li>
-
-        </ul>
-    </div>
-
-    <div style="padding: 3em 0"></div>
-
-    <div class="ifs-aria-dropdown" data-aria-listbox="">
-        <button id="ifs-resultlist-view2" type="button" class="ifs-button ifs-no-border ifs-no-listbox-handle" data-globalize="ifs.label.detail.view" data-globalize-target="title" aria-haspopup="listbox" title="Change view">
-            <i class="ifs-icons ifs-icon-full_view">View</i>
-            <span data-globalize="ifs.label.detail.view" class="aria-only">Change view</span> <span class="aria-only">full</span>
-        </button>
-
-        <ul class="justify-left" tabindex="-1" role="listbox" aria-labelledby="ifs-resultlist-view" aria-activedescendant="opt-full2">
-            <li id="opt-full2" role="option" aria-selected="true" class="focused" data-value="full" data-action="switch-view">
-                <span data-listbox-selection="" data-globalize="ifs-label.resultlist.viewmode.full">Full</span>
-                <i class="ifs-icons ifs-icon-full_view"></i>
-            </li>
-            <li id="opt-compact2" role="option" data-value="compact" data-action="switch-view">
                 <span data-listbox-selection="" data-globalize="ifs-label.resultlist.viewmode.compact">Compact</span>
                 <i class="ifs-icons ifs-icon-compact_view"></i>
             </li>
@@ -151,20 +86,21 @@
 
     <div style="margin-top:2rem">
 
-        <div class="menu_button">
+        <div class="menu_button" data-aria-menu>
             <button id="menubutton1"
                     aria-haspopup="true"
                     aria-controls="menu1">
-                Actions
+                Action Menu
             </button>
             <ul id="menu1"
                 role="menu"
                 aria-labelledby="menubutton1"
-                aria-activedescendant="mi1">
+                aria-activedescendant>
                 <li id="mi1"
                     role="menuitem"
                     >
                     Action 1
+
                 </li>
                 <li id="mi2"
                     role="menuitem"

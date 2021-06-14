@@ -43,7 +43,8 @@ Listbox.prototype.registerEvents = function () {
 
 Listbox.prototype.selected = function () {
   this.listboxButton.hideListbox();
-  this.callback(this.selection, this);
+  if (this.selection)
+    this.callback(this.selection, this);
 };
 
 /**
@@ -551,7 +552,7 @@ Listbox.prototype.setHandleFocusChange = function (focusChangeHandler) {
 
 function getOption(evt) {
   let el = evt.target;
-  while (el.nodeName !=='LI') {
+  while (el.nodeName !== 'LI') {
     el = el.parentNode;
   }
   return el;

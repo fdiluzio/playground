@@ -14,4 +14,9 @@ print();
 
 import {AriaWidgets} from "./modules/AriaWidgets";
 AriaWidgets.listbox(document.body);
+function updateLastAction(node) {
+  console.log(node)
+  // document.getElementById("action_output").value = event.domNode.innerHTML;
+}
+AriaWidgets.menu(document.body, updateLastAction);
 
