@@ -1,0 +1,30 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.main {
+  background-color: lightseagreen;
+  margin: 0;
+  padding: 0;
+
+  .headline {
+    font-size: 1.6em;
+  }
+  font-family: 'Lato', sans-serif;
+  button{
+    font-family: 'Lato', sans-serif;
+  }
+}
+
+@import "ifs-variables";
+@import "ifs-mixins";
+@import "ifs-buttons";
+@import "ifs-dropdowns";
+@import "ally";

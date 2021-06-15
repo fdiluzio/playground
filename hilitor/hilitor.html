@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <title>Test Mark.js</title>
     <script src="mark.js"></script>
     <style>
         .ifs-highlite {
@@ -14,31 +13,33 @@
 <body>
 
 <script>
-    var options = {
-        "element": "span",
-        "className": "ifs-highlite",
-        "acrossElements": true,
-        "separateWordSearch": false,
-        "ignoreJoiners": true,
-        "exclude": ['em'],
-        "accuracy": {
-            "value": "exactly",
-            "limiters": [",", ".", ";", "-", "—", "<", ">", "\"", "'", "?"]
-        },
-        "diacritics": true,
-        done: function (matches) {
-            console.log("Matches: ", matches)
-        }
+  var options = {
+    "element": "em",
+    "className": "ifs-highlite",
+    "acrossElements": true,
+    "separateWordSearch": false,
+    "ignoreJoiners": true,
+    "accuracy": {
+      "value": "exactly",
+      "limiters": [",", ".", ";", "-", "—", "<", ">", '"', "'", "?", ":", "[", "]", "(", ")", "{", "}", "=", "/", "\\", "&", "%", "§", "_"]
+    },
+    "diacritics": true,
+    done: function (matches) {
+      console.log("Matches: ", matches)
     }
+  }
 
 </script>
 
 
 <h1>Highlight Term</h1>
-<button>Scroll To Element</button>
-<em>der alte Gehäuseöffnungstürschließer</em>
 
-<p>The term above is not highlighted because emphasised elements have been excluded.</p>
+<p>
+    <em>Limiters: <b>[",", ".", ";", "-", "—", "<", ">", '"', "'", "?", ":", "[", "]", "(", ")", "{", "}", "=", "/", "\\", "&", "%", "§", "_"]</b></em></br>
+    <em>Searching for the term "der alte Gehäuseöffnungstürschließer"</em></br>
+    <em>Searching for the word "high"</em><br/>
+
+</p>
 
 <fieldset>
     <p> Da hilft’s auch nicht, wenn der alte Gehäuseöffnungstürschließer mit beiden Türen kompatibel ist.</p>
@@ -63,9 +64,23 @@
 </fieldset>
 
 <h1>Using Limiters</h1>
-<em>Searching for the word "high"</em><br/><br/>
+
+
 <fieldset>
-    <em>Limiters: <b>, . ; - — < ></b></em>
+    <p>"high"</p>
+    <p>'high'</p>
+    <p>'high?'</p>
+    <p>high</p>
+    <p>-high</p>
+    <p>high</p>
+    <p>high</p>
+    <p>high</p>
+    <p> high,</p>
+    <p> high</p>
+    <p> >high</p>
+    <p> &lt;high</p>
+    <p> &lt;high&gt;</p>
+
     <p>highlight "high" text</p>
     <p>highlight 'high' text</p>
     <p>highlight 'high?' text</p>
@@ -79,58 +94,68 @@
     <p>highlight, >high text</p>
     <p>highlight, &lt;high text</p>
     <p>highlight, &lt;high&gt; text</p>
-</fieldset>
 
-<fieldset>
-    <em>Limiters: <b>, . ; - — < ></b></em>
-    <p>highlight "high" text</p>
-    <p>highlight 'high' text</p>
-    <p>highlight 'high?' text</p>
-    <p>highlight-high text</p>
-    <p>highlight -high text</p>
-    <p>highlight high-text</p>
-    <p>highlight—high text</p>
-    <p>highlight,high text</p>
-    <p>highlight, high, text</p>
-    <p>highlight, high-text</p>
-    <p>highlight, >high text</p>
-    <p>highlight, &lt;high text</p>
-    <p>highlight, &lt;high&gt; text</p>
+    <p>"high."</p>
+    <p>"/high"</p>
+    <p>"/high/"</p>
+    <p>"/high/high/high"</p>
+    <p>"\high"</p>
+    <p>"\high\"</p>
+    <p>"\high\high"</p>
+    <p>"\high\high\high"</p>
+
+    <p>"(high"</p>
+    <p>"high)"</p>
+    <p>"(high)"</p>
+    <p>"(high)high"</p>
+    <p>"(high)high(high)"</p>
+
+    <p>[high]</p>
+    <p>"[high]</p>
+    <p>"high]"</p>
+    <p>"[high]"</p>
+    <p>"[high]high"</p>
+    <p>"[high]high[high]"</p>
+
+
+    <p>high%</p>
+    <p>high&</p>
+    <p>high_</p>
+    <p>high=high</p>
+    <p>high%</p>
+
+
 </fieldset>
 
 <div>
     <a href="https://markjs.io/configurator.html">Configurator</a>
+    <a href="https://jsfiddle.net/Torrejon/78t49ok0/1/">JSFiddle</a>
 </div>
 
 
 <script>
-    // "className": "ifs-highlite",
-    function addStyle(styles) {
-        var css = document.createElement('style');
-        css.appendChild(document.createTextNode(styles));
-        document.getElementsByTagName("head")[0].appendChild(css);
-    }
+  // "className": "ifs-highlite",
+  function addStyle(styles) {
+    var css = document.createElement('style');
+    css.appendChild(document.createTextNode(styles));
+    document.getElementsByTagName("head")[0].appendChild(css);
+  }
 
-    var styles = '.ifs-highlite { background-color: yellow }';
-    addStyle(styles);
+  var styles = '.ifs-highlite { background-color: yellow }';
+  addStyle(styles);
 
-    var marker = new Mark(document.querySelector('body'));
-    marker.mark("high", options);
-    marker.mark("der alte Gehäuseöffnungstürschließer", options);
+  var marker = new Mark(document.querySelector('body'));
+  marker.mark("high", options);
+  marker.mark("der alte Gehäuseöffnungstürschließer", options);
 
 
-    scrollToFilter = function (selector) {
-        var $scrollingContainer = $('html, body');
-            var scrollTop = $scrollingContainer.scrollTop();
-            var link      = $(selector);
-            var position  = link.position();
-            $scrollingContainer.animate({
-                scrollTop: position.top + scrollTop
-            }, 500);
-    }
+  scrollToFilter = function (selector) {
+    document.querySelector(selector).scrollIntoView();
+  };
 
-    $('button').on('click', function () {scrollToFilter('#scrollTarget')})
-
+  document.querySelector('button').addEventListener('click', function () {
+    scrollToFilter('#scrollTarget')
+  })
 
 
 </script>

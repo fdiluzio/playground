@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Knowledge Graph Markdown</title>
+    <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<main class="main">
+    <div>
+        <fieldset>
+            <legend>Preview</legend>
+            <button data-action="hilite">Highligt</button>
+        </fieldset>
+        <div id="output" class="ifs-markdown"></div>
+    </div>
+    <div>
+        <fieldset data-action="populate">
+            <legend>Input for rendering</legend>
+            <label><input type="radio" name="source" value="complete" checked="checked">Complete Feature Set</label>
+            <label><input type="radio" name="source" value="mixed">Mixed (Markdown + Html)</label>
+            <label><input type="radio" name="source" value="doku">Documentation Code</label>
+            <label><input type="radio" name="source" value="link">Just Links</label> <label><input type="radio" name="source" value="iframe">Just Iframes</label>
+            <label><input type="radio" name="source" value="dirty">Dirty</label>
+        </fieldset>
+        <textarea></textarea></div>
+</main>
+
+</body>
+</html>

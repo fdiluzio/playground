@@ -1,0 +1,140 @@
+$markdownColor-main: #006ea3;
+$markdownColor-text: #444;
+$markdownColor-bg: #e6e6ee;
+$markdownColor-anchor: $markdownColor-main;
+$markdownColor-bg-button: lighten($markdownColor-text, 70%);
+$markdownColor-border: lighten($markdownColor-text, 50%);
+$markdown-space: 1rem;
+
+.ifs-markdown {
+
+  color: $markdownColor-text;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 300;
+  margin: 0 auto;
+  line-height: 1.45;
+  padding: $markdown-space;
+
+  /* SEMANTIC STYLING */
+  h1, h2, h3, h4, h5, h6 {
+    margin: $markdown-space 0;
+    padding: 0;
+  }
+
+  h2 {
+    padding: 0.5em 0;
+    border-top: 1px solid $markdownColor-border;
+    border-bottom: 1px solid $markdownColor-border;
+    margin: ($markdown-space * 2) 0;
+  }
+
+  a,
+  a:visited {
+    color: $markdownColor-anchor;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: darken($markdownColor-anchor, 50%);
+    }
+  }
+
+  p, div, section, article {
+    font-size: 1rem;
+    margin: $markdown-space 0;
+  }
+
+  small {
+    font-size: .7em;
+  }
+
+  img {
+    max-width: 100%;
+    vertical-align: top;
+  }
+
+  blockquote {
+    margin: 0;
+    border-left: 8px solid $markdownColor-border;
+    padding-left: 1em;
+
+    p {
+      margin: 0;
+      padding: 1em 0;
+    }
+  }
+
+  // table
+  caption, col, colgroup, table, tbody, td, tfoot, th, thead, tr {
+    border-spacing: 0;
+  }
+
+  table {
+    border: 1px solid $markdownColor-border;
+    width: 100%;
+
+    tr {
+
+      &:nth-child(even) {
+        background-color: lighten($markdownColor-bg, 2%);
+      }
+    }
+
+    th, td {
+      padding: 0.3em 1em;
+
+      &:not(:last-child) {
+        border-right: 1px solid $markdownColor-border;
+      }
+    }
+
+
+    thead, tfoot {
+      background-color: darken($markdownColor-bg, 5%);
+      color: invert($markdownColor-bg);
+      border: 1px solid $markdownColor-border;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    tbody {
+      background: lighten($markdownColor-bg, 5%);
+    }
+
+  }
+
+  // code
+  $precolor: #444444;
+
+  pre {
+    padding: $markdown-space;
+    background-color: $precolor;
+    color: invert($precolor);
+    margin: $markdown-space;
+    border-radius: 5px;
+  }
+
+  // divider
+
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, $markdownColor-main 10%, $markdownColor-main 90%, transparent);
+    margin: ($markdown-space * 2) 0;
+  }
+
+  /* ###################################### */
+  /* CLASSES */
+  /* ###################################### */
+
+  .searchTab-btn {
+    border: 1px solid $markdownColor-border;
+    background-color: $markdownColor-bg-button;
+    border-radius: 5px;
+    outline: none;
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    cursor: pointer;
+  }
+
+
+}

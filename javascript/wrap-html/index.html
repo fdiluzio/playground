@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="if-logo">
+    <img src="https://dummyimage.com/50x100/000/fff" className="if-logo-desktop" alt="IntraFind Software AG"/>
+    <img src="https://dummyimage.com/30x40/000/fff" className="if-logo-mobile" alt="IntraFind Software AG"/>
+</div>
+
+<script>
+
+  (function (document) {
+    function wrap(el, wrapper) {
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+      return wrapper
+    }
+
+    var targetNode = document.body;
+    var config = {attributes: false, childList: true, subtree: true};
+    var callback = function (mutationsList, observer) {
+      Array.prototype.forEach.call(mutationsList, function (mutation){
+        if (mutation.type === 'childList') {
+          for (var index = 0; index < mutation.addedNodes.length; index++){
+            if (mutation.addedNodes[index].classList && mutation.addedNodes[index].classList.contains('if-logo')){
+              observer.disconnect();
+              var wrapper =  wrap(document.querySelector('.if-logo'), document.createElement('a'));
+              wrapper.href = "https://intrafind.de"
+            }
+          }
+        }
+      })
+    };
+    var observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
+  })(document);
+</script>
+
+</body>
+</html>

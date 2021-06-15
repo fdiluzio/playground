@@ -1,0 +1,223 @@
+.ifs-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 0.8rem;
+  border: 1px solid $button-border-color;
+  border-radius: 4px;
+  background: $main-background;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  > label {
+    white-space: nowrap;
+    color: $main-font-color;
+    font-family: $main-font;
+    cursor: pointer;
+  }
+
+  > .ifs-icons {
+    line-height: inherit;
+  }
+}
+
+.ifs-button.icon {
+  > .ifs-icons {
+    padding-left: 0.4rem;
+  }
+}
+
+.ifs-button.icon.left {
+  > .ifs-icons {
+    padding: 0 0.4rem 0 0;
+  }
+}
+
+.ifs-button.primary {
+  background: $main-color;
+
+  > label {
+    color: white;
+  }
+}
+
+.ifs-button.submit {
+  width: 100%;
+  max-width: 320px;
+}
+
+.ifs-button.badge {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  > .ifs-badge {
+    position: relative;
+    top: -6px;
+    right: 0;
+  }
+}
+
+.ifs-button.active {
+  @include button-active-state;
+}
+
+.ifs-button.pressed {
+  @include button-pressed-state;
+}
+
+$markerWidth: 20px;
+.ifs-button.selectable {
+  background-image: linear-gradient(to right, $button-border-color 0%, $button-border-color $markerWidth, transparent $markerWidth);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  text-transform: uppercase;
+  padding-left: $markerWidth + 10px;
+  transition: border 500ms ease-in-out;
+
+  &[disabled]{
+   background-color: transparent;
+  }
+}
+.ifs-button.selected {
+  background-image: linear-gradient(to right, $main-color 0%, $main-color $markerWidth, transparent $markerWidth);
+  border-color: $main-color;
+ /* animation: cb-slide-in 500ms ease-in-out;
+  animation-fill-mode: forwards;*/
+}
+
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,1e5799+14,7db9e8+100&1+10,1+10,0+26 */
+
+
+.ifs-button[disabled],
+.ifs-button.disabled {
+  cursor: default;
+
+  > label {
+    cursor: default;
+    color: $disabled-font-color;
+  }
+
+  > .ifs-icons {
+    color: $light-font-color;
+  }
+
+  > .ifs-badge {
+    opacity: 0.6;
+  }
+}
+
+.ifs-button.primary[disabled],
+.ifs-button.primary.disabled {
+  background-color: $button-primary-disabled-color;
+
+  > label {
+    color: $disabled-font-color;
+  }
+}
+
+.ifs-buttongroup .ifs-button {
+  margin-right: 1rem;
+}
+
+$clusterMarginSpace: 0.5rem;
+%cluster-margin {
+  display: flex;
+  flex-wrap: wrap;
+
+  & .ifs-button {
+    margin-bottom: 15px;
+    @media (min-width: $breakpoint-small) {
+      &:nth-child(even) {
+        margin: 0 0 15px $clusterMarginSpace;
+      }
+    }
+    @media (min-width: $breakpoint-extra-large) {
+      &:nth-child(even) {
+        margin: 0 $clusterMarginSpace;
+      }
+    }
+  }
+}
+
+.ifs-button-cluster {
+
+  @extend %cluster-margin;
+
+  & .ifs-button {
+    flex: 0 0 100%;
+    @media (min-width: $breakpoint-small) {
+      flex: 0 0 calc(50% - #{$clusterMarginSpace});
+    }
+    @media (min-width: $breakpoint-extra-large) {
+      flex: 1 1 auto;
+    }
+
+  }
+
+}
+
+.ifs-button.small {
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 10px;
+  padding: 0;
+  border: none;
+}
+
+.ifs-facets-hide-button {
+  margin-right: 1rem;
+
+  > .ifs-button {
+    min-width: 35px;
+    height: 46px;
+    padding: 0;
+    align-items: center;
+    border-radius: 0;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-color: $main-border-color;
+    box-shadow: none;
+
+    > .ifs-icons {
+      transform: rotate(180deg);
+      transition: transform $standard-animation-time ease-out;
+    }
+  }
+
+  > .ifs-button.active > .ifs-icons {
+    transform: rotate(0deg);
+    transition: transform $standard-animation-time ease-out;
+  }
+}
+
+.ifs-filter-reset-all .ifs-badge {
+    background: transparent;
+    color: $main-font-color;
+    font-size: .8rem;
+    line-height: .8rem;
+}
+
+.ifs-button.ifs-icon-only.ifs-mini {
+  min-width: 22px;
+  height: 22px;
+  line-height: 22px;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+@keyframes cb-slide-in {
+  0% {background-position: 0 0}
+  10% {background-position: -30px 0}
+  10% {
+
+  }
+  100% {background-position: 0 0}
+}

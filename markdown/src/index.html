@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Knowledge Graph Markdown</title>
+</head>
+<body>
+<main class="main">
+
+    <div>
+        <fieldset>
+            <legend>Preview</legend>
+            <button data-action="clean">Render Clean Input</button>
+            <button data-action="input">Render Raw Input</button>
+        </fieldset>
+        <div id="output" class="ifs-markdown"></div>
+    </div>
+    <div>
+        <fieldset data-action="populate">
+            <legend>Input for rendering</legend>
+            <label><input type="radio" name="source" value="complete" checked>Complete Feature Set</label>
+            <label><input type="radio" name="source" value="mixed">Mixed (Markdown + Html)</label>
+            <label><input type="radio" name="source" value="doku">Documentation Code</label>
+            <label><input type="radio" name="source" value="link">Just Links</label>
+            <label><input type="radio" name="source" value="iframe">Just Iframes</label>
+            <label><input type="radio" name="source" value="dirty">Dirty</label>
+        </fieldset>
+        <textarea></textarea>
+    </div>
+
+</main>
+<div style="padding: 2rem">
+    <div>Drag this link to your bookmarks bar: <a href="javascript:%22use%20strict%22;void%20function(){var%20a=window.location.search.substr(2).replace(/((id|title|type):[A-Za-z0-9-%25]*;%3F)/g,%22%22),b=a.replace(/ifs_app_states_[0-9]=/g,%22%22).split(%22%26%22),c=%22%3Cbody%20style=\%22padding:%2010px%2030px%2010px\%22%3E%22;c+=%22%3Cbutton%20style=\%22position:%20absolute;top:10px;right:10px\%22%20onclick=\%22window.parent.document.body.removeChild(window.parent.document.getElementById('ifs-link-output'))\%22%3EX%3C/button%3E%22,b.forEach(function(a){var%20b=decodeURIComponent(/sSearchTerm:.*%3F(%3F=;)/.exec(a)).split(%22:%22)[1];c+=%22%3Cdiv%3E[%22+b+%22](ifs:%22+a+%22%20\%22%22+b+%22\%22)%3C/div%3E%22});var%20d=document.createElement(%22iframe%22);d.id=%22ifs-link-output%22,c+=%22%3C/body%3E%22,document.body.appendChild(d),d.contentWindow.document.open(),d.contentWindow.document.write(c),d.contentWindow.document.close(),d.setAttribute(%22style%22,%22position:fixed;z-index:5000;width:100%25;height:150px;bottom:0;background-color:%23fff%22)}();">Generate Knowledge Graph Link</a></div>
+</div>
+
+<div style="padding: 12rem">
+    <a href="https://github.com/ttscoff/MarkedCustomStyles">Marked Styles</a>
+    <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a>
+</div>
+</body>
+</html>

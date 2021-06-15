@@ -1,0 +1,128 @@
+@import "compass";
+@import "http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold";
+
+html {
+    background-color: #D8D8D8;
+    font: 62.5%/1 "Droid Sans","Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+}
+
+body {
+    margin: 100px;
+}
+
+button {
+    border: medium none;
+    display: block;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+.metal {
+    background-color: #E5E5E5;
+    color: #333333;
+    font: bold 6em/2em "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+    margin: 40px auto;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(102, 102, 102, 0.5), 0 2px 1px rgba(255, 255, 255, 0.6);
+}
+
+.radial.metal {
+    border-radius: 80px 80px 80px 80px;
+    height: 160px;
+    line-height: 160px;
+    width: 160px;
+}
+
+.metal.radial:before, .metal.radial:after {
+    border-radius: inherit;
+    content: "";
+    height: inherit;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: inherit;
+}
+
+.metal.linear {
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 4em;
+    height: 80px;
+    width: 100px;
+}
+
+.metal.linear.oval {
+    font-feature-settings: normal;
+    font-language-override: normal;
+    border-radius: 50% 50% 50% 50%;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 3em;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: bold;
+    height: 60px;
+    line-height: 60px !important;
+    margin-top: 100px;
+    width: 70px;
+}
+
+.metal:active {
+    color: #0066CC;
+    text-shadow: 0 -1px 0 rgba(0, 51, 102, 0.3), 0 2px 1px #B2D8FF, 0 0 5px #99DDFF, 0 0 20px rgba(0, 127, 255, 0.6);
+}
+
+
+html {
+    background-image: repeating-linear-gradient(45deg, transparent 0px, rgba(0, 0, 0, 0.016) 5px), repeating-linear-gradient(-45deg, transparent 0px, rgba(0, 0, 0, 0.016) 5px);
+}
+
+.metal {
+    transition: color 0.2s ease 0s;
+    box-shadow: 
+    0 0 0 4px #262626 inset, 
+    0 -1px 5px 4px rgba(38, 38, 38, 0.8) inset, 
+    0 -1px 0 7px rgba(0, 0, 0, 0.25) inset, 
+    0 2px 1px 7px rgba(255, 255, 255, 0.7) inset, 
+    0 -5px 6px 4px rgba(0, 0, 0, 0.15), 
+    0 5px 6px 4px rgba(255, 255, 255, 0.5);
+}
+
+.metal.radial:before {
+    transform: rotate(65deg);
+}
+
+.metal.radial:after {
+    transform: rotate(-65deg);
+}
+
+.metal.linear {
+    background-image: 
+    repeating-linear-gradient(left center , rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.1) 7.5%), 
+    repeating-linear-gradient(left center , transparent 0%, transparent 4%, rgba(0, 0, 0, 0.03) 4.5%), 
+    repeating-linear-gradient(left center , rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1.2%, rgba(255, 255, 255, 0.15) 2.2%), 
+    linear-gradient(-90deg, #C6C6C6 0%, #E5E5E5 47%, #C6C6C6 53%, #B2B2B2 100%);
+}
+.metal:active {
+    box-shadow: 
+    0 0 0 4px #004C99 inset, 
+    0 -1px 5px 4px rgba(0, 38, 76, 0.4) inset, 
+    0 -1px 0 7px rgba(0, 51, 102, 0.25) inset, 
+    0 2px 1px 7px rgba(255, 255, 255, 0.7) inset, 
+    0 0 3px 2px rgba(127, 191, 255, 0.8), 
+    0 -5px 6px 4px rgba(50, 102, 153, 0.25), 
+    0 5px 6px 4px #E8F2FC;
+}
+
+h1 {
+ 	position:absolute;
+  top:0;
+  left:0;
+  padding:10px;
+  font-size:30px;
+  text-shadow:0 1px 0 white;
+}

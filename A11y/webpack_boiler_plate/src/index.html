@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <title>Webpack Boilerplate</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<main class="ifs-main">
+    <h1 class="headline">Webpack boilerplate</h1>
+
+    <div data-aria-listbox>
+        <button class="ifs-button" aria-haspopup="listbox" id="ifs-sb-btn-sources" title="Search profile">
+            <span id="ifs.btn.sources" class="aria-only">Search profile</span>
+            <span id="ifs-current-sources" data-listbox-selection="">Global</span>
+        </button>
+        <ul id="ifs-sb-sources" tabindex="-1" role="listbox" aria-labelledby="ifs-sb-btn-sources" aria-activedescendant="opt-Global">
+
+            <li id="opt-Global" aria-selected="true" class="focused" role="option" data-value="1##c2VhcmNocHJvZmlsZS1zdGFuZGFyZA==">
+                Global
+            </li>
+
+            <li id="opt-Personen" role="option" data-value="1##c2VhcmNocHJvZmlsZS1zZWFyY2hwcm9maWxlLXBlb3BsZQ==" aria-selected="null">
+                Personen
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="ifs-aria-dropdown" data-aria-listbox="">
+        <button id="ifs-resultlist-view" type="button" class="ifs-button ifs-no-border ifs-no-listbox-handle" data-globalize="ifs.label.detail.view" data-globalize-target="title" aria-haspopup="listbox" title="Change view">
+            <i class="ifs-icons ifs-icon-full_view" data-listbox-selection>View</i>
+            <span data-globalize="ifs.label.detail.view" class="aria-only">Change view</span> <span class="aria-only">full</span>
+        </button>
+
+        <ul class="justify-left" tabindex="-1" role="listbox" aria-labelledby="ifs-resultlist-view" aria-activedescendant="opt-full">
+            <li id="opt-full" role="option" aria-selected="true" class="focused" data-value="full" data-action="switch-view">
+                <span data-listbox-selection="" data-globalize="ifs-label.resultlist.viewmode.full">Full</span>
+                <i class="ifs-icons ifs-icon-full_view"></i>
+            </li>
+            <li id="opt-compact" role="option" data-value="compact" data-action="switch-view">
+                <span data-listbox-selection="" data-globalize="ifs-label.resultlist.viewmode.compact">Compact</span>
+                <i class="ifs-icons ifs-icon-compact_view"></i>
+            </li>
+
+        </ul>
+    </div>
+
+
+
+    <div style="margin-top:2rem">
+        <label for="pet-select">Choose a pet:</label>
+
+        <select name="pets" id="pet-select">
+            <option value="">--Please choose an option--</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+        </select>
+
+    </div>
+
+    <div style="margin-top:2rem">
+        <label for="pet-selector">Choose a pet:</label>
+
+        <select name="pets" id="pet-selector">
+            <option value="">--Please choose an option--</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="hamster">Hamster</option>
+            <option value="parrot">Parrot</option>
+            <option value="spider">Spider</option>
+            <option value="goldfish">Goldfish</option>
+        </select>
+
+    </div>
+
+    <div style="margin-top:2rem">
+
+        <div class="menu_button" data-aria-menu>
+            <button id="menubutton1"
+                    aria-haspopup="true"
+                    aria-controls="menu1">
+                Action Menu
+            </button>
+            <ul id="menu1"
+                role="menu"
+                aria-labelledby="menubutton1"
+                aria-activedescendant>
+                <li id="mi1"
+                    role="menuitem"
+                    >
+                    Action 1
+
+                </li>
+                <li id="mi2"
+                    role="menuitem"
+                    >
+                    Action 2
+                </li>
+                <li id="mi3"
+                    role="menuitem"
+                    >
+                    Action 3
+                </li>
+                <li id="mi4"
+                    role="menuitem"
+                    >
+                    Action 4
+                </li>
+            </ul>
+        </div>
+        <p>
+            <label>
+                Last Action:
+                <input id="action_output"
+                       type="text"
+                       value="">
+            </label>
+        </p>
+    </div>
+</main>
+</body>
+</html>

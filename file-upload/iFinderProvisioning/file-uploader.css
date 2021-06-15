@@ -1,0 +1,195 @@
+.ifs-page *,
+.ifs-page *:before,
+.ifs-page *:after {
+    box-sizing: border-box;
+}
+
+.ifs-page {
+    width: calc(100% - 40px);
+    padding: 1rem 20px 2rem 20px;
+    font-family: LatoLatinWebSemibold;
+}
+
+.ifs-uploader {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.ifs-files-selected .ifs-files-selected--hide {
+    display: none !important;
+}
+
+.ifs-files-selected .ifs-uploader-drop-area {
+    border-style: solid;
+    border-color: #169cd7;
+}
+
+.ifs-uploader-drop-area {
+    position: relative;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    border: 3px dashed #c9c9c9;
+    min-height: 200px;
+}
+
+.ifs-uploader-drop-area.ifs-drag-active {
+    border-color: #169cd7;
+}
+
+.ifs-uploader-title {
+    margin: 0 0 1rem;
+    font-family: inherit;
+    color: #169cd7;
+}
+
+.ifs-uploader-instruction {
+    margin: 0;
+}
+
+.ifs-uploader-error {
+    color: white;
+    padding: 1rem;
+    background-color: rgba(171, 13, 25, 1);
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 0;
+    display: none;
+    width: fit-content;
+}
+
+
+
+/* ######################## */
+/* BUTTONS */
+/* ######################## */
+
+.ifs-uploader-input-btn {
+    display: inline-block;
+    font-family: LatoLatinWebSemibold;
+    font-size: 14px;
+    border: 1px #cee6ff solid;
+    color: #169cd7;
+    background-color: #fff;
+    margin-top: 1em;
+    padding: 1em 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.ifs-uploader-input-btn:focus,
+.ifs-uploader-input-btn:not(:disabled):hover {
+    color: #0f6a92;
+    background-color: #cee6ff;
+    transform: translateY(-1px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.ifs-uploader-input-btn-send {
+    color: #cee6ff;
+    background-color: #169cd7;
+}
+
+.ifs-uploader-input-btn-send:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.ifs-uploader-input-btn-send:focus,
+.ifs-uploader-input-btn-send:not(:disabled):hover {
+    color: #0f6a92;
+    background-color: #cee6ff;
+}
+
+/* ######################## */
+/* LISTS */
+/* ######################## */
+
+.ifs-uploader-list {
+    margin: 0 0 1rem 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+}
+
+.ifs-uploader-list-item {
+    color: #169cd7;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+}
+
+.ifs-uploader-list-item-details {
+    color: rgb(133, 133, 133);
+}
+
+
+
+@media (min-width: 768px) {
+
+    .ifs-uploader-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .ifs-uploader-list-item {
+        flex: 1 0 50%;
+    }
+}
+
+/* ######################## */
+/* RESTRICIONS */
+/* ######################## */
+
+.ifs-restrictions {
+   font-size: 14px;
+    color: #646464;
+    line-height: 1.5;
+}
+
+/* ######################## */
+/* FORM */
+/* ######################## */
+
+form[name="ifs-upload-files"] {
+    top: -5000px;
+    left: -5000px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* ######################## */
+/* MISC */
+/* ######################## */
+.ifs-background-message {
+    position: relative;
+    z-index: 1;
+}
+
+.ifs-loading-animation{
+    width: 100px;
+    opacity: 0.5;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    display: none;
+}
+
+.ifs-background-message> :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    z-index: 0;
+    padding: 1rem;
+    text-align: center;
+}
