@@ -1,98 +1,83 @@
 import KeyCodes from "./KeyCodes";
-import EventBus from 'eventbusjs';
+import EventBus from "eventbusjs";
 import Constants from "./ifs-constants";
+let constants = new Constants().constants;
+
 
 const ListboxButton = function (button, listbox) {
   this.button = button;
   this.listbox = listbox;
+  this.selection = this.button.querySelector('[data-listbox-selection]');
   this.registerEvents();
 };
 
 ListboxButton.prototype.registerEvents = function () {
   this.button.addEventListener('click', this.toggle.bind(this));
-  this.button.addEventListener('keydown', this.checkShow.bind(this));
-  this.selection = this.button.querySelector('[data-listbox-selection]');
-  this.listbox.listboxNode.addEventListener('blur', this.hideListbox.bind(this));
-  this.listbox.listboxNode.addEventListener('keydown', this.checkHide.bind(this));
+  this.button.addEventListener('keydown', this.onKeyDown.bind(this));
   this.listbox.setHandleFocusChange(this.onFocusChange.bind(this));
-  this.constants = new Constants().constants;
-  EventBus.addEventListener(this.constants.events.BODY_CLICK, this.hideListbox.bind(this));
+  EventBus.addEventListener(constants.events.BODY_CLICK, this.closeEvents.bind(this));
+  EventBus.addEventListener(constants.events.CLOSE_OTHERS, this.closeEvents.bind(this));
 };
 
-ListboxButton.prototype.checkShow = function (evt) {
+ListboxButton.prototype.onKeyDown = function (evt) {
   const key = parseInt(evt.which || evt.keyCode);
-
   switch (key) {
     case KeyCodes.UP:
     case KeyCodes.DOWN:
       evt.preventDefault();
-      this.showListbox();
+      this.showListBox();
       this.listbox.checkKeyPress(evt);
-      break;
-    case KeyCodes.ESC:
-      evt.preventDefault();
-      this.hideListbox();
-      this.button.focus();
       break;
     case KeyCodes.TAB:
       if (this.button.getAttribute('aria-expanded') === 'true') {
         evt.preventDefault();
-        this.hideListbox();
-        this.button.focus();
+        this.setFocus();
       }
       break;
   }
 };
 
-ListboxButton.prototype.checkHide = function (evt) {
-  const key = parseInt(evt.which || evt.keyCode);
-
-  switch (key) {
-    case KeyCodes.RETURN:
-    case KeyCodes.ESC:
-      evt.preventDefault();
-      this.hideListbox();
-      this.button.focus();
-      break;
-    case KeyCodes.UP:
-    case KeyCodes.DOWN:
-      evt.preventDefault();
-      break;
-  }
-};
-
-ListboxButton.prototype.toggle = function (e) {
-  EventBus.dispatch(this.constants.events.CLOSE_OTHERS);
-  e.stopPropagation();
-  if (this.button.getAttribute('aria-expanded') === 'true') {
+ListboxButton.prototype.toggle = function (evt) {
+  EventBus.dispatch(constants.events.CLOSE_OTHERS, this);
+  evt.stopPropagation();
+  const isExpanded = this.button.getAttribute('aria-expanded');
+  if ( isExpanded === 'true') {
     this.hideListbox();
-  } else if (!this.button.getAttribute('aria-expanded')) {
-    this.expand();
+  } else if (!isExpanded) {
+    this.showListBox();
   }
 };
 
-ListboxButton.prototype.expand = function () {
-  EventBus.dispatch(this.constants.events.BODY_CLICK, this);
-  this.listbox.listboxNode.style.display = 'block';
-  this.button.setAttribute('aria-expanded', 'true');
-  this.listbox.listboxNode.focus();
-};
-
-
-ListboxButton.prototype.showListbox = function () {
-  this.expand();
-
+ListboxButton.prototype.showListBox = function () {
+  this.listbox.show();
 };
 
 ListboxButton.prototype.hideListbox = function () {
-  this.listbox.listboxNode.style.display = 'none';
-  this.button.removeAttribute('aria-expanded');
-  this.button.focus();
+  this.listbox.hide();
 };
+
+ListboxButton.prototype.listboxClosed = function (){
+  this.button.removeAttribute('aria-expanded');
+};
+
+ListboxButton.prototype.listboxOpened = function (){
+  this.button.setAttribute('aria-expanded', 'true');
+};
+
 
 ListboxButton.prototype.onFocusChange = function (focusedItem) {
   if (this.selection)
     this.selection.innerHTML = focusedItem.innerHTML;
 };
+
+ListboxButton.prototype.closeEvents = function (event = {}) {
+  if (event.target !== this) {
+    this.hideListbox();
+  }
+};
+ListboxButton.prototype.setFocus = function (event = {}) {
+ this.button.focus();
+};
+
 
 export default ListboxButton;

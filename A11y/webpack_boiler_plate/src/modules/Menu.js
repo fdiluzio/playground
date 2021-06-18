@@ -2,6 +2,7 @@ import MenuButton from "./MenuButton";
 import MenuItem from "./MenuItem";
 import KeyCodes from "./KeyCodes";
 
+
 const Menu = function (button, menu, callback) {
 
   let msgPrefix = 'PopupMenu constructor argument domNode ';
@@ -38,7 +39,9 @@ const Menu = function (button, menu, callback) {
   this.lastItem = null;    // see PopupMenu init method
 
   if (!callback) {
-    callback = () => {
+    // default is to use external data-action event triggered on click
+    callback = (item) => {
+      item.click();
     };
   }
   this.callback = callback;
@@ -47,14 +50,6 @@ const Menu = function (button, menu, callback) {
 
 };
 
-/*
-*   @method ActionMenu.prototype.init
-*
-*   @desc
-*       Add domNode event listeners for mouseover and mouseout. Traverse
-*       domNode children to configure each menuitem and populate menuitems
-*       array. Initialize firstItem and lastItem properties.
-*/
 Menu.prototype.init = function () {
   let menuElement, menuItem, textContent, label;
 
@@ -78,12 +73,10 @@ Menu.prototype.init = function () {
   for (let i = 0; i < menuElements.length; i++) {
 
     menuElement = menuElements[i];
-    if (!menuElement.firstElementChild && menuElement.getAttribute('role') !== 'separator') {
+    if (menuElement.getAttribute('role') !== 'separator') {
       menuItem = new MenuItem(menuElement, this);
       menuItem.init();
       this.menuitems.push(menuItem);
-      textContent = menuElement.textContent.trim();
-      this.firstChars.push(textContent.substring(0, 1).toLowerCase());
     }
   }
 
@@ -95,8 +88,9 @@ Menu.prototype.init = function () {
   }
 
 };
+
 Menu.prototype.handleKeydown = function (event) {
-  let flag = false,
+  let stopEvent = false,
     char = event.key;
 
   function isPrintableCharacter(str) {
@@ -115,42 +109,42 @@ Menu.prototype.handleKeydown = function (event) {
     switch (event.keyCode) {
 
       case KeyCodes.SPACE:
-        flag = true;
+        stopEvent = true;
         break;
 
       case KeyCodes.RETURN:
         this.close(true);
         this.callback(this.currentItem.domNode);
         this.setFocusToController();
-        flag = true;
+        stopEvent = true;
         break;
 
       case KeyCodes.ESC:
         this.close(true);
         this.setFocusToController();
-        flag = true;
+        stopEvent = true;
         break;
 
       case KeyCodes.UP:
         this.setFocusToPreviousItem();
-        flag = true;
+        stopEvent = true;
         break;
 
       case KeyCodes.DOWN:
         this.setFocusToNextItem();
-        flag = true;
+        stopEvent = true;
         break;
 
       case KeyCodes.HOME:
       case KeyCodes.PAGE_UP:
         this.setFocusToFirstItem();
-        flag = true;
+        stopEvent = true;
         break;
 
       case KeyCodes.END:
       case KeyCodes.PAGE_DOWN:
         this.setFocusToLastItem();
-        flag = true;
+        stopEvent = true;
         break;
 
       case KeyCodes.TAB:
@@ -166,7 +160,7 @@ Menu.prototype.handleKeydown = function (event) {
     }
   }
 
-  if (flag) {
+  if (stopEvent) {
     event.stopPropagation();
     event.preventDefault();
   }
@@ -194,7 +188,7 @@ Menu.prototype.removeFocus = function () {
     const mi = this.menuitems[i];
     mi.domNode.classList.remove('focused');
   }
-}
+};
 
 Menu.prototype.setFocusToFirstItem = function () {
   this.setFocus(this.firstItem);
@@ -208,7 +202,7 @@ Menu.prototype.setFocusToPreviousItem = function () {
   let index;
 
   if (this.currentItem === this.firstItem) {
-    this.setFocusToLastItem();
+    // this.setFocusToLastItem();
   } else {
     index = this.menuitems.indexOf(this.currentItem);
     this.setFocus(this.menuitems[index - 1]);
@@ -219,7 +213,7 @@ Menu.prototype.setFocusToNextItem = function () {
   let index;
 
   if (this.currentItem === this.lastItem) {
-    this.setFocusToFirstItem();
+    // this.setFocusToFirstItem();
   } else {
     index = this.menuitems.indexOf(this.currentItem);
     this.setFocus(this.menuitems[index + 1]);
@@ -277,16 +271,43 @@ Menu.prototype.getCurrentItem = function () {
 
 Menu.prototype.open = function () {
 
+  // create shortcuts
+  // must be done upon open because the translations are not available at onset
+  // and values change
+  this.firstChars = [];
+  this.menuitems.forEach((item, i) => {
+    let textContent = String(i);
+    if (item.domNode.hasAttribute('data-shortcut')) {
+      textContent = item.domNode.textContent;
+    } else {
+      textContent = item.domNode.querySelector('[data-shortcut]').textContent;
+    }
+    const shortcut = textContent.substring(0, 1).toLowerCase();
+    item.domNode.ariaKeyShortcuts = shortcut;
+    this.firstChars.push(shortcut);
+  });
+
+
   // set aria-expanded attribute
   this.button.isExpanded();
-
-  const offset = this.button.rect().height + 'px';
-
-  // position menu relative to button
   this.menu.style.display = 'block';
   this.menu.style.position = 'absolute';
-  this.menu.style.top = offset;
-  this.menu.style.left = '0px';
+
+  // position menu relative to button
+  const buttonRect = this.button.rect();
+  this.menu.style.top = buttonRect.height + 'px';
+
+  // shift menu horizontally if it is outside the overflow hidden parent container
+  const maxRightSide = this.button.window().right;
+  const menuWidth = this.menu.getBoundingClientRect().width;
+  const buttonWidth = buttonRect.width;
+  const menushift = (buttonRect.left + menuWidth) - maxRightSide;
+  if (menushift > 0) {
+    this.menu.style.left = '-' + String(menuWidth - buttonWidth) + 'px';
+  } else {
+    this.menu.style.left = '0px';
+  }
+
   this.menu.focus();
 
 };

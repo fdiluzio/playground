@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.10.2",
+    "@material/tooltip": "^11.0.0",
     "core-js": "^3.6.5",
     "eventbusjs": "0.2.0"
   }

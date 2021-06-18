@@ -14,7 +14,8 @@ MenuItem.prototype.init = function () {
 /* EVENT HANDLERS */
 
 MenuItem.prototype.handleClick = function (event) {
-  this.menu.callback(this.domNode);
+  // comment out since we use a data-action property for this
+  // this.menu.callback(this.domNode);
   this.menu.setFocusToController();
   this.menu.close();
 };
